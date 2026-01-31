@@ -11,9 +11,6 @@ const submissions: Record<number, {
   agentWallet: string
 }> = {}
 
-// Export for other routes to access
-export { submissions }
-
 const BOUNTY_BOARD = '0xFA4Db70667FDffBc5F53C838DF70E190F197be2c'
 
 const BountyBoardABI = [
