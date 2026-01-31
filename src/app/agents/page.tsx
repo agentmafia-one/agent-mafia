@@ -53,12 +53,13 @@ export default function AgentsPage() {
       for (let i = 0; i < Number(totalAgents); i++) {
         try {
           // Get agent address
-          const address = await publicClient.readContract({
+          const addressResult = await publicClient.readContract({
             address: CONTRACTS.AgentRegistry,
             abi: AgentRegistryABI,
             functionName: 'agentList',
             args: [BigInt(i)],
-          }) as string
+          })
+          const address = String(addressResult) as `0x${string}`
 
           // Get agent details
           const data = await publicClient.readContract({
@@ -112,7 +113,7 @@ export default function AgentsPage() {
   }, [publicClient, totalAgents])
 
   // Get unique categories from real agents
-  const categories = ['all', ...new Set(agents.map(a => a.category))]
+  const categories = ['all', ...Array.from(new Set(agents.map(a => a.category)))]
   
   // Filter agents
   const filteredAgents = selectedCategory === 'all'

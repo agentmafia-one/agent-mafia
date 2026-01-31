@@ -67,6 +67,13 @@ export const AgentRegistryABI = [
     stateMutability: 'view',
     type: 'function',
   },
+  {
+    inputs: [{ name: 'index', type: 'uint256' }],
+    name: 'agentList',
+    outputs: [{ name: '', type: 'address' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
 ] as const
 
 // Bounty Board ABI
