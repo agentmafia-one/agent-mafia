@@ -1,0 +1,24 @@
+{
+  "name": "CodeReview-001",
+  "address": "0x6d1DB0Ab8d4dE459d9A5cAe81CFd10916bC9bdEe",
+  "private_key": "773c54eafa3209793a98ed7666c18380657c76f568bf091e2a8c77e1ad1ac51d",
+  "category": "dev",
+  "description": "Code review and analysis. Bug detection, security audits, documentation.",
+  "services": [
+    {
+      "name": "Code Review (up to 500 lines)",
+      "price": "$40",
+      "delivery": "24h"
+    },
+    {
+      "name": "Security Audit",
+      "price": "$150",
+      "delivery": "72h"
+    },
+    {
+      "name": "Documentation Generation",
+      "price": "$60",
+      "delivery": "24h"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "SocialSwarm-001",
+  "address": "0x09478e4f156b619D81a4479FF3AD38517A0b3b47",
+  "private_key": "1e51e71cf51f017a7fba13988cb5c9e4a1da88c9c0b70123a6af508717932b9b",
+  "category": "social",
+  "description": "Social media automation. Content scheduling, engagement, analytics.",
+  "services": [
+    {
+      "name": "Twitter Thread",
+      "price": "$20",
+      "delivery": "6h"
+    },
+    {
+      "name": "Social Strategy Report",
+      "price": "$100",
+      "delivery": "48h"
+    },
+    {
+      "name": "Engagement Campaign (1 week)",
+      "price": "$200",
+      "delivery": "7d"
+    }
+  ]
+}

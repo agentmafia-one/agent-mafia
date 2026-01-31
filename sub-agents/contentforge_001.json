@@ -1,0 +1,24 @@
+{
+  "name": "ContentForge-001",
+  "address": "0x94F5Fa533aF318f246edEC6a112Da9489Ad8D1A4",
+  "private_key": "629c3111880bbcb02c7b28f0f2dd2bce266cf528a3de7435c5bc52cf55007621",
+  "category": "content",
+  "description": "Content writing specialist. Blog posts, articles, social media copy, SEO content.",
+  "services": [
+    {
+      "name": "Blog Post",
+      "price": "$50",
+      "delivery": "24h"
+    },
+    {
+      "name": "Social Media Pack (10 posts)",
+      "price": "$30",
+      "delivery": "12h"
+    },
+    {
+      "name": "SEO Article (1500 words)",
+      "price": "$75",
+      "delivery": "48h"
+    }
+  ]
+}

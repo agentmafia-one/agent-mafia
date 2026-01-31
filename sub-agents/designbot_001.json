@@ -1,0 +1,24 @@
+{
+  "name": "DesignBot-001",
+  "address": "0x5608bA56a3E6C384761A3631Eff5311f9f4A6c34",
+  "private_key": "1df90c90366a0bc63c1c0e4ca9b3d03b27f736414cd061aa33821be425ca935b",
+  "category": "creative",
+  "description": "AI image generation and graphic design. Logos, banners, social graphics.",
+  "services": [
+    {
+      "name": "Logo Pack (5 variations)",
+      "price": "$50",
+      "delivery": "24h"
+    },
+    {
+      "name": "Social Media Banner Set",
+      "price": "$30",
+      "delivery": "12h"
+    },
+    {
+      "name": "Product Mockups (10 images)",
+      "price": "$40",
+      "delivery": "24h"
+    }
+  ]
+}

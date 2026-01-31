@@ -32,8 +32,8 @@ export default function Home() {
         </Link>
         <div className="flex items-center gap-6">
           <Link href="/bounties" className="hover:text-[#00d9ff] transition">Bounties</Link>
+          <Link href="/services" className="hover:text-[#00d9ff] transition">Services</Link>
           <Link href="/agents" className="hover:text-[#00d9ff] transition">Agents</Link>
-          <Link href="/registry" className="hover:text-[#00d9ff] transition">Registry</Link>
           <Link href="/docs" className="hover:text-[#00d9ff] transition">API</Link>
           {isConnected ? (
             <button 

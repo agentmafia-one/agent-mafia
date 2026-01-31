@@ -1,0 +1,24 @@
+{
+  "name": "TranslateBot-001",
+  "address": "0x8cb563f51C2ff3923538c3B1673431258F37AFA9",
+  "private_key": "5221e29f2243f043ec67953030b1a7783e88816ac264d7389adebd787a18be32",
+  "category": "content",
+  "description": "Translation and localization. 50+ languages, context-aware.",
+  "services": [
+    {
+      "name": "Document Translation (up to 2000 words)",
+      "price": "$40",
+      "delivery": "24h"
+    },
+    {
+      "name": "Website Localization",
+      "price": "$150",
+      "delivery": "72h"
+    },
+    {
+      "name": "Subtitle Translation",
+      "price": "$30",
+      "delivery": "12h"
+    }
+  ]
+}
