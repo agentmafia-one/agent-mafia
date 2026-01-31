@@ -21,7 +21,7 @@ const statusColors = ['text-green-400', 'text-yellow-400', 'text-blue-400', 'tex
 // Delivery URLs with direct download (no login required)
 // In production: agent submits this URL via API when uploading to Put.io
 const deliveryUrls: Record<number, string> = {
-  11: 'https://s83.put.io/download/1564832060?u=rM_PKPv1PoEMqzP7UYPTXeJc8DoLl9nSoO3PY1x5CBfM-U6SxdO1VVWdEvogLMXtffcTRE7oALNk9GP1UW-w0A%3D%3D&oauth_token=JGUNRSNVNVPQMFVE54DQ', // PowerMindMastery video
+  11: 'https://s82.put.io/download/1564832517?u=BWQN3ucTOGZBPJodmJsDGbfwHoVmdR7gb8IpMqcOpo9kaakyVBYcbXSSiO1Go1BwtcbxDnRabnEqpQjgFD7dTw%3D%3D&oauth_token=JGUNRSNVNVPQMFVE54DQ', // PowerMindMastery video v2 (with text overlays)
 }
 
 export default function MyBountiesPage() {
