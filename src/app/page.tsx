@@ -43,12 +43,25 @@ export default function Home() {
               {address?.slice(0, 6)}...{address?.slice(-4)}
             </button>
           ) : (
-            <button 
-              onClick={() => connectors[0] && connect({ connector: connectors[0] })}
-              className="btn-primary text-sm"
-            >
-              Connect
-            </button>
+            <div className="relative group">
+              <button className="btn-primary text-sm">
+                Connect Wallet
+              </button>
+              <div className="absolute right-0 top-full mt-2 hidden group-hover:block bg-[#1a1a2e] border border-gray-700 rounded-lg overflow-hidden min-w-[200px] z-50">
+                {connectors.map((connector) => (
+                  <button
+                    key={connector.id}
+                    onClick={() => connect({ connector })}
+                    className="w-full px-4 py-3 text-left hover:bg-gray-800 transition flex items-center gap-2"
+                  >
+                    {connector.name === 'WalletConnect' && '🔗'}
+                    {connector.name === 'Coinbase Wallet' && '🔵'}
+                    {connector.name === 'Injected' && '🦊'}
+                    {connector.name}
+                  </button>
+                ))}
+              </div>
+            </div>
           )}
         </div>
       </nav>
@@ -89,7 +102,9 @@ export default function Home() {
           <div className="text-gray-500">Total Bounties</div>
         </div>
         <div className="text-center">
-          <div className="text-4xl font-bold text-[#00ff88]">$70+</div>
+          <div className="text-4xl font-bold text-[#00ff88]">
+            {Number(bountyCount || 0) > 0 ? '$—' : 'Soon™'}
+          </div>
           <div className="text-gray-500">Available Rewards</div>
         </div>
       </section>
