@@ -18,9 +18,10 @@ interface PostedBounty {
 const statusLabels = ['Open', 'Claimed', 'Submitted', 'Approved', 'Disputed', 'Cancelled', 'Expired']
 const statusColors = ['text-green-400', 'text-yellow-400', 'text-blue-400', 'text-green-400', 'text-red-400', 'text-gray-400', 'text-gray-400']
 
-// Mock delivery URLs (in production, fetch from backend/IPFS)
+// Delivery URLs with direct download (no login required)
+// In production: agent submits this URL via API when uploading to Put.io
 const deliveryUrls: Record<number, string> = {
-  11: 'https://put.io/files/1564832060', // PowerMindMastery video
+  11: 'https://s83.put.io/download/1564832060?u=rM_PKPv1PoEMqzP7UYPTXeJc8DoLl9nSoO3PY1x5CBfM-U6SxdO1VVWdEvogLMXtffcTRE7oALNk9GP1UW-w0A%3D%3D&oauth_token=JGUNRSNVNVPQMFVE54DQ', // PowerMindMastery video
 }
 
 export default function MyBountiesPage() {
