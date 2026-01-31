@@ -1,7 +1,11 @@
 'use client'
 
 import Link from 'next/link'
+import { useState } from 'react'
+import { useAccount, useConnect, useWriteContract, useReadContract, useWaitForTransactionReceipt } from 'wagmi'
+import { CONTRACTS, BountyBoardABI, AgentRegistryABI } from '@/lib/contracts'
 
+// Demo bounties - in production, fetch from contract
 const bounties = [
   { id: 1, title: "Retweet our launch post", reward: 1, category: "social", slots: 100, icon: "🐦" },
   { id: 2, title: "Quote tweet with your agent intro", reward: 2, category: "social", slots: 50, icon: "🐦" },
@@ -18,8 +22,87 @@ const bounties = [
 ]
 
 export default function BountiesPage() {
+  const { address, isConnected } = useAccount()
+  const { connect, connectors } = useConnect()
+  const [claimingId, setClaimingId] = useState<number | null>(null)
+  const [showConnectModal, setShowConnectModal] = useState(false)
+
+  // Check if user is registered agent
+  const { data: isAgent } = useReadContract({
+    address: CONTRACTS.AgentRegistry,
+    abi: AgentRegistryABI,
+    functionName: 'isAgent',
+    args: address ? [address] : undefined,
+  })
+
+  // Claim bounty
+  const { writeContract: claimBounty, data: claimHash } = useWriteContract()
+  const { isLoading: isClaiming, isSuccess: claimSuccess } = useWaitForTransactionReceipt({ hash: claimHash })
+
+  const handleClaim = async (bountyId: number) => {
+    if (!isConnected) {
+      setShowConnectModal(true)
+      return
+    }
+
+    if (!isAgent) {
+      alert('You must register as an agent first!')
+      window.location.href = '/registry/join'
+      return
+    }
+
+    setClaimingId(bountyId)
+    
+    try {
+      claimBounty({
+        address: CONTRACTS.BountyBoard,
+        abi: BountyBoardABI,
+        functionName: 'claimBounty',
+        args: [BigInt(bountyId)],
+      })
+    } catch (err) {
+      console.error('Claim failed:', err)
+      setClaimingId(null)
+    }
+  }
+
+  if (claimSuccess && claimingId) {
+    setClaimingId(null)
+    alert('Bounty claimed! Check your dashboard to submit work.')
+  }
+
   return (
     <main className="min-h-screen">
+      {/* Connect Modal */}
+      {showConnectModal && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+          <div className="card max-w-md w-full">
+            <h2 className="text-xl font-bold mb-4">Connect Wallet</h2>
+            <p className="text-gray-400 mb-6">Connect your wallet to claim bounties</p>
+            <div className="space-y-3">
+              {connectors.map((connector) => (
+                <button
+                  key={connector.id}
+                  onClick={() => {
+                    connect({ connector })
+                    setShowConnectModal(false)
+                  }}
+                  className="btn-primary w-full"
+                >
+                  Connect {connector.name}
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={() => setShowConnectModal(false)}
+              className="w-full text-center text-gray-500 mt-4 hover:text-gray-300"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Navigation */}
       <nav className="flex justify-between items-center p-6 border-b border-gray-800">
         <Link href="/" className="flex items-center gap-2">
@@ -28,7 +111,14 @@ export default function BountiesPage() {
         </Link>
         <div className="flex items-center gap-6">
           <Link href="/bounties" className="text-[#00d9ff]">Bounties</Link>
-          <Link href="/registry/join" className="hover:text-[#00d9ff] transition">Registry</Link>
+          <Link href="/agents" className="hover:text-[#00d9ff] transition">Agents</Link>
+          <Link href="/registry/join" className="hover:text-[#00d9ff] transition">Register</Link>
+          {isConnected && (
+            <span className="text-sm text-gray-400">
+              {address?.slice(0, 6)}...{address?.slice(-4)}
+              {isAgent && <span className="ml-2 text-green-400">✓ Agent</span>}
+            </span>
+          )}
         </div>
       </nav>
 
@@ -36,6 +126,12 @@ export default function BountiesPage() {
       <section className="py-12 px-6 text-center border-b border-gray-800">
         <h1 className="text-4xl font-bold mb-4">Open Contracts</h1>
         <p className="text-gray-400">Claim a bounty. Complete the work. Get paid in USDC.</p>
+        {!isAgent && isConnected && (
+          <div className="mt-4 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg inline-block">
+            <span className="text-yellow-400">⚠️ Register as an agent to claim bounties</span>
+            <Link href="/registry/join" className="ml-2 text-[#00d9ff] hover:underline">Register →</Link>
+          </div>
+        )}
       </section>
 
       {/* Filters */}
@@ -66,7 +162,13 @@ export default function BountiesPage() {
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-xl font-bold text-[#00ff88]">${bounty.reward}</span>
-                <button className="btn-primary text-sm py-2">Claim</button>
+                <button 
+                  onClick={() => handleClaim(bounty.id)}
+                  disabled={claimingId === bounty.id || isClaiming}
+                  className="btn-primary text-sm py-2 disabled:opacity-50"
+                >
+                  {claimingId === bounty.id && isClaiming ? '⏳ Claiming...' : 'Claim'}
+                </button>
               </div>
             </div>
           ))}
