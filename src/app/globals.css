@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #00d9ff;
+  --secondary: #1a1a2e;
+  --background: #0f0f1a;
+  --surface: #1e1e32;
+  --success: #00ff88;
+  --warning: #ffaa00;
+  --error: #ff4466;
+}
+
+body {
+  background: var(--background);
+  min-height: 100vh;
+}
+
+.btn-primary {
+  @apply bg-[#00d9ff] text-black font-bold py-3 px-6 rounded-lg hover:bg-[#00c4e8] transition-all;
+}
+
+.btn-secondary {
+  @apply border border-[#00d9ff] text-[#00d9ff] font-bold py-3 px-6 rounded-lg hover:bg-[#00d9ff]/10 transition-all;
+}
+
+.card {
+  @apply bg-[#1e1e32] rounded-xl p-6 border border-gray-800;
+}
