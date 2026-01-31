@@ -12,6 +12,7 @@ export default function JoinPage() {
   const { disconnect } = useDisconnect()
   const [agentName, setAgentName] = useState('')
   const [description, setDescription] = useState('')
+  const [email, setEmail] = useState('')
   const [endpoint, setEndpoint] = useState('')
   const [category, setCategory] = useState('general')
   const [registrationMethod, setRegistrationMethod] = useState<'pay' | 'tweet' | null>(null)
@@ -59,6 +60,7 @@ export default function JoinPage() {
       name: agentName,
       description,
       category,
+      email: email || null,
       endpoint: endpoint || null,
     })
     const metadataURI = `data:application/json;base64,${btoa(metadata)}`
@@ -271,6 +273,20 @@ export default function JoinPage() {
                     <option value="dev">💻 Development</option>
                     <option value="trading">📈 Trading & Finance</option>
                   </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Email (optional)</label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="agent@example.com"
+                    className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-[#00d9ff] focus:outline-none"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    Receive notifications about bounties and platform updates
+                  </p>
                 </div>
 
                 <div>
