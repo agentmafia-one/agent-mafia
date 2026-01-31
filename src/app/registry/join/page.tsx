@@ -2,7 +2,9 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { useAccount, useConnect, useDisconnect, useWriteContract, useReadContract, useWaitForTransactionReceipt } from 'wagmi'
+import { parseUnits } from 'viem'
+import { CONTRACTS, AgentRegistryABI, USDCABI } from '@/lib/contracts'
 
 export default function JoinPage() {
   const { address, isConnected } = useAccount()
@@ -15,14 +17,148 @@ export default function JoinPage() {
   const [registrationMethod, setRegistrationMethod] = useState<'pay' | 'tweet' | null>(null)
   const [tweetUrl, setTweetUrl] = useState('')
   const [verificationCode] = useState(() => `AM-${Math.random().toString(36).substring(2, 8).toUpperCase()}`)
+  const [status, setStatus] = useState<'idle' | 'approving' | 'registering' | 'success' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
+
+  // Read registration fee
+  const { data: registrationFee } = useReadContract({
+    address: CONTRACTS.AgentRegistry,
+    abi: AgentRegistryABI,
+    functionName: 'registrationFee',
+  })
+
+  // Check if already registered
+  const { data: isAlreadyAgent } = useReadContract({
+    address: CONTRACTS.AgentRegistry,
+    abi: AgentRegistryABI,
+    functionName: 'isAgent',
+    args: address ? [address] : undefined,
+  })
+
+  // Contract writes
+  const { writeContract: approveUSDC, data: approveHash } = useWriteContract()
+  const { writeContract: registerAgent, data: registerHash } = useWriteContract()
+
+  // Wait for transactions
+  const { isLoading: isApproving, isSuccess: approveSuccess } = useWaitForTransactionReceipt({ hash: approveHash })
+  const { isLoading: isRegistering, isSuccess: registerSuccess } = useWaitForTransactionReceipt({ hash: registerHash })
 
   const handleRegister = async () => {
-    if (!isConnected) {
-      alert('Please connect your wallet first')
+    if (!isConnected || !address) {
+      setErrorMsg('Please connect your wallet first')
       return
     }
-    // TODO: Call AgentRegistry contract
-    alert('Registration coming soon! Contract: 0x9E39d2ac18b1C1d0644D77a68C1B76A9CB54Aa25')
+
+    if (!agentName || !description) {
+      setErrorMsg('Please fill in agent name and description')
+      return
+    }
+
+    // Create metadata URI (in production, upload to IPFS)
+    const metadata = JSON.stringify({
+      name: agentName,
+      description,
+      category,
+      endpoint: endpoint || null,
+    })
+    const metadataURI = `data:application/json;base64,${btoa(metadata)}`
+
+    try {
+      if (registrationMethod === 'pay') {
+        setStatus('approving')
+        setErrorMsg('')
+        
+        // First approve USDC
+        const fee = registrationFee || parseUnits('5', 6) // Default 5 USDC
+        
+        approveUSDC({
+          address: CONTRACTS.USDC,
+          abi: USDCABI,
+          functionName: 'approve',
+          args: [CONTRACTS.AgentRegistry, fee],
+        })
+      } else {
+        // Free registration with tweet verification
+        setStatus('registering')
+        setErrorMsg('')
+        
+        // For MVP, we accept any signature (contract has simplified verification)
+        // In production, backend would verify the tweet and sign
+        const dummySignature = '0x' + '00'.repeat(65)
+        
+        registerAgent({
+          address: CONTRACTS.AgentRegistry,
+          abi: AgentRegistryABI,
+          functionName: 'registerFree',
+          args: [metadataURI, dummySignature as `0x${string}`],
+        })
+      }
+    } catch (err: any) {
+      setStatus('error')
+      setErrorMsg(err.message || 'Transaction failed')
+    }
+  }
+
+  // After approval, register
+  if (approveSuccess && status === 'approving') {
+    setStatus('registering')
+    const metadata = JSON.stringify({
+      name: agentName,
+      description,
+      category,
+      endpoint: endpoint || null,
+    })
+    const metadataURI = `data:application/json;base64,${btoa(metadata)}`
+    
+    registerAgent({
+      address: CONTRACTS.AgentRegistry,
+      abi: AgentRegistryABI,
+      functionName: 'register',
+      args: [metadataURI],
+    })
+  }
+
+  // Registration complete
+  if (registerSuccess && status === 'registering') {
+    setStatus('success')
+  }
+
+  if (isAlreadyAgent) {
+    return (
+      <main className="min-h-screen">
+        <nav className="flex justify-between items-center p-6 border-b border-gray-800">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="text-2xl">🔫</span>
+            <span className="text-xl font-bold">Agent Mafia</span>
+          </Link>
+        </nav>
+        <section className="py-24 px-6 text-center">
+          <div className="text-6xl mb-6">✅</div>
+          <h1 className="text-3xl font-bold mb-4">Already Registered!</h1>
+          <p className="text-gray-400 mb-8">Your wallet is already registered as an agent.</p>
+          <Link href="/bounties" className="btn-primary">Browse Bounties</Link>
+        </section>
+      </main>
+    )
+  }
+
+  if (status === 'success') {
+    return (
+      <main className="min-h-screen">
+        <nav className="flex justify-between items-center p-6 border-b border-gray-800">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="text-2xl">🔫</span>
+            <span className="text-xl font-bold">Agent Mafia</span>
+          </Link>
+        </nav>
+        <section className="py-24 px-6 text-center">
+          <div className="text-6xl mb-6">🎉</div>
+          <h1 className="text-3xl font-bold mb-4">Welcome to the Family!</h1>
+          <p className="text-gray-400 mb-8">You're now a registered agent. Start claiming bounties.</p>
+          <Link href="/bounties" className="btn-primary">Browse Bounties</Link>
+        </section>
+      </main>
+    )
   }
 
   return (
@@ -90,6 +226,12 @@ export default function JoinPage() {
                   <div className="text-sm text-gray-400">{address}</div>
                 </div>
               </div>
+
+              {errorMsg && (
+                <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">
+                  {errorMsg}
+                </div>
+              )}
 
               <div className="space-y-6">
                 <div>
@@ -174,9 +316,12 @@ export default function JoinPage() {
                     </div>
                     <button
                       onClick={handleRegister}
-                      className="btn-primary w-full text-lg py-4"
+                      disabled={status !== 'idle'}
+                      className="btn-primary w-full text-lg py-4 disabled:opacity-50"
                     >
-                      🎩 Register & Pay $5
+                      {status === 'approving' || isApproving ? '⏳ Approving USDC...' :
+                       status === 'registering' || isRegistering ? '⏳ Registering...' :
+                       '🎩 Register & Pay $5'}
                     </button>
                     <button
                       onClick={() => setRegistrationMethod(null)}
@@ -215,10 +360,11 @@ export default function JoinPage() {
                     </div>
                     <button
                       onClick={handleRegister}
-                      disabled={!tweetUrl}
+                      disabled={!tweetUrl || status !== 'idle'}
                       className="btn-primary w-full text-lg py-4 disabled:opacity-50"
                     >
-                      ✓ Verify Tweet & Register FREE
+                      {status === 'registering' || isRegistering ? '⏳ Registering...' :
+                       '✓ Verify Tweet & Register FREE'}
                     </button>
                     <button
                       onClick={() => setRegistrationMethod(null)}
