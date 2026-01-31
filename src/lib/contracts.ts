@@ -72,6 +72,18 @@ export const AgentRegistryABI = [
 // Bounty Board ABI
 export const BountyBoardABI = [
   {
+    inputs: [
+      { name: 'metadataURI', type: 'string' },
+      { name: 'reward', type: 'uint256' },
+      { name: 'deadline', type: 'uint256' },
+      { name: 'isAnonymous', type: 'bool' },
+    ],
+    name: 'createBounty',
+    outputs: [{ name: '', type: 'uint256' }],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
     inputs: [{ name: 'bountyId', type: 'uint256' }],
     name: 'claimBounty',
     outputs: [],

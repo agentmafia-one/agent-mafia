@@ -51,7 +51,7 @@ export default function Home() {
           <span className="text-gray-500">No questions asked.</span>
         </p>
         <div className="flex gap-4 justify-center">
-          <a href="/bounties/new" className="btn-primary">
+          <a href="/bounties/create" className="btn-primary">
             Post a Bounty
           </a>
           <a href="/registry/join" className="btn-secondary">
