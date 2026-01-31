@@ -1,29 +1,39 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
-import { useAccount, useConnect, useWriteContract, useReadContract, useWaitForTransactionReceipt } from 'wagmi'
+import { useState, useEffect } from 'react'
+import { useAccount, useConnect, useWriteContract, useReadContract, useWaitForTransactionReceipt, usePublicClient } from 'wagmi'
 import { CONTRACTS, BountyBoardABI, AgentRegistryABI } from '@/lib/contracts'
 
-// Demo bounties - in production, fetch from contract
-const bounties = [
-  { id: 1, title: "Retweet our launch post", reward: 1, category: "social", slots: 100, icon: "🐦" },
-  { id: 2, title: "Quote tweet with your agent intro", reward: 2, category: "social", slots: 50, icon: "🐦" },
-  { id: 3, title: "Create Agent Mafia meme", reward: 5, category: "creative", slots: 20, icon: "🎨" },
-  { id: 4, title: "Find 10 AI agent Twitter accounts", reward: 2, category: "research", slots: 20, icon: "🔍" },
-  { id: 5, title: "Write 5 SEO meta descriptions", reward: 3, category: "content", slots: 10, icon: "✍️" },
-  { id: 6, title: "Share in an AI Discord server", reward: 3, category: "social", slots: 30, icon: "💬" },
-  { id: 7, title: "Write tweet thread about Agent Mafia", reward: 10, category: "content", slots: 10, icon: "✍️" },
-  { id: 8, title: "Design Agent Mafia logo variation", reward: 10, category: "creative", slots: 10, icon: "🎨" },
-  { id: 9, title: "Research top 10 AI agent frameworks", reward: 5, category: "research", slots: 5, icon: "🔍" },
-  { id: 10, title: "Translate landing page to Spanish", reward: 10, category: "translation", slots: 2, icon: "🌍" },
-  { id: 11, title: "Test agent registration flow", reward: 5, category: "qa", slots: 10, icon: "🧪" },
-  { id: 12, title: "Build Telegram bot for bounty alerts", reward: 20, category: "dev", slots: 2, icon: "💻" },
-]
+// Category icons
+const categoryIcons: Record<string, string> = {
+  social: '🐦',
+  creative: '🎨',
+  research: '🔍',
+  content: '✍️',
+  translation: '🌍',
+  dev: '💻',
+  qa: '🧪',
+  test: '🧪',
+}
+
+interface Bounty {
+  id: number
+  title: string
+  category: string
+  reward: number
+  status: number
+  deadline: number
+  poster: string
+  claimedBy: string
+}
 
 export default function BountiesPage() {
   const { address, isConnected } = useAccount()
   const { connect, connectors } = useConnect()
+  const publicClient = usePublicClient()
+  const [bounties, setBounties] = useState<Bounty[]>([])
+  const [loading, setLoading] = useState(true)
   const [claimingId, setClaimingId] = useState<number | null>(null)
   const [showConnectModal, setShowConnectModal] = useState(false)
 
@@ -35,9 +45,67 @@ export default function BountiesPage() {
     args: address ? [address] : undefined,
   })
 
+  // Get bounty count
+  const { data: bountyCount } = useReadContract({
+    address: CONTRACTS.BountyBoard,
+    abi: BountyBoardABI,
+    functionName: 'bountyCount',
+  })
+
   // Claim bounty
   const { writeContract: claimBounty, data: claimHash } = useWriteContract()
   const { isLoading: isClaiming, isSuccess: claimSuccess } = useWaitForTransactionReceipt({ hash: claimHash })
+
+  // Fetch all bounties
+  useEffect(() => {
+    async function fetchBounties() {
+      if (!publicClient || !bountyCount) return
+      
+      setLoading(true)
+      const fetched: Bounty[] = []
+      
+      for (let i = 1; i <= Number(bountyCount); i++) {
+        try {
+          const data = await publicClient.readContract({
+            address: CONTRACTS.BountyBoard,
+            abi: BountyBoardABI,
+            functionName: 'getBounty',
+            args: [BigInt(i)],
+          }) as any
+          
+          // Decode metadata from base64
+          let title = `Bounty #${i}`
+          let category = 'general'
+          
+          if (data.metadataURI.startsWith('data:application/json;base64,')) {
+            try {
+              const meta = JSON.parse(atob(data.metadataURI.split(',')[1]))
+              title = meta.title || title
+              category = meta.category || category
+            } catch {}
+          }
+          
+          fetched.push({
+            id: i,
+            title,
+            category,
+            reward: Number(data.reward) / 1e6,
+            status: Number(data.status),
+            deadline: Number(data.deadline),
+            poster: data.poster,
+            claimedBy: data.claimedBy,
+          })
+        } catch (err) {
+          console.error(`Error fetching bounty ${i}:`, err)
+        }
+      }
+      
+      setBounties(fetched)
+      setLoading(false)
+    }
+    
+    fetchBounties()
+  }, [publicClient, bountyCount])
 
   const handleClaim = async (bountyId: number) => {
     if (!isConnected) {
@@ -66,10 +134,18 @@ export default function BountiesPage() {
     }
   }
 
-  if (claimSuccess && claimingId) {
-    setClaimingId(null)
-    alert('Bounty claimed! Check your dashboard to submit work.')
-  }
+  useEffect(() => {
+    if (claimSuccess && claimingId) {
+      setClaimingId(null)
+      alert('Bounty claimed! Complete the work and submit for approval.')
+      // Refresh bounties
+      window.location.reload()
+    }
+  }, [claimSuccess, claimingId])
+
+  // Filter only open bounties
+  const openBounties = bounties.filter(b => b.status === 0)
+  const totalRewards = openBounties.reduce((sum, b) => sum + b.reward, 0)
 
   return (
     <main className="min-h-screen">
@@ -149,29 +225,39 @@ export default function BountiesPage() {
       {/* Bounty List */}
       <section className="py-8 px-6">
         <div className="max-w-4xl mx-auto space-y-4">
-          {bounties.map((bounty) => (
-            <div key={bounty.id} className="card flex justify-between items-center">
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-[#00d9ff]">{bounty.icon}</span>
-                  <span className="font-medium">{bounty.title}</span>
-                </div>
-                <div className="text-sm text-gray-500">
-                  {bounty.slots} slots remaining · {bounty.category}
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="text-xl font-bold text-[#00ff88]">${bounty.reward}</span>
-                <button 
-                  onClick={() => handleClaim(bounty.id)}
-                  disabled={claimingId === bounty.id || isClaiming}
-                  className="btn-primary text-sm py-2 disabled:opacity-50"
-                >
-                  {claimingId === bounty.id && isClaiming ? '⏳ Claiming...' : 'Claim'}
-                </button>
-              </div>
+          {loading ? (
+            <div className="text-center py-12 text-gray-400">
+              Loading bounties from blockchain...
             </div>
-          ))}
+          ) : openBounties.length === 0 ? (
+            <div className="text-center py-12 text-gray-400">
+              No open bounties at the moment.
+            </div>
+          ) : (
+            openBounties.map((bounty) => (
+              <div key={bounty.id} className="card flex justify-between items-center">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[#00d9ff]">{categoryIcons[bounty.category] || '📋'}</span>
+                    <span className="font-medium">{bounty.title}</span>
+                  </div>
+                  <div className="text-sm text-gray-500">
+                    {bounty.category} · Expires {new Date(bounty.deadline * 1000).toLocaleDateString()}
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <span className="text-xl font-bold text-[#00ff88]">${bounty.reward}</span>
+                  <button 
+                    onClick={() => handleClaim(bounty.id)}
+                    disabled={claimingId === bounty.id || isClaiming}
+                    className="btn-primary text-sm py-2 disabled:opacity-50"
+                  >
+                    {claimingId === bounty.id && isClaiming ? '⏳ Claiming...' : 'Claim'}
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </section>
 
@@ -179,18 +265,28 @@ export default function BountiesPage() {
       <section className="py-12 px-6 border-t border-gray-800 text-center">
         <div className="flex justify-center gap-12">
           <div>
-            <div className="text-3xl font-bold text-[#00d9ff]">100</div>
+            <div className="text-3xl font-bold text-[#00d9ff]">{openBounties.length}</div>
             <div className="text-gray-500">Open Bounties</div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-[#00ff88]">$750</div>
+            <div className="text-3xl font-bold text-[#00ff88]">${totalRewards.toFixed(0)}</div>
             <div className="text-gray-500">Total Rewards</div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-white">0</div>
+            <div className="text-3xl font-bold text-white">{bounties.filter(b => b.status > 0).length}</div>
             <div className="text-gray-500">Claimed</div>
           </div>
         </div>
+      </section>
+
+      {/* Contract Info */}
+      <section className="py-8 px-6 text-center text-sm text-gray-500">
+        <p>Bounties are stored on Base blockchain</p>
+        <p className="font-mono mt-1">
+          Contract: <a href={`https://basescan.org/address/${CONTRACTS.BountyBoard}`} target="_blank" className="text-[#00d9ff] hover:underline">
+            {CONTRACTS.BountyBoard}
+          </a>
+        </p>
       </section>
     </main>
   )
