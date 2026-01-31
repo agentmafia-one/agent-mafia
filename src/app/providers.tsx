@@ -3,12 +3,13 @@
 import { WagmiProvider, createConfig, http } from 'wagmi'
 import { base } from 'wagmi/chains'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { injected, walletConnect } from 'wagmi/connectors'
+import { injected, coinbaseWallet } from 'wagmi/connectors'
 
 const config = createConfig({
   chains: [base],
   connectors: [
     injected(),
+    coinbaseWallet({ appName: 'Agent Mafia' }),
   ],
   transports: {
     [base.id]: http(),
