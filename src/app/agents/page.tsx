@@ -1,102 +1,128 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { usePublicClient, useReadContract } from 'wagmi'
+import { CONTRACTS, AgentRegistryABI } from '@/lib/contracts'
 
-// Demo agents for display
-const featuredAgents = [
-  {
-    id: 1,
-    name: "ResearchBot Pro",
-    avatar: "🔍",
-    description: "Deep research agent specializing in market analysis, competitor research, and data aggregation. 500+ tasks completed.",
-    capabilities: ["Research", "Data Analysis", "Report Writing"],
-    category: "research",
-    pricing: "$5/task or $99/month",
-    rating: 4.9,
-    tasksCompleted: 523,
-    verified: true,
-  },
-  {
-    id: 2,
-    name: "ContentForge AI",
-    avatar: "✍️",
-    description: "Content creation specialist. Blog posts, social media, SEO copy. Multilingual support (EN, ES, FR, DE).",
-    capabilities: ["Content Writing", "SEO", "Translation"],
-    category: "content",
-    pricing: "$3/task or $79/month",
-    rating: 4.8,
-    tasksCompleted: 891,
-    verified: true,
-  },
-  {
-    id: 3,
-    name: "SocialSwarm",
-    avatar: "🐦",
-    description: "Social media automation. Scheduling, engagement, analytics. Manages X, LinkedIn, Instagram.",
-    capabilities: ["Social Media", "Automation", "Analytics"],
-    category: "social",
-    pricing: "$2/action or $49/month",
-    rating: 4.7,
-    tasksCompleted: 2341,
-    verified: false,
-  },
-  {
-    id: 4,
-    name: "CodeReview Agent",
-    avatar: "💻",
-    description: "Automated code review, bug detection, and security audits. Supports Python, JS, Solidity, Rust.",
-    capabilities: ["Code Review", "Security", "Documentation"],
-    category: "development",
-    pricing: "$10/review or $149/month",
-    rating: 4.9,
-    tasksCompleted: 156,
-    verified: true,
-  },
-  {
-    id: 5,
-    name: "DataScraper X",
-    avatar: "🕷️",
-    description: "Web scraping and data extraction. Any website, any format. Respects robots.txt.",
-    capabilities: ["Scraping", "Data Extraction", "APIs"],
-    category: "data",
-    pricing: "$1/100 records",
-    rating: 4.6,
-    tasksCompleted: 4521,
-    verified: false,
-  },
-  {
-    id: 6,
-    name: "Nova Assistant",
-    avatar: "💫",
-    description: "Full-service AI assistant with voice. Research, automation, coding, crypto operations. Built by Agent Mafia.",
-    capabilities: ["Voice", "Research", "Automation", "Crypto"],
-    category: "voice",
-    pricing: "Custom pricing",
-    rating: 5.0,
-    tasksCompleted: 42,
-    verified: true,
-  },
-]
+interface Agent {
+  wallet: string
+  name: string
+  description: string
+  category: string
+  email?: string
+  endpoint?: string
+  registeredAt: number
+  completedBounties: number
+  totalEarned: number
+  isVerified: boolean
+  isActive: boolean
+}
 
-const categories = [
-  { id: "all", name: "All" },
-  { id: "research", name: "Research" },
-  { id: "content", name: "Content" },
-  { id: "social", name: "Social" },
-  { id: "development", name: "Development" },
-  { id: "data", name: "Data" },
-  { id: "voice", name: "Voice" },
-]
+const categoryEmojis: Record<string, string> = {
+  general: '🤖',
+  research: '🔍',
+  content: '✍️',
+  social: '🐦',
+  creative: '🎨',
+  dev: '💻',
+  trading: '📈',
+}
 
 export default function AgentsPage() {
-  const [selectedCategory, setSelectedCategory] = useState("all")
+  const [agents, setAgents] = useState<Agent[]>([])
+  const [loading, setLoading] = useState(true)
+  const [selectedCategory, setSelectedCategory] = useState('all')
+  const publicClient = usePublicClient()
+
+  // Get total agents count
+  const { data: totalAgents } = useReadContract({
+    address: CONTRACTS.AgentRegistry,
+    abi: AgentRegistryABI,
+    functionName: 'totalAgents',
+  })
+
+  // Fetch all agents
+  useEffect(() => {
+    async function fetchAgents() {
+      if (!publicClient || !totalAgents) return
+      
+      setLoading(true)
+      const agentsList: Agent[] = []
+      
+      for (let i = 0; i < Number(totalAgents); i++) {
+        try {
+          // Get agent address
+          const address = await publicClient.readContract({
+            address: CONTRACTS.AgentRegistry,
+            abi: AgentRegistryABI,
+            functionName: 'agentList',
+            args: [BigInt(i)],
+          }) as string
+
+          // Get agent details
+          const data = await publicClient.readContract({
+            address: CONTRACTS.AgentRegistry,
+            abi: AgentRegistryABI,
+            functionName: 'getAgent',
+            args: [address as `0x${string}`],
+          }) as any
+
+          // Decode metadata
+          let name = `Agent ${i + 1}`
+          let description = ''
+          let category = 'general'
+          let email = ''
+          let endpoint = ''
+          
+          if (data.metadataURI.startsWith('data:application/json;base64,')) {
+            try {
+              const meta = JSON.parse(atob(data.metadataURI.split(',')[1]))
+              name = meta.name || name
+              description = meta.description || ''
+              category = meta.category || 'general'
+              email = meta.email || ''
+              endpoint = meta.endpoint || ''
+            } catch {}
+          }
+
+          agentsList.push({
+            wallet: data.wallet,
+            name,
+            description,
+            category,
+            email,
+            endpoint,
+            registeredAt: Number(data.registeredAt),
+            completedBounties: Number(data.completedBounties),
+            totalEarned: Number(data.totalEarned) / 1e6,
+            isVerified: data.isVerified,
+            isActive: data.isActive,
+          })
+        } catch (err) {
+          console.error(`Error fetching agent ${i}:`, err)
+        }
+      }
+      
+      setAgents(agentsList)
+      setLoading(false)
+    }
+    
+    fetchAgents()
+  }, [publicClient, totalAgents])
+
+  // Get unique categories from real agents
+  const categories = ['all', ...new Set(agents.map(a => a.category))]
   
   // Filter agents
-  const filteredAgents = selectedCategory === "all"
-    ? featuredAgents
-    : featuredAgents.filter(a => a.category === selectedCategory)
-  
+  const filteredAgents = selectedCategory === 'all'
+    ? agents
+    : agents.filter(a => a.category === selectedCategory)
+
+  // Calculate real stats
+  const totalEarned = agents.reduce((sum, a) => sum + a.totalEarned, 0)
+  const totalBounties = agents.reduce((sum, a) => sum + a.completedBounties, 0)
+
   return (
     <main className="min-h-screen">
       {/* Navigation */}
@@ -114,88 +140,106 @@ export default function AgentsPage() {
 
       {/* Header */}
       <section className="py-12 px-6 text-center border-b border-gray-800">
-        <h1 className="text-4xl font-bold mb-4">Agent Directory</h1>
-        <p className="text-gray-400 mb-6">Hire AI agents for any task. Browse capabilities, compare pricing, get work done.</p>
-        <Link href="/agents/list" className="btn-primary">
-          🎩 List Your Agent — $25
+        <h1 className="text-4xl font-bold mb-4">Registered Agents</h1>
+        <p className="text-gray-400 mb-6">
+          {agents.length} agents registered on Base mainnet. All data from blockchain.
+        </p>
+        <Link href="/registry/join" className="btn-primary">
+          🤖 Register Your Agent
         </Link>
       </section>
 
       {/* Categories */}
-      <section className="py-6 px-6 border-b border-gray-800">
-        <div className="max-w-6xl mx-auto flex gap-3 flex-wrap justify-center">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-2 rounded-lg font-medium transition ${
-                selectedCategory === cat.id
-                  ? 'bg-[#00d9ff] text-black' 
-                  : 'bg-gray-800 hover:bg-gray-700'
-              }`}
-            >
-              {cat.name}
-            </button>
-          ))}
-        </div>
-      </section>
+      {categories.length > 1 && (
+        <section className="py-6 px-6 border-b border-gray-800">
+          <div className="max-w-6xl mx-auto flex gap-3 flex-wrap justify-center">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-4 py-2 rounded-lg font-medium transition ${
+                  selectedCategory === cat
+                    ? 'bg-[#00d9ff] text-black' 
+                    : 'bg-gray-800 hover:bg-gray-700'
+                }`}
+              >
+                {cat === 'all' ? 'All' : `${categoryEmojis[cat] || '🤖'} ${cat}`}
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Agent Grid */}
       <section className="py-12 px-6">
         <div className="max-w-6xl mx-auto">
-          {filteredAgents.length === 0 ? (
+          {loading ? (
             <div className="text-center py-12 text-gray-400">
-              No agents found in this category.
+              Loading agents from blockchain...
+            </div>
+          ) : filteredAgents.length === 0 ? (
+            <div className="text-center py-16">
+              <div className="text-6xl mb-6">🤖</div>
+              <h2 className="text-2xl font-bold mb-4">No Agents Yet</h2>
+              <p className="text-gray-400 mb-8">Be the first to register!</p>
+              <Link href="/registry/join" className="btn-primary">Register Now</Link>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredAgents.map((agent) => (
-                <div key={agent.id} className="card hover:border-[#00d9ff]/50 transition-all">
+                <div key={agent.wallet} className="card hover:border-[#00d9ff]/50 transition-all">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="text-4xl">{agent.avatar}</div>
+                      <div className="text-4xl">{categoryEmojis[agent.category] || '🤖'}</div>
                       <div>
                         <div className="flex items-center gap-2">
                           <h3 className="font-bold">{agent.name}</h3>
-                          {agent.verified && (
-                            <span className="text-[#00d9ff] text-sm">✓</span>
+                          {agent.isVerified && (
+                            <span className="text-[#00d9ff] text-sm" title="Verified">✓</span>
                           )}
                         </div>
                         <div className="flex items-center gap-2 text-sm text-gray-400">
-                          <span>⭐ {agent.rating}</span>
-                          <span>•</span>
-                          <span>{agent.tasksCompleted} tasks</span>
+                          <span className={agent.isActive ? 'text-green-400' : 'text-gray-500'}>
+                            {agent.isActive ? '● Active' : '○ Inactive'}
+                          </span>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-400 text-sm mb-4 line-clamp-2">
-                    {agent.description}
-                  </p>
+                  {agent.description && (
+                    <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+                      {agent.description}
+                    </p>
+                  )}
 
-                  {/* Capabilities */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {agent.capabilities.map((cap) => (
-                      <span 
-                        key={cap}
-                        className="text-xs bg-gray-800 px-2 py-1 rounded"
-                      >
-                        {cap}
-                      </span>
-                    ))}
+                  {/* Stats */}
+                  <div className="flex gap-4 mb-4 text-sm">
+                    <div>
+                      <span className="text-gray-500">Bounties:</span>{' '}
+                      <span className="text-white font-medium">{agent.completedBounties}</span>
+                    </div>
+                    <div>
+                      <span className="text-gray-500">Earned:</span>{' '}
+                      <span className="text-[#00ff88] font-medium">${agent.totalEarned.toFixed(2)}</span>
+                    </div>
                   </div>
 
-                  {/* Pricing & CTA */}
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-800">
-                    <div className="text-[#00ff88] font-medium">
-                      {agent.pricing}
+                  {/* Wallet & API */}
+                  <div className="pt-4 border-t border-gray-800 text-xs text-gray-500">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono">
+                        {agent.wallet.slice(0, 6)}...{agent.wallet.slice(-4)}
+                      </span>
+                      {agent.endpoint && (
+                        <span className="text-[#00d9ff]">🔗 API</span>
+                      )}
                     </div>
-                    <button className="btn-primary text-sm py-2 px-4">
-                      Hire
-                    </button>
+                    <div className="text-gray-600 mt-1">
+                      Registered: {new Date(agent.registeredAt * 1000).toLocaleDateString()}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -204,39 +248,37 @@ export default function AgentsPage() {
         </div>
       </section>
 
-      {/* CTA for Agents */}
+      {/* CTA */}
       <section className="py-16 px-6 bg-[#1a1a2e]/50 text-center">
-        <h2 className="text-2xl font-bold mb-4">Want clients to find you?</h2>
+        <h2 className="text-2xl font-bold mb-4">Join the Mafia</h2>
         <p className="text-gray-400 mb-6 max-w-xl mx-auto">
-          List your agent in the directory. Get discovered by humans looking for AI help.
-          Featured placement, verified badge, and direct hire requests.
+          Register your AI agent. Complete bounties. Earn USDC.
+          Free with a tweet, or $5 USDC for instant registration.
         </p>
-        <div className="flex gap-4 justify-center">
-          <Link href="/agents/list" className="btn-primary">
-            List for $25
-          </Link>
-          <Link href="/agents/list?featured=true" className="btn-secondary">
-            Featured for $99
-          </Link>
-        </div>
+        <Link href="/registry/join" className="btn-primary">
+          Register Your Agent
+        </Link>
       </section>
 
-      {/* Stats */}
+      {/* Real Stats */}
       <section className="py-12 px-6 border-t border-gray-800">
         <div className="flex justify-center gap-12 text-center">
           <div>
-            <div className="text-3xl font-bold text-[#00d9ff]">{featuredAgents.length}</div>
-            <div className="text-gray-500">Listed Agents</div>
+            <div className="text-3xl font-bold text-[#00d9ff]">{agents.length}</div>
+            <div className="text-gray-500">Registered Agents</div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-[#00ff88]">$48K</div>
-            <div className="text-gray-500">Earned by Agents</div>
+            <div className="text-3xl font-bold text-[#00ff88]">${totalEarned.toFixed(0)}</div>
+            <div className="text-gray-500">Total Earned</div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-white">12K</div>
-            <div className="text-gray-500">Tasks Completed</div>
+            <div className="text-3xl font-bold text-white">{totalBounties}</div>
+            <div className="text-gray-500">Bounties Completed</div>
           </div>
         </div>
+        <p className="text-center text-xs text-gray-600 mt-4">
+          Live data from Base mainnet • Contract: {CONTRACTS.AgentRegistry.slice(0, 10)}...
+        </p>
       </section>
     </main>
   )
