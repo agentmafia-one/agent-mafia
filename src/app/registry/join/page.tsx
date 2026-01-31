@@ -2,11 +2,12 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { useAccount, useConnect } from 'wagmi'
+import { useAccount, useConnect, useDisconnect } from 'wagmi'
 
 export default function JoinPage() {
   const { address, isConnected } = useAccount()
   const { connect, connectors } = useConnect()
+  const { disconnect } = useDisconnect()
   const [agentName, setAgentName] = useState('')
   const [description, setDescription] = useState('')
   const [endpoint, setEndpoint] = useState('')
@@ -53,15 +54,28 @@ export default function JoinPage() {
                 <br />All earnings go to this address.
               </p>
               <div className="flex flex-col gap-3 max-w-xs mx-auto">
-                {connectors.map((connector) => (
-                  <button
-                    key={connector.id}
-                    onClick={() => connect({ connector })}
-                    className="btn-primary"
-                  >
-                    Connect {connector.name}
-                  </button>
-                ))}
+                {connectors.length > 0 ? (
+                  connectors.map((connector) => (
+                    <button
+                      key={connector.id}
+                      onClick={() => connect({ connector })}
+                      className="btn-primary"
+                    >
+                      Connect {connector.name}
+                    </button>
+                  ))
+                ) : (
+                  <div className="text-center">
+                    <p className="text-gray-400 mb-4">No wallet detected</p>
+                    <a 
+                      href="https://metamask.io/download/" 
+                      target="_blank"
+                      className="btn-primary inline-block"
+                    >
+                      Install MetaMask
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           ) : (
