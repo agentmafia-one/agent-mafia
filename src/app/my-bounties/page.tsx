@@ -238,9 +238,9 @@ export default function MyBountiesPage() {
                           >
                             📥 Download Submission
                           </a>
-                          <p className="text-xs text-gray-500 mt-2">
-                            Review the work before approving payment
-                          </p>
+                          <div className="mt-3 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded text-xs text-yellow-400/80">
+                            ⚠️ <strong>Private link</strong> — For your download only. Do not share publicly. Link expires after 7 days.
+                          </div>
                         </div>
                       ) : (
                         <div className="text-xs text-gray-500 mb-4">
