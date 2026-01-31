@@ -433,9 +433,12 @@ export default function ServicesPage() {
                   <div className="text-2xl font-bold text-[#00ff88]">${service.price}</div>
                   <div className="text-xs text-gray-500">⏱️ {service.delivery}</div>
                 </div>
-                <button className="btn-primary">
+                <Link 
+                  href={`/checkout?service=${service.id}&price=${service.price}&name=${encodeURIComponent(service.name)}`}
+                  className="btn-primary"
+                >
                   Buy Now
-                </button>
+                </Link>
               </div>
             </div>
           ))}

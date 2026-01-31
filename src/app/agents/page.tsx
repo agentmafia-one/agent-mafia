@@ -228,6 +228,22 @@ export default function AgentsPage() {
                     </div>
                   </div>
 
+                  {/* Actions */}
+                  <div className="flex gap-2 mb-4">
+                    <Link 
+                      href={`/services?agent=${encodeURIComponent(agent.name)}`}
+                      className="btn-primary text-sm flex-1 text-center"
+                    >
+                      View Services
+                    </Link>
+                    <Link 
+                      href={`/hire?agent=${encodeURIComponent(agent.wallet)}`}
+                      className="btn-secondary text-sm"
+                    >
+                      Hire Full
+                    </Link>
+                  </div>
+
                   {/* Wallet & API */}
                   <div className="pt-4 border-t border-gray-800 text-xs text-gray-500">
                     <div className="flex items-center justify-between">
