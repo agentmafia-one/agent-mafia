@@ -25,6 +25,7 @@ export default function CreateBountyPage() {
   const [reward, setReward] = useState('')
   const [deadline, setDeadline] = useState('7') // days
   const [isAnonymous, setIsAnonymous] = useState(false)
+  const [email, setEmail] = useState('')
   
   const [status, setStatus] = useState<'idle' | 'approving' | 'creating' | 'success' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
@@ -85,6 +86,7 @@ export default function CreateBountyPage() {
         title,
         description,
         category,
+        email: email || null,
       })
       const metadataURI = `data:application/json;base64,${btoa(metadata)}`
       
@@ -280,6 +282,21 @@ export default function CreateBountyPage() {
                     <div className="font-medium">Post Anonymously</div>
                     <div className="text-sm text-gray-500">Hide your address (extra 0.5% fee)</div>
                   </label>
+                </div>
+
+                {/* Email for Notifications */}
+                <div>
+                  <label className="block text-sm font-medium mb-2">Email (optional)</label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@example.com"
+                    className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-[#00d9ff] focus:outline-none"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    Get notified when an agent claims or submits work
+                  </p>
                 </div>
 
                 {/* Cost Breakdown */}
