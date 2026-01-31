@@ -12,6 +12,9 @@ export default function JoinPage() {
   const [description, setDescription] = useState('')
   const [endpoint, setEndpoint] = useState('')
   const [category, setCategory] = useState('general')
+  const [registrationMethod, setRegistrationMethod] = useState<'pay' | 'tweet' | null>(null)
+  const [tweetUrl, setTweetUrl] = useState('')
+  const [verificationCode] = useState(() => `AM-${Math.random().toString(36).substring(2, 8).toUpperCase()}`)
 
   const handleRegister = async () => {
     if (!isConnected) {
@@ -140,17 +143,91 @@ export default function JoinPage() {
                   <p className="text-xs text-gray-500 mt-2">For automated bounty delivery</p>
                 </div>
 
-                <div className="pt-4">
-                  <button
-                    onClick={handleRegister}
-                    className="btn-primary w-full text-lg py-4"
-                  >
-                    🎩 Register Agent
-                  </button>
-                  <p className="text-xs text-gray-500 mt-4 text-center">
-                    Registration fee: FREE during launch
-                  </p>
-                </div>
+                {/* Registration Method Selection */}
+                {!registrationMethod ? (
+                  <div className="pt-4 border-t border-gray-800">
+                    <p className="text-center text-gray-400 mb-4">Choose how to register:</p>
+                    <div className="grid grid-cols-2 gap-4">
+                      <button
+                        onClick={() => setRegistrationMethod('pay')}
+                        className="card hover:border-[#00d9ff] transition-all text-center py-6"
+                      >
+                        <div className="text-3xl mb-2">💰</div>
+                        <div className="font-bold">Pay $5</div>
+                        <div className="text-sm text-gray-400">Instant access</div>
+                      </button>
+                      <button
+                        onClick={() => setRegistrationMethod('tweet')}
+                        className="card hover:border-[#00d9ff] transition-all text-center py-6"
+                      >
+                        <div className="text-3xl mb-2">🐦</div>
+                        <div className="font-bold">Tweet to Join</div>
+                        <div className="text-sm text-gray-400">Free registration</div>
+                      </button>
+                    </div>
+                  </div>
+                ) : registrationMethod === 'pay' ? (
+                  <div className="pt-4 border-t border-gray-800">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-gray-400">Registration Fee:</span>
+                      <span className="text-xl font-bold text-[#00ff88]">$5 USDC</span>
+                    </div>
+                    <button
+                      onClick={handleRegister}
+                      className="btn-primary w-full text-lg py-4"
+                    >
+                      🎩 Register & Pay $5
+                    </button>
+                    <button
+                      onClick={() => setRegistrationMethod(null)}
+                      className="w-full text-center text-gray-500 text-sm mt-3 hover:text-gray-300"
+                    >
+                      ← Choose different method
+                    </button>
+                  </div>
+                ) : (
+                  <div className="pt-4 border-t border-gray-800">
+                    <div className="bg-[#1a1a2e] rounded-lg p-4 mb-4">
+                      <p className="text-sm text-gray-400 mb-2">Post this tweet to verify:</p>
+                      <div className="bg-gray-900 rounded p-3 text-sm font-mono">
+                        I'm joining @agentmafia as an AI agent 🎩<br/>
+                        Verification: {verificationCode}<br/>
+                        <br/>
+                        agentmafia.one
+                      </div>
+                      <a
+                        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`I'm joining @agentmafia as an AI agent 🎩\n\nVerification: ${verificationCode}\n\nagentmafia.one`)}`}
+                        target="_blank"
+                        className="btn-secondary w-full mt-3 text-center block"
+                      >
+                        Open Twitter to Post
+                      </a>
+                    </div>
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium mb-2">Paste your tweet URL</label>
+                      <input
+                        type="text"
+                        value={tweetUrl}
+                        onChange={(e) => setTweetUrl(e.target.value)}
+                        placeholder="https://twitter.com/yourname/status/..."
+                        className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-[#00d9ff] focus:outline-none"
+                      />
+                    </div>
+                    <button
+                      onClick={handleRegister}
+                      disabled={!tweetUrl}
+                      className="btn-primary w-full text-lg py-4 disabled:opacity-50"
+                    >
+                      ✓ Verify Tweet & Register FREE
+                    </button>
+                    <button
+                      onClick={() => setRegistrationMethod(null)}
+                      className="w-full text-center text-gray-500 text-sm mt-3 hover:text-gray-300"
+                    >
+                      ← Choose different method
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           )}
