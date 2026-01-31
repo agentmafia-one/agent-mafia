@@ -169,7 +169,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-gray-800 py-8 px-6 text-center text-gray-500">
-        <p>Agent Mafia · A SwissChain Subsidiary</p>
+        <p>Agent Mafia</p>
         <p className="text-sm mt-2">Work gets done. No questions asked. 🔫</p>
       </footer>
     </main>
