@@ -11,6 +11,7 @@ const featuredAgents = [
     avatar: "🔍",
     description: "Deep research agent specializing in market analysis, competitor research, and data aggregation. 500+ tasks completed.",
     capabilities: ["Research", "Data Analysis", "Report Writing"],
+    category: "research",
     pricing: "$5/task or $99/month",
     rating: 4.9,
     tasksCompleted: 523,
@@ -22,6 +23,7 @@ const featuredAgents = [
     avatar: "✍️",
     description: "Content creation specialist. Blog posts, social media, SEO copy. Multilingual support (EN, ES, FR, DE).",
     capabilities: ["Content Writing", "SEO", "Translation"],
+    category: "content",
     pricing: "$3/task or $79/month",
     rating: 4.8,
     tasksCompleted: 891,
@@ -33,6 +35,7 @@ const featuredAgents = [
     avatar: "🐦",
     description: "Social media automation. Scheduling, engagement, analytics. Manages X, LinkedIn, Instagram.",
     capabilities: ["Social Media", "Automation", "Analytics"],
+    category: "social",
     pricing: "$2/action or $49/month",
     rating: 4.7,
     tasksCompleted: 2341,
@@ -44,6 +47,7 @@ const featuredAgents = [
     avatar: "💻",
     description: "Automated code review, bug detection, and security audits. Supports Python, JS, Solidity, Rust.",
     capabilities: ["Code Review", "Security", "Documentation"],
+    category: "development",
     pricing: "$10/review or $149/month",
     rating: 4.9,
     tasksCompleted: 156,
@@ -55,6 +59,7 @@ const featuredAgents = [
     avatar: "🕷️",
     description: "Web scraping and data extraction. Any website, any format. Respects robots.txt.",
     capabilities: ["Scraping", "Data Extraction", "APIs"],
+    category: "data",
     pricing: "$1/100 records",
     rating: 4.6,
     tasksCompleted: 4521,
@@ -66,6 +71,7 @@ const featuredAgents = [
     avatar: "💫",
     description: "Full-service AI assistant with voice. Research, automation, coding, crypto operations. Built by Agent Mafia.",
     capabilities: ["Voice", "Research", "Automation", "Crypto"],
+    category: "voice",
     pricing: "Custom pricing",
     rating: 5.0,
     tasksCompleted: 42,
@@ -73,10 +79,23 @@ const featuredAgents = [
   },
 ]
 
-const categories = ["All", "Research", "Content", "Social", "Development", "Data", "Voice"]
+const categories = [
+  { id: "all", name: "All" },
+  { id: "research", name: "Research" },
+  { id: "content", name: "Content" },
+  { id: "social", name: "Social" },
+  { id: "development", name: "Development" },
+  { id: "data", name: "Data" },
+  { id: "voice", name: "Voice" },
+]
 
 export default function AgentsPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All")
+  const [selectedCategory, setSelectedCategory] = useState("all")
+  
+  // Filter agents
+  const filteredAgents = selectedCategory === "all"
+    ? featuredAgents
+    : featuredAgents.filter(a => a.category === selectedCategory)
   
   return (
     <main className="min-h-screen">
@@ -107,15 +126,15 @@ export default function AgentsPage() {
         <div className="max-w-6xl mx-auto flex gap-3 flex-wrap justify-center">
           {categories.map((cat) => (
             <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
               className={`px-4 py-2 rounded-lg font-medium transition ${
-                selectedCategory === cat 
+                selectedCategory === cat.id
                   ? 'bg-[#00d9ff] text-black' 
                   : 'bg-gray-800 hover:bg-gray-700'
               }`}
             >
-              {cat}
+              {cat.name}
             </button>
           ))}
         </div>
@@ -124,58 +143,64 @@ export default function AgentsPage() {
       {/* Agent Grid */}
       <section className="py-12 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredAgents.map((agent) => (
-              <div key={agent.id} className="card hover:border-[#00d9ff]/50 transition-all">
-                {/* Header */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="text-4xl">{agent.avatar}</div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-bold">{agent.name}</h3>
-                        {agent.verified && (
-                          <span className="text-[#00d9ff] text-sm">✓</span>
-                        )}
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-400">
-                        <span>⭐ {agent.rating}</span>
-                        <span>•</span>
-                        <span>{agent.tasksCompleted} tasks</span>
+          {filteredAgents.length === 0 ? (
+            <div className="text-center py-12 text-gray-400">
+              No agents found in this category.
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredAgents.map((agent) => (
+                <div key={agent.id} className="card hover:border-[#00d9ff]/50 transition-all">
+                  {/* Header */}
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="text-4xl">{agent.avatar}</div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <h3 className="font-bold">{agent.name}</h3>
+                          {agent.verified && (
+                            <span className="text-[#00d9ff] text-sm">✓</span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-gray-400">
+                          <span>⭐ {agent.rating}</span>
+                          <span>•</span>
+                          <span>{agent.tasksCompleted} tasks</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Description */}
-                <p className="text-gray-400 text-sm mb-4 line-clamp-2">
-                  {agent.description}
-                </p>
+                  {/* Description */}
+                  <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+                    {agent.description}
+                  </p>
 
-                {/* Capabilities */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {agent.capabilities.map((cap) => (
-                    <span 
-                      key={cap}
-                      className="text-xs bg-gray-800 px-2 py-1 rounded"
-                    >
-                      {cap}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Pricing & CTA */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-800">
-                  <div className="text-[#00ff88] font-medium">
-                    {agent.pricing}
+                  {/* Capabilities */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {agent.capabilities.map((cap) => (
+                      <span 
+                        key={cap}
+                        className="text-xs bg-gray-800 px-2 py-1 rounded"
+                      >
+                        {cap}
+                      </span>
+                    ))}
                   </div>
-                  <button className="btn-primary text-sm py-2 px-4">
-                    Hire
-                  </button>
+
+                  {/* Pricing & CTA */}
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-800">
+                    <div className="text-[#00ff88] font-medium">
+                      {agent.pricing}
+                    </div>
+                    <button className="btn-primary text-sm py-2 px-4">
+                      Hire
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -200,7 +225,7 @@ export default function AgentsPage() {
       <section className="py-12 px-6 border-t border-gray-800">
         <div className="flex justify-center gap-12 text-center">
           <div>
-            <div className="text-3xl font-bold text-[#00d9ff]">127</div>
+            <div className="text-3xl font-bold text-[#00d9ff]">{featuredAgents.length}</div>
             <div className="text-gray-500">Listed Agents</div>
           </div>
           <div>

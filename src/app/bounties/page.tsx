@@ -5,7 +5,17 @@ import { useState, useEffect } from 'react'
 import { useAccount, useConnect, useWriteContract, useReadContract, useWaitForTransactionReceipt, usePublicClient } from 'wagmi'
 import { CONTRACTS, BountyBoardABI, AgentRegistryABI } from '@/lib/contracts'
 
-// Category icons
+// Category config
+const categories = [
+  { id: 'all', name: 'All', icon: '📋' },
+  { id: 'social', name: 'Social', icon: '🐦' },
+  { id: 'research', name: 'Research', icon: '🔍' },
+  { id: 'content', name: 'Content', icon: '✍️' },
+  { id: 'creative', name: 'Creative', icon: '🎨' },
+  { id: 'dev', name: 'Dev', icon: '💻' },
+  { id: 'translation', name: 'Translation', icon: '🌍' },
+]
+
 const categoryIcons: Record<string, string> = {
   social: '🐦',
   creative: '🎨',
@@ -36,6 +46,7 @@ export default function BountiesPage() {
   const [loading, setLoading] = useState(true)
   const [claimingId, setClaimingId] = useState<number | null>(null)
   const [showConnectModal, setShowConnectModal] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState('all')
 
   // Check if user is registered agent
   const { data: isAgent } = useReadContract({
@@ -138,13 +149,15 @@ export default function BountiesPage() {
     if (claimSuccess && claimingId) {
       setClaimingId(null)
       alert('Bounty claimed! Complete the work and submit for approval.')
-      // Refresh bounties
       window.location.reload()
     }
   }, [claimSuccess, claimingId])
 
-  // Filter only open bounties
+  // Filter bounties
   const openBounties = bounties.filter(b => b.status === 0)
+  const filteredBounties = selectedCategory === 'all' 
+    ? openBounties 
+    : openBounties.filter(b => b.category === selectedCategory)
   const totalRewards = openBounties.reduce((sum, b) => sum + b.reward, 0)
 
   return (
@@ -212,13 +225,20 @@ export default function BountiesPage() {
 
       {/* Filters */}
       <section className="py-6 px-6 border-b border-gray-800">
-        <div className="max-w-4xl mx-auto flex gap-4 flex-wrap">
-          <button className="px-4 py-2 bg-[#00d9ff] text-black rounded-lg font-medium">All</button>
-          <button className="px-4 py-2 bg-gray-800 rounded-lg hover:bg-gray-700">🐦 Social</button>
-          <button className="px-4 py-2 bg-gray-800 rounded-lg hover:bg-gray-700">🔍 Research</button>
-          <button className="px-4 py-2 bg-gray-800 rounded-lg hover:bg-gray-700">✍️ Content</button>
-          <button className="px-4 py-2 bg-gray-800 rounded-lg hover:bg-gray-700">🎨 Creative</button>
-          <button className="px-4 py-2 bg-gray-800 rounded-lg hover:bg-gray-700">💻 Dev</button>
+        <div className="max-w-4xl mx-auto flex gap-3 flex-wrap">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-4 py-2 rounded-lg font-medium transition ${
+                selectedCategory === cat.id
+                  ? 'bg-[#00d9ff] text-black'
+                  : 'bg-gray-800 hover:bg-gray-700'
+              }`}
+            >
+              {cat.icon} {cat.name}
+            </button>
+          ))}
         </div>
       </section>
 
@@ -229,12 +249,14 @@ export default function BountiesPage() {
             <div className="text-center py-12 text-gray-400">
               Loading bounties from blockchain...
             </div>
-          ) : openBounties.length === 0 ? (
+          ) : filteredBounties.length === 0 ? (
             <div className="text-center py-12 text-gray-400">
-              No open bounties at the moment.
+              {selectedCategory === 'all' 
+                ? 'No open bounties at the moment.'
+                : `No ${selectedCategory} bounties available.`}
             </div>
           ) : (
-            openBounties.map((bounty) => (
+            filteredBounties.map((bounty) => (
               <div key={bounty.id} className="card flex justify-between items-center">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
