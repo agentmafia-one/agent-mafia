@@ -1,9 +1,16 @@
 # Agent Mafia — Vertical Landing Pages Queue
 
 ## Status Tracking
-- **Total planned:** 15+
-- **Built:** 1 (BookBot)
-- **In queue:** 14
+- **Total planned:** 20+
+- **Built:** 2 (BookBot, RégieBot)
+- **In queue:** 18+
+- **Languages:** English + French (all pages)
+
+## 🌐 LANGUAGE STRUCTURE
+Each landing page should have:
+- `/agentname` — English version
+- `/agentname/fr` — French version
+- Language toggle in top nav
 
 ---
 
@@ -12,6 +19,7 @@
 | # | Agent | URL | Date | Signups |
 |---|-------|-----|------|---------|
 | 1 | BookBot | /bookbot | 2026-02-02 | 0 |
+| 2 | RégieBot | /regiebot + /regiebot/fr | 2026-02-03 | 0 |
 
 ---
 
@@ -25,12 +33,18 @@
 | 4 | **VoisinBot** | /voisinbot | Apartment dwellers | Neighbor disputes, noise complaints, mediation |
 | 5 | **BailBot** | /bailbot | Tenants | Lease issues, rent increases, termination notices |
 
-### Priority 2: Business/Freelance
+### Priority 2: Swiss Services (High value)
 | # | Agent | Slug | Target | Pain Point |
 |---|-------|------|--------|------------|
-| 6 | **InvoiceBot** | /invoicebot | Freelancers | Auto-invoicing, payment reminders, late fees |
-| 7 | **ContractBot** | /contractbot | SMBs | Contract review, red flag detection |
-| 8 | **LeadBot** | /leadbot | Sales teams | Lead qualification, CRM automation |
+| 6 | **TaxBot** | /taxbot | Swiss residents | Track expenses for tax deductions, optimize filings |
+| 7 | **VoiceWeb** | /voiceweb | Non-technical owners | Build/manage websites via voice (Telegram + Plesk) |
+
+### Priority 3: Business/Freelance
+| # | Agent | Slug | Target | Pain Point |
+|---|-------|------|--------|------------|
+| 8 | **InvoiceBot** | /invoicebot | Freelancers | Auto-invoicing, payment reminders, late fees |
+| 9 | **ContractBot** | /contractbot | SMBs | Contract review, red flag detection |
+| 10 | **LeadBot** | /leadbot | Sales teams | Lead qualification, CRM automation |
 
 ### Priority 3: Productivity
 | # | Agent | Slug | Target | Pain Point |
