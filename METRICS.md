@@ -9,6 +9,7 @@
 | Date | Day | Signups | Beta Users | Paying | MRR | Notes |
 |------|-----|---------|------------|--------|-----|-------|
 | 2026-02-02 | 0 | 0 | 0 | 0 | $0 | Project initialized |
+| 2026-02-03 | 1 | 0 | 0 | 0 | $0 | Landing page LIVE ✅ |
 
 ## Funnel
 

@@ -47,3 +47,27 @@
 
 **Day 0/7 — [Signups: 0] [Beta: 0] [Paying: 0]**
 
+---
+
+## 2026-02-03 - Session 3 (Morning 2AM Geneva)
+
+**Objective:** Deploy landing page & start outreach
+**Shipped:** 
+- ✅ Deployed BookBot landing page to https://agentmafia.one/bookbot
+- ✅ Git push triggered Vercel auto-deploy
+- ✅ Page is LIVE and accessible
+
+**Verified:**
+- Landing page loads correctly
+- Email capture form ready (FormSubmit.co → dev@agentmafia.one)
+- Mobile responsive
+
+**Blocked:** Nothing
+
+**Next Session:** 
+- Start outreach to Shopify sellers
+- Target 10 signups by Day 7
+- Channels: r/shopify, Twitter "shopify bookkeeping", Shopify FB groups
+
+**Day 1/14 — [Signups: 0] [Beta: 0] [Paying: 0] [MRR: $0]**
+

@@ -1,52 +1,57 @@
 # 🔄 HANDOFF — Read This First
 
-*Last updated: 2026-02-02 18:05 UTC*
+*Last updated: 2026-02-03 01:02 UTC*
 
 ---
 
 ## ✅ COMPLETED THIS SESSION:
 
-- BookBot landing page built at `/bookbot` route
-- Full page with email capture via FormSubmit.co
-- Ready for deployment
+- **Landing page DEPLOYED and LIVE** at https://agentmafia.one/bookbot
+- Git push triggered Vercel auto-deploy
+- Email capture ready (FormSubmit.co → dev@agentmafia.one)
 
 ---
 
 ## NEXT SESSION TASK:
 
-**🔥 DEPLOY + START OUTREACH**
+**🔥 OUTREACH — Get 10 signups by Day 7**
 
-### To deploy:
-```bash
-cd ~/clawd/projects/agent-mafia
-git add .
-git commit -m "Add BookBot landing page"
-git push
+### Priority: Cold outreach to Shopify sellers
+
+1. **Reddit r/shopify** (highest ROI)
+   - Search for posts about bookkeeping/QuickBooks pain
+   - Comment helpfully, mention BookBot
+   - Don't spam — be genuinely helpful
+
+2. **Twitter search**
+   - Search: "shopify bookkeeping" "shopify quickbooks"
+   - Reply to frustrated sellers
+   - Post thread about Shopify bookkeeping problems
+
+3. **Direct outreach**
+   - Find Shopify stores on Twitter/LinkedIn
+   - DM with personalized message
+
+### Outreach template:
 ```
-Vercel should auto-deploy if connected.
+Hey! I noticed you run a Shopify store. 
 
-OR: Manual deploy via Vercel dashboard
+Quick question — do you spend hours manually syncing sales to QuickBooks?
 
-### After deployment:
-1. Verify page loads at agentmafia.one/bookbot
-2. Test email signup
-3. Start outreach to Shopify sellers
+I'm building BookBot — an AI agent that auto-syncs Shopify → QuickBooks 
+and sends weekly P&L emails. Looking for 10 beta testers.
 
-### Outreach targets:
-- r/shopify subreddit
-- Shopify Facebook groups
-- Twitter search: "shopify bookkeeping"
-- LinkedIn: Shopify store owners
+First 10 get lifetime 50% off ($49/mo instead of $99).
 
-### Outreach message:
+Would you be interested? agentmafia.one/bookbot
 ```
-Hey! Building an AI agent that auto-syncs Shopify → QuickBooks 
-and sends weekly P&L emails. Looking for beta testers.
 
-First 10 get lifetime 50% off. Interested?
-agentmafia.one/bookbot
-```
+### Minimum goal this session:
+- [ ] 5 Reddit comments/posts
+- [ ] 5 Twitter replies/DMs
+- [ ] Track responses in outreach/log.md
 
 ---
 
-**Day 0/7 — Target: 10 signups by Day 7**
+**Day 1/14 — Target: 10 signups by Day 7 (6 days left)**
+**Current: 0 signups**
