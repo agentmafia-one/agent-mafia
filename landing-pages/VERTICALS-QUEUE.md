@@ -1,0 +1,71 @@
+# Agent Mafia — Vertical Landing Pages Queue
+
+## Status Tracking
+- **Total planned:** 15+
+- **Built:** 1 (BookBot)
+- **In queue:** 14
+
+---
+
+## ✅ COMPLETED
+
+| # | Agent | URL | Date | Signups |
+|---|-------|-----|------|---------|
+| 1 | BookBot | /bookbot | 2026-02-02 | 0 |
+
+---
+
+## 🔄 IN QUEUE (Daily cron picks next)
+
+### Priority 1: Swiss Legal (High pain, differentiated)
+| # | Agent | Slug | Target | Pain Point |
+|---|-------|------|--------|------------|
+| 2 | **RégieBot** | /regiebot | Swiss renters | Fight property managers, get deposits back |
+| 3 | **IntrusionBot** | /intrusionbot | Debt targets | Dispute Intrum/Inkasso claims, know your rights |
+| 4 | **VoisinBot** | /voisinbot | Apartment dwellers | Neighbor disputes, noise complaints, mediation |
+| 5 | **BailBot** | /bailbot | Tenants | Lease issues, rent increases, termination notices |
+
+### Priority 2: Business/Freelance
+| # | Agent | Slug | Target | Pain Point |
+|---|-------|------|--------|------------|
+| 6 | **InvoiceBot** | /invoicebot | Freelancers | Auto-invoicing, payment reminders, late fees |
+| 7 | **ContractBot** | /contractbot | SMBs | Contract review, red flag detection |
+| 8 | **LeadBot** | /leadbot | Sales teams | Lead qualification, CRM automation |
+
+### Priority 3: Productivity
+| # | Agent | Slug | Target | Pain Point |
+|---|-------|------|--------|------------|
+| 9 | **InboxBot** | /inboxbot | Executives | Email triage, auto-replies, summaries |
+| 10 | **CalBot** | /calbot | Busy professionals | Calendar management, meeting prep |
+| 11 | **ResearchBot** | /researchbot | Analysts | Deep research, report generation |
+
+### Priority 4: Niche
+| # | Agent | Slug | Target | Pain Point |
+|---|-------|------|--------|------------|
+| 12 | **PropertyBot** | /propertybot | Real estate agents | Listing management, buyer matching |
+| 13 | **SocialBot** | /socialbot | Marketers | Content scheduling, engagement |
+| 14 | **ReportBot** | /reportbot | Managers | Daily briefings, KPI dashboards |
+| 15 | **TaxBot** | /taxbot | Swiss expats | Tax optimization, filing help |
+
+---
+
+## 📋 LANDING PAGE TEMPLATE
+
+Each page needs:
+1. **Hero:** Pain-focused headline + subhead
+2. **Problem:** 3 bullets on why this sucks
+3. **Solution:** What the agent does
+4. **How it works:** 3-step process
+5. **Pricing hint:** "Starting at $49/mo"
+6. **CTA:** Email capture → FormSubmit.co
+7. **Footer:** "Part of Agent Mafia — AI agents that work for you"
+
+---
+
+## 📊 WEEKLY REVIEW
+
+Every Sunday, check:
+- [ ] Signups per page
+- [ ] Which vertical has most interest
+- [ ] Adjust priority queue based on data
+- [ ] Report to Jarod
