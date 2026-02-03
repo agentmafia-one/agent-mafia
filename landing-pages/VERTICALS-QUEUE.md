@@ -22,6 +22,7 @@ Each landing page should have:
 | 2 | RégieBot | /regiebot + /regiebot/fr | 2026-02-03 | 0 |
 | 3 | VoiceWeb | /voiceweb + /voiceweb/fr | 2026-02-03 | 0 |
 | 4 | VoiceNote | /voicenote + /voicenote/fr | 2026-02-03 | 0 |
+| 5 | PenTestBot | /pentestbot + /pentestbot/fr | 2026-02-03 | 0 |
 
 ---
 
