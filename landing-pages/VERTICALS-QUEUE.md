@@ -24,10 +24,18 @@ Each landing page should have:
 | 4 | VoiceNote | /voicenote + /voicenote/fr | 2026-02-03 | 0 |
 | 5 | PenTestBot | /pentestbot + /pentestbot/fr | 2026-02-03 | 0 |
 | 6 | IntrusionBot | /intrusionbot + /intrusionbot/fr | 2026-02-03 | 0 |
+| 7 | VoisinBot | /voisinbot + /voisinbot/fr | 2026-02-04 | 0 |
 
 ---
 
 ## 🔄 IN QUEUE (Daily cron picks next)
+
+### 🔥 PRIORITY 0: Active Build (Dedicated Cron)
+| # | Agent | Slug | Target | Pain Point | Status |
+|---|-------|------|--------|------------|--------|
+| 1 | **WatchBot** | /watchbot | Startups, HR, Crypto | Brand/name monitoring across X + Google | 🚧 Building MVP |
+
+> WatchBot has dedicated daily cron (12PM Geneva). First client: SwissChain pilot with coupon SWISSCHAIN-PILOT.
 
 ### Priority 1: Swiss Legal (High pain, differentiated)
 | # | Agent | Slug | Target | Pain Point |
