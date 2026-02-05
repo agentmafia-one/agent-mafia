@@ -71,11 +71,11 @@ const AGENTS = [
   {
     slug: 'bookbot',
     name: 'BookBot',
-    emoji: '📚',
-    tagline: 'Manage your reading list',
-    category: 'Productivity',
-    price: 19,
-    color: '#ec4899',
+    emoji: '📊',
+    tagline: 'Shopify bookkeeping on autopilot',
+    category: 'Business',
+    price: 49,
+    color: '#6366f1',
   },
   {
     slug: 'watchbot',

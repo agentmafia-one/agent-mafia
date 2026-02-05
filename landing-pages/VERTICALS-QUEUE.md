@@ -25,6 +25,7 @@ Each landing page should have:
 | 5 | PenTestBot | /pentestbot + /pentestbot/fr | 2026-02-03 | 0 |
 | 6 | IntrusionBot | /intrusionbot + /intrusionbot/fr | 2026-02-03 | 0 |
 | 7 | VoisinBot | /voisinbot + /voisinbot/fr | 2026-02-04 | 0 |
+| 8 | BailBot | /bailbot + /bailbot/fr | 2026-02-05 | 0 |
 
 ---
 

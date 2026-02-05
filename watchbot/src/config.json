@@ -1,0 +1,14 @@
+{
+  "keywords": [
+    "SwissChain Holding",
+    "SwissChain",
+    "swisschainholding.ch"
+  ],
+  "check_interval_minutes": 30,
+  "telegram_chat_id": "217737770",
+  "sources": {
+    "twitter": true,
+    "google": true
+  },
+  "dedup_hours": 24
+}

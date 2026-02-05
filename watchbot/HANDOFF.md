@@ -1,68 +1,84 @@
 # WatchBot — Build Handoff
 
-**Last Updated:** 2026-02-05 02:55 UTC
+**Last Updated:** 2026-02-05 11:05 UTC
 **Phase:** MVP Build
-**Next Session:** Start core infrastructure
+**Status:** 🟢 CORE MONITORING WORKING
 
 ---
 
 ## Current Status
 
-🟡 **STARTING** — Project initialized, ready to build
+✅ **Twitter/X + Web monitoring WORKING**
+- DuckDuckGo search integration complete
+- Deduplication logic implemented
+- Results saved to JSON
 
-## Immediate Priority
+## Completed This Session
 
-**Build Twitter/X monitoring first:**
-1. Set up snscrape or Twitter API connection
-2. Create keyword search function
-3. Test with "SwissChain" keyword
-4. Store results in JSON (upgrade to PostgreSQL later)
+1. ✅ Created `src/monitor.py` — main monitoring script
+2. ✅ Created `src/config.json` — keyword configuration
+3. ✅ Installed `ddgs` package for search
+4. ✅ Tested with SwissChain keywords — found 21 mentions
+5. ✅ Deduplication working (hash-based)
+6. ✅ Results saving to `data/results.json`
+7. ✅ Created `src/cron_runner.sh` for 24/7 operation
 
-## Build Order
+## MVP Progress
 
-### Week 1: Core Monitoring
-- [ ] Twitter/X search working
-- [ ] Basic Telegram bot (can receive /status, send alerts)
-- [ ] Keyword config file
-- [ ] Dedup logic (hash-based)
-
-### Week 2: Google + Polish
-- [ ] Google Alerts email parsing OR SerpAPI
+- [x] Twitter/X monitoring working ✅
+- [x] Google/Web mentions tracking ✅
+- [ ] Telegram bot sends alerts (next)
+- [x] Keyword config (3 terms) ✅
+- [x] Deduplication logic ✅
 - [ ] Daily digest compilation
-- [ ] Notification formatting (clean, actionable)
-- [ ] 24/7 cron runner
+- [ ] Running 24/7 on VPS
 
-### Week 3: Pilot Launch
-- [ ] Deploy to VPS (ifc-vps-01)
-- [ ] Configure SwissChain keywords
-- [ ] Send outreach email with coupon
-- [ ] Monitor and iterate
-
-## Technical Decisions
-
-| Decision | Choice | Reason |
-|----------|--------|--------|
-| Twitter API | snscrape (start) | Free, upgrade if breaks |
-| Google | Alerts email parse | Free, good enough for MVP |
-| Database | JSON → PostgreSQL | Start simple |
-| AI Summary | GLM-4-Flash | Free via API |
-| Hosting | ifc-vps-01 | Already running |
-
-## Blockers
-
-None currently.
-
-## Files Created
-
-- `README.md` — Full project spec
-- `HANDOFF.md` — This file
+**Progress: 5/7 MVP items**
 
 ## Next Session Should
 
-1. Create `src/` folder structure
-2. Implement Twitter search with snscrape
-3. Test keyword matching
-4. Set up basic Telegram bot
+1. **Add Telegram alerting** — Send new mentions to chat
+2. **Create daily digest** — Summary of all mentions
+3. **Set up cron job** — Run every 30 minutes
+4. **Test full flow** — End-to-end verification
+
+## Files Created
+
+```
+watchbot/
+├── src/
+│   ├── monitor.py       # Main monitoring script ✅
+│   ├── config.json      # Keyword configuration ✅
+│   └── cron_runner.sh   # Cron wrapper script ✅
+├── data/
+│   ├── seen.json        # Dedup hashes ✅
+│   └── results.json     # Found mentions ✅
+├── README.md            # Project spec
+└── HANDOFF.md           # This file
+```
+
+## Technical Notes
+
+- Using `ddgs` package (DuckDuckGo search) instead of snscrape
+- snscrape is broken due to Twitter API changes
+- DDG works reliably for both Twitter/X and web results
+- Found @SwissChainSA Twitter account in first run!
+
+## Test Results
+
+```
+🔍 Searching for: SwissChain Holding
+  Twitter: 5 results
+  Web: 10 results
+🔍 Searching for: SwissChain
+  Twitter: 4 results
+  Web: 0 results
+🔍 Searching for: swisschainholding.ch
+  Twitter: 0 results
+  Web: 7 results
+
+✅ Found 21 NEW mentions
+```
 
 ---
 
@@ -95,8 +111,4 @@ Cordialement,
 L'équipe Agent Mafia
 ```
 
-**Stripe Coupon Created:**
-- ID: `SWISSCHAIN-PILOT`
-- Type: 100% off first payment
-- Max redemptions: 1
-- Metadata: SwissChain Holding / Loic
+**Stripe Coupon:** SWISSCHAIN-PILOT (to be created)
