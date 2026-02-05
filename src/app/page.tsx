@@ -89,7 +89,7 @@ const AGENTS = [
   },
 ]
 
-const CATEGORIES = [...new Set(AGENTS.map(a => a.category))]
+const CATEGORIES = Array.from(new Set(AGENTS.map(a => a.category)))
 
 export default function Home() {
   const { address, isConnected } = useAccount()

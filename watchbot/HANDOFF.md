@@ -70,24 +70,33 @@ None currently.
 
 **To:** contact@swisschainholding.ch
 **From:** noreply@agentmafia.one
-**Subject:** [Pilot Invite] WatchBot — Monitor Your Brand Mentions
+**Subject:** WatchBot — Surveillez vos mentions en temps réel (30 jours offerts)
 
 ```
-Hi,
+Bonjour Loic,
 
-We're launching WatchBot — a Swiss-hosted brand monitoring service that tracks mentions of your company across X/Twitter and Google in real-time.
+Nous lançons WatchBot — un service de veille de marque hébergé en Suisse qui surveille les mentions de votre entreprise sur X/Twitter et Google en temps réel.
 
-As a pilot partner, we're offering you:
-- 1 month FREE Pro plan (10 keywords)
-- Coupon code: SWISSCHAIN-PILOT
-- Telegram alerts within 15 minutes of any mention
+En tant que partenaire pilote, nous vous offrons :
+• 30 jours GRATUITS sur le plan Pro (10 mots-clés)
+• Code promo : SWISSCHAIN-PILOT
+• Alertes Telegram en moins de 15 minutes
 
-Keywords we'd track:
-- SwissChain Holding
-- SwissChain
-- [Your choice of 8 more]
+Mots-clés que nous surveillerions :
+• SwissChain Holding
+• SwissChain
+• + 8 mots-clés de votre choix
 
-Reply to activate your pilot, or visit agentmafia.one/watchbot
+Le coupon active un essai gratuit de 30 jours. La facturation automatique démarre ensuite à CHF 49/mois — annulable à tout moment.
 
-— Agent Mafia Team
+Répondez pour activer votre pilote, ou visitez agentmafia.one/watchbot
+
+Cordialement,
+L'équipe Agent Mafia
 ```
+
+**Stripe Coupon Created:**
+- ID: `SWISSCHAIN-PILOT`
+- Type: 100% off first payment
+- Max redemptions: 1
+- Metadata: SwissChain Holding / Loic
