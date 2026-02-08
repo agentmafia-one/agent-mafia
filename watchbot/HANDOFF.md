@@ -1,94 +1,77 @@
 # WatchBot — Build Handoff
 
-**Last Updated:** 2026-02-05 11:05 UTC
-**Phase:** MVP Build
-**Status:** 🟢 CORE MONITORING WORKING
+**Last Updated:** 2026-02-08 11:02 UTC
+**Phase:** Pilot Outreach
+**Status:** ✅ MVP COMPLETE + OUTREACH SENT
 
 ---
 
 ## Current Status
 
-✅ **Twitter/X + Web monitoring WORKING**
-- DuckDuckGo search integration complete
-- Deduplication logic implemented
-- Results saved to JSON
-
-## Completed This Session
-
-1. ✅ Created `src/monitor.py` — main monitoring script
-2. ✅ Created `src/config.json` — keyword configuration
-3. ✅ Installed `ddgs` package for search
-4. ✅ Tested with SwissChain keywords — found 21 mentions
-5. ✅ Deduplication working (hash-based)
-6. ✅ Results saving to `data/results.json`
-7. ✅ Created `src/cron_runner.sh` for 24/7 operation
+✅ **MVP FULLY FUNCTIONAL**
+✅ **Pilot outreach email sent to SwissChain**
 
 ## MVP Progress
 
 - [x] Twitter/X monitoring working ✅
 - [x] Google/Web mentions tracking ✅
-- [ ] Telegram bot sends alerts (next)
-- [x] Keyword config (3 terms) ✅
+- [x] Telegram bot sends alerts ✅
+- [x] Keyword config (4 terms) ✅
 - [x] Deduplication logic ✅
-- [ ] Daily digest compilation
-- [ ] Running 24/7 on VPS
+- [x] Daily digest compilation ✅
+- [x] Running 24/7 on VPS ✅
 
-**Progress: 5/7 MVP items**
+**Progress: 7/7 MVP items COMPLETE**
 
-## Next Session Should
+## Pilot Outreach
 
-1. **Add Telegram alerting** — Send new mentions to chat
-2. **Create daily digest** — Summary of all mentions
-3. **Set up cron job** — Run every 30 minutes
-4. **Test full flow** — End-to-end verification
+**Sent:** 2026-02-08 11:02 UTC
+**To:** contact@swisschainholding.ch
+**Subject:** WatchBot — Surveillez vos mentions en temps réel (30 jours offerts)
+**Coupon:** SWISSCHAIN-PILOT (Stripe, 100% off, max 5 uses)
 
-## Files Created
+## Stats
+
+- **Total mentions found:** 161
+- **Keywords monitored:** 4
+- **Cron frequency:** Every 30 min + daily digest at 8 UTC
+
+## Cron Jobs Active
+
+```cron
+*/30 * * * * cd /home/ifc/clawd/projects/agent-mafia/watchbot && python3 src/monitor.py >> /tmp/watchbot.log 2>&1
+0 8 * * * cd /home/ifc/clawd/projects/agent-mafia/watchbot && python3 src/monitor.py digest >> /tmp/watchbot.log 2>&1
+```
+
+## Files
 
 ```
 watchbot/
 ├── src/
-│   ├── monitor.py       # Main monitoring script ✅
-│   ├── config.json      # Keyword configuration ✅
-│   └── cron_runner.sh   # Cron wrapper script ✅
+│   ├── monitor.py       # Main monitoring + alerts + digest ✅
+│   └── config.json      # Keyword configuration ✅
 ├── data/
-│   ├── seen.json        # Dedup hashes ✅
-│   └── results.json     # Found mentions ✅
-├── README.md            # Project spec
-└── HANDOFF.md           # This file
+│   ├── seen.json        # Dedup hashes (161 entries)
+│   └── results.json     # Found mentions
+├── README.md
+└── HANDOFF.md
 ```
 
-## Technical Notes
+## Next Steps
 
-- Using `ddgs` package (DuckDuckGo search) instead of snscrape
-- snscrape is broken due to Twitter API changes
-- DDG works reliably for both Twitter/X and web results
-- Found @SwissChainSA Twitter account in first run!
-
-## Test Results
-
-```
-🔍 Searching for: SwissChain Holding
-  Twitter: 5 results
-  Web: 10 results
-🔍 Searching for: SwissChain
-  Twitter: 4 results
-  Web: 0 results
-🔍 Searching for: swisschainholding.ch
-  Twitter: 0 results
-  Web: 7 results
-
-✅ Found 21 NEW mentions
-```
+1. ⏳ Wait for SwissChain pilot response
+2. If positive → onboard, collect feedback
+3. Create public landing page at agentmafia.one/watchbot
+4. Add more pilot clients
 
 ---
 
-## Outreach Template (for when ready)
+## Outreach Sent (Reference)
 
 **To:** contact@swisschainholding.ch
 **From:** noreply@agentmafia.one
 **Subject:** WatchBot — Surveillez vos mentions en temps réel (30 jours offerts)
 
-```
 Bonjour Loic,
 
 Nous lançons WatchBot — un service de veille de marque hébergé en Suisse qui surveille les mentions de votre entreprise sur X/Twitter et Google en temps réel.
@@ -109,6 +92,3 @@ Répondez pour activer votre pilote, ou visitez agentmafia.one/watchbot
 
 Cordialement,
 L'équipe Agent Mafia
-```
-
-**Stripe Coupon:** SWISSCHAIN-PILOT (to be created)

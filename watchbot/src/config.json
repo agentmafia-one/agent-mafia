@@ -1,8 +1,32 @@
 {
   "keywords": [
     "SwissChain Holding",
-    "SwissChain",
-    "swisschainholding.ch"
+    "SwissChain Holding SA",
+    "swisschainholding.ch",
+    "@SwissChainSA"
+  ],
+  "priority_domains": [
+    "swisschainholding.ch",
+    "x.com/SwissChainSA",
+    "twitter.com/SwissChainSA",
+    "linkedin.com/company/swisschain-holding",
+    "decrypt.co",
+    "finbold.com",
+    "benzinga.com",
+    "chainwire.org",
+    "dlnews.com",
+    "blockchainreporter.net"
+  ],
+  "exclude_urls": [
+    "swisschain.info",
+    "open-chain",
+    "crunchbase.com/organization/swisschain",
+    "issanet.org/new-issa-member-swisschain",
+    "linkedin.com/company/open-chain-ag"
+  ],
+  "exclude_keywords": [
+    "Open Chain AG",
+    "Simon Olsen"
   ],
   "check_interval_minutes": 30,
   "telegram_chat_id": "217737770",
@@ -10,5 +34,10 @@
     "twitter": true,
     "google": true
   },
-  "dedup_hours": 24
+  "dedup_hours": 24,
+  "flag_empty_pages": true,
+  "notes": {
+    "swisschain.info": "Different company (Open Chain AG, Zürich) - had SwissChain brand, didn't renew",
+    "swisschainholding.ch": "OUR company - SwissChain Holding SA, Geneva"
+  }
 }

@@ -92,19 +92,53 @@ def search_web_mentions(keyword):
         })
     return mentions
 
-def filter_new_mentions(mentions, seen, dedup_hours=24):
-    """Filter out already-seen mentions"""
+def should_exclude(url, config):
+    """Check if URL should be excluded based on config"""
+    exclude_urls = config.get("exclude_urls", [])
+    for pattern in exclude_urls:
+        if pattern.lower() in url.lower():
+            return True
+    return False
+
+def is_priority_domain(url, config):
+    """Check if URL is from a priority domain"""
+    priority = config.get("priority_domains", [])
+    for domain in priority:
+        if domain.lower() in url.lower():
+            return True
+    return False
+
+def filter_new_mentions(mentions, seen, config):
+    """Filter out already-seen mentions and apply exclusions"""
+    dedup_hours = config.get("dedup_hours", 24)
     new_mentions = []
     cutoff = datetime.utcnow() - timedelta(hours=dedup_hours)
     
     for mention in mentions:
-        h = hash_mention(mention["title"], mention["url"])
+        url = mention.get("url", "")
+        
+        # Apply exclusion filters
+        if should_exclude(url, config):
+            print(f"    ⛔ Excluded: {url[:60]}")
+            continue
+        
+        # Check for excluded keywords in title/description
+        exclude_kw = config.get("exclude_keywords", [])
+        text = f"{mention.get('title', '')} {mention.get('description', '')}"
+        if any(kw.lower() in text.lower() for kw in exclude_kw):
+            print(f"    ⛔ Excluded (keyword): {mention.get('title', '')[:40]}")
+            continue
+        
+        h = hash_mention(mention["title"], url)
         
         # Check if we've seen this before
         if h in seen["hashes"]:
             seen_time = datetime.fromisoformat(seen["hashes"][h])
             if seen_time > cutoff:
                 continue  # Skip, seen recently
+        
+        # Mark priority
+        mention["priority"] = is_priority_domain(url, config)
         
         # New mention!
         seen["hashes"][h] = datetime.utcnow().isoformat()
@@ -115,17 +149,25 @@ def filter_new_mentions(mentions, seen, dedup_hours=24):
 def format_alert(mention, keyword):
     """Format mention for Telegram alert"""
     source_emoji = "🐦" if mention["source"] == "twitter" else "🌐"
+    priority_marker = "⭐ " if mention.get("priority") else ""
     
     title = mention['title'][:100] if mention['title'] else "No title"
     desc = mention['description'][:200] if mention['description'] else "No description"
     
-    alert = f"""{source_emoji} **New Mention: {keyword}**
+    # Flag potential issues
+    warnings = []
+    if not desc or len(desc) < 20:
+        warnings.append("⚠️ Page may have little/no content")
+    
+    warning_text = "\n".join(warnings) + "\n" if warnings else ""
+    
+    alert = f"""{priority_marker}{source_emoji} **New Mention: {keyword}**
 
 {title}
 
 {desc}
 
-🔗 {mention['url']}"""
+{warning_text}🔗 {mention['url']}"""
     return alert
 
 def send_telegram_alert(message, chat_id):
@@ -136,14 +178,14 @@ def send_telegram_alert(message, chat_id):
         with open(tmp_file, "w") as f:
             f.write(message)
         
-        cmd = f'clawdbot message send --channel telegram --target {chat_id} --file {tmp_file}'
+        cmd = f'/usr/local/bin/clawdbot message send --channel telegram --target {chat_id} --file {tmp_file}'
         result = subprocess.run(cmd, shell=True, capture_output=True, timeout=15)
         return result.returncode == 0
     except Exception as e:
         print(f"Telegram send error: {e}")
         return False
 
-def run_monitor():
+def run_monitor(send_alerts=True):
     """Main monitoring loop iteration"""
     config = load_config()
     seen = load_seen()
@@ -157,14 +199,14 @@ def run_monitor():
         if config["sources"].get("twitter", True):
             twitter_mentions = search_twitter_mentions(keyword)
             print(f"  Twitter: {len(twitter_mentions)} results")
-            new_twitter = filter_new_mentions(twitter_mentions, seen, config["dedup_hours"])
+            new_twitter = filter_new_mentions(twitter_mentions, seen, config)
             all_new_mentions.extend([(m, keyword) for m in new_twitter])
         
         # Search Web
         if config["sources"].get("google", True):
             web_mentions = search_web_mentions(keyword)
             print(f"  Web: {len(web_mentions)} results")
-            new_web = filter_new_mentions(web_mentions, seen, config["dedup_hours"])
+            new_web = filter_new_mentions(web_mentions, seen, config)
             all_new_mentions.extend([(m, keyword) for m in new_web])
     
     # Save updated seen hashes
@@ -175,7 +217,77 @@ def run_monitor():
     
     print(f"\n✅ Found {len(all_new_mentions)} NEW mentions")
     
+    # Send Telegram alerts for new mentions
+    if send_alerts and all_new_mentions and config.get("telegram_chat_id"):
+        chat_id = config["telegram_chat_id"]
+        print(f"\n📤 Sending {len(all_new_mentions)} alerts to Telegram...")
+        
+        for mention, keyword in all_new_mentions[:5]:  # Limit to 5 per run
+            alert = format_alert(mention, keyword)
+            if send_telegram_alert(alert, chat_id):
+                print(f"  ✅ Sent: {mention['title'][:40]}...")
+            else:
+                print(f"  ❌ Failed: {mention['title'][:40]}...")
+    
     return all_new_mentions
+
+
+def generate_daily_digest():
+    """Generate and send daily digest of all mentions"""
+    config = load_config()
+    
+    if not RESULTS_PATH.exists():
+        print("No results to digest")
+        return
+    
+    with open(RESULTS_PATH) as f:
+        results = json.load(f)
+    
+    # Filter to last 24 hours
+    cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
+    recent = [r for r in results if r.get("found_at", "") > cutoff]
+    
+    if not recent:
+        print("No new mentions in last 24 hours")
+        return
+    
+    # Group by keyword
+    by_keyword = {}
+    for r in recent:
+        kw = r.get("keyword", "Unknown")
+        by_keyword.setdefault(kw, []).append(r)
+    
+    # Build digest message
+    digest = f"""📊 **WatchBot Daily Digest**
+{datetime.utcnow().strftime('%Y-%m-%d')}
+
+**{len(recent)} mentions** in the last 24 hours:
+
+"""
+    
+    for keyword, mentions in by_keyword.items():
+        twitter_count = len([m for m in mentions if m["source"] == "twitter"])
+        web_count = len([m for m in mentions if m["source"] == "web"])
+        digest += f"• **{keyword}**: {twitter_count} Twitter, {web_count} Web\n"
+    
+    digest += "\n**Top Mentions:**\n\n"
+    
+    for mention in recent[:5]:
+        source_emoji = "🐦" if mention["source"] == "twitter" else "🌐"
+        title = mention['title'][:60] if mention['title'] else "No title"
+        digest += f"{source_emoji} {title}\n{mention['url']}\n\n"
+    
+    digest += f"\n_Generated by WatchBot — agentmafia.one_"
+    
+    # Send digest
+    if config.get("telegram_chat_id"):
+        send_telegram_alert(digest, config["telegram_chat_id"])
+        print(f"✅ Daily digest sent ({len(recent)} mentions)")
+    else:
+        print("No Telegram chat ID configured")
+        print(digest)
+    
+    return digest
 
 def save_results(mentions):
     """Append results to JSON file for daily digest"""
@@ -215,9 +327,19 @@ if __name__ == "__main__":
     print(f"🤖 WatchBot Monitor — {datetime.utcnow().strftime('%Y-%m-%d %H:%M')} UTC")
     print("=" * 50)
     
-    if len(sys.argv) > 1 and sys.argv[1] == "test":
-        success = test_search()
-        print(f"\nTest {'PASSED ✅' if success else 'FAILED ❌'}")
+    if len(sys.argv) > 1:
+        cmd = sys.argv[1]
+        if cmd == "test":
+            success = test_search()
+            print(f"\nTest {'PASSED ✅' if success else 'FAILED ❌'}")
+        elif cmd == "digest":
+            generate_daily_digest()
+        elif cmd == "silent":
+            mentions = run_monitor(send_alerts=False)
+            print(f"\nDone. {len(mentions)} new mentions found (no alerts sent).")
+        else:
+            print(f"Unknown command: {cmd}")
+            print("Usage: monitor.py [test|digest|silent]")
     else:
         mentions = run_monitor()
         print(f"\nDone. {len(mentions)} new mentions found.")

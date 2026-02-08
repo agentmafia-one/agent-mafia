@@ -2,8 +2,8 @@
 
 ## Status Tracking
 - **Total planned:** 20+
-- **Built:** 2 (BookBot, RégieBot)
-- **In queue:** 18+
+- **Built:** 10 (BookBot through InvoiceBot)
+- **In queue:** 10+
 - **Languages:** English + French (all pages)
 
 ## 🌐 LANGUAGE STRUCTURE
@@ -18,7 +18,7 @@ Each landing page should have:
 
 | # | Agent | URL | Date | Signups |
 |---|-------|-----|------|---------|
-| 1 | BookBot | /bookbot | 2026-02-02 | 0 |
+| 1 | BookBot | /bookbot + /bookbot/fr | 2026-02-02 | 0 |
 | 2 | RégieBot | /regiebot + /regiebot/fr | 2026-02-03 | 0 |
 | 3 | VoiceWeb | /voiceweb + /voiceweb/fr | 2026-02-03 | 0 |
 | 4 | VoiceNote | /voicenote + /voicenote/fr | 2026-02-03 | 0 |
@@ -26,6 +26,8 @@ Each landing page should have:
 | 6 | IntrusionBot | /intrusionbot + /intrusionbot/fr | 2026-02-03 | 0 |
 | 7 | VoisinBot | /voisinbot + /voisinbot/fr | 2026-02-04 | 0 |
 | 8 | BailBot | /bailbot + /bailbot/fr | 2026-02-05 | 0 |
+| 9 | TaxBot | /taxbot + /taxbot/fr | 2026-02-06 | 0 |
+| 10 | InvoiceBot | /invoicebot + /invoicebot/fr | 2026-02-07 | 0 |
 
 ---
 
