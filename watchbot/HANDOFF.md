@@ -1,8 +1,8 @@
 # WatchBot — Build Handoff
 
-**Last Updated:** 2026-02-08 11:02 UTC
+**Last Updated:** 2026-02-09 11:00 UTC
 **Phase:** Pilot Outreach
-**Status:** ✅ MVP COMPLETE + OUTREACH SENT
+**Status:** ✅ MVP COMPLETE + OUTREACH SENT + TELEGRAM FIX DEPLOYED
 
 ---
 
@@ -56,6 +56,10 @@ watchbot/
 ├── README.md
 └── HANDOFF.md
 ```
+
+## Maintenance Log
+
+**2026-02-09:** Fixed Telegram alert bug — wrong clawdbot path (/usr/local/bin → /usr/bin) and invalid --file option (→ --message). Alerts now working.
 
 ## Next Steps
 

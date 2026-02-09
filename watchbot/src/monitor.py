@@ -58,21 +58,40 @@ def search_ddg(query, max_results=10):
         return []
 
 def search_twitter_mentions(keyword):
-    """Search for Twitter/X mentions of keyword"""
-    query = f'site:twitter.com OR site:x.com "{keyword}"'
-    results = search_ddg(query, 10)
-    
+    """Search for Twitter/X mentions of keyword - only actual tweets with /status/ URLs"""
+    import re
     mentions = []
-    for r in results:
-        url = r.get("href", r.get("url", ""))
-        if "twitter.com" in url or "x.com" in url:
-            mentions.append({
-                "source": "twitter",
-                "title": r.get("title", ""),
-                "url": url,
-                "description": r.get("body", r.get("description", "")),
-                "found_at": datetime.utcnow().isoformat()
-            })
+    
+    # Search broadly on Twitter/X
+    queries = [
+        f'"{keyword}" site:twitter.com',
+        f'"{keyword}" site:x.com',
+    ]
+    
+    for query in queries:
+        results = search_ddg(query, 20)
+        for r in results:
+            url = r.get("href", r.get("url", ""))
+            
+            # STRICT FILTER: Only accept URLs that match tweet pattern
+            # Pattern: twitter.com/username/status/1234567890 or x.com/username/status/1234567890
+            tweet_pattern = r'(twitter\.com|x\.com)/[a-zA-Z0-9_]+/status/\d+'
+            if re.search(tweet_pattern, url):
+                # Normalize to x.com
+                url = re.sub(r'twitter\.com', 'x.com', url)
+                # Clean URL (remove query params)
+                url = url.split('?')[0]
+                
+                # Skip duplicates
+                if not any(m["url"] == url for m in mentions):
+                    mentions.append({
+                        "source": "twitter",
+                        "title": r.get("title", ""),
+                        "url": url,
+                        "description": r.get("body", r.get("description", "")),
+                        "found_at": datetime.utcnow().isoformat()
+                    })
+    
     return mentions
 
 def search_web_mentions(keyword):
@@ -178,8 +197,12 @@ def send_telegram_alert(message, chat_id):
         with open(tmp_file, "w") as f:
             f.write(message)
         
-        cmd = f'/usr/local/bin/clawdbot message send --channel telegram --target {chat_id} --file {tmp_file}'
-        result = subprocess.run(cmd, shell=True, capture_output=True, timeout=15)
+        # Read message back and pass directly
+        with open(tmp_file, "r") as f:
+            msg_content = f.read()
+        
+        cmd = ['/usr/bin/clawdbot', 'message', 'send', '--channel', 'telegram', '--target', str(chat_id), '--message', msg_content]
+        result = subprocess.run(cmd, capture_output=True, timeout=15)
         return result.returncode == 0
     except Exception as e:
         print(f"Telegram send error: {e}")

@@ -28,6 +28,7 @@ Each landing page should have:
 | 8 | BailBot | /bailbot + /bailbot/fr | 2026-02-05 | 0 |
 | 9 | TaxBot | /taxbot + /taxbot/fr | 2026-02-06 | 0 |
 | 10 | InvoiceBot | /invoicebot + /invoicebot/fr | 2026-02-07 | 0 |
+| 11 | ContractBot | /contractbot + /contractbot/fr | 2026-02-08 | 0 |
 
 ---
 
