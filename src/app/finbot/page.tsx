@@ -21,12 +21,20 @@ export default function FinBotLanding() {
             He doesn't sleep until the numbers match — down to the last satoshi.
           </p>
           
+          <div className="inline-flex items-center gap-2 bg-yellow-500/15 text-yellow-400 px-4 py-2 rounded-full text-sm mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+            </span>
+            Currently engaged — limited availability
+          </div>
+          
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#pricing" className="px-8 py-4 bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold text-lg transition-all hover:-translate-y-0.5">
-              Start 14-Day Trial
+            <a href="#offer" className="px-8 py-4 bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold text-lg transition-all hover:-translate-y-0.5">
+              Submit an Offer
             </a>
             <a href="#demo" className="px-8 py-4 bg-white/10 hover:bg-white/15 rounded-xl font-semibold text-lg transition-all">
-              See Demo Output
+              See What He Delivers
             </a>
           </div>
         </div>
@@ -533,88 +541,163 @@ Full report with appendices attached.
           </div>
         </div>
 
-        {/* Pricing Section */}
+        {/* Engagement Model */}
         <div id="pricing" className="mb-20">
-          <h2 className="text-3xl font-bold mb-8 text-center">Pricing</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8">
-              <div className="text-sm text-zinc-500 mb-2">STARTER</div>
-              <div className="text-4xl font-bold mb-4">$499<span className="text-lg text-zinc-500">/mo</span></div>
-              <ul className="space-y-3 text-sm text-zinc-400 mb-8">
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Daily reconciliation</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Weekly summary reports</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Up to 10 wallets</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> 2 exchange integrations</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Email/Telegram alerts</li>
-                <li className="flex gap-2"><span className="text-zinc-600">-</span> <span className="text-zinc-600">DeFi tracking</span></li>
-                <li className="flex gap-2"><span className="text-zinc-600">-</span> <span className="text-zinc-600">Forensics</span></li>
-              </ul>
-              <a href="#contact" className="block w-full text-center py-3 border border-blue-500 text-blue-400 rounded-lg hover:bg-blue-500/10 transition">
-                Get Started
-              </a>
+          <h2 className="text-3xl font-bold mb-4 text-center">How It Works</h2>
+          <p className="text-center text-zinc-400 mb-8 max-w-2xl mx-auto">
+            Michael is a working professional, not a SaaS product. Submit an offer based on your needs — 
+            he'll review and respond within 24 hours.
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 text-center">
+              <div className="text-4xl mb-4">1️⃣</div>
+              <h3 className="text-xl font-semibold mb-2">Submit Your Offer</h3>
+              <p className="text-sm text-zinc-400">
+                Tell us about your operation — wallets, chains, volume, complexity. 
+                Include your budget range.
+              </p>
             </div>
-            <div className="bg-gradient-to-b from-blue-500/20 to-transparent border-2 border-blue-500 rounded-2xl p-8 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-500 text-xs font-bold px-3 py-1 rounded-full">
-                POPULAR
-              </div>
-              <div className="text-sm text-blue-400 mb-2">PROFESSIONAL</div>
-              <div className="text-4xl font-bold mb-4">$999<span className="text-lg text-zinc-500">/mo</span></div>
-              <ul className="space-y-3 text-sm text-zinc-400 mb-8">
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Everything in Starter</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Up to 50 wallets</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Unlimited exchanges</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Full DeFi tracking</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Forensic analysis on-demand</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Cost basis reporting</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Audit preparation support</li>
-              </ul>
-              <a href="#contact" className="block w-full text-center py-3 bg-blue-500 hover:bg-blue-600 rounded-lg font-semibold transition">
-                Start Free Trial
-              </a>
+            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 text-center">
+              <div className="text-4xl mb-4">2️⃣</div>
+              <h3 className="text-xl font-semibold mb-2">Michael Reviews</h3>
+              <p className="text-sm text-zinc-400">
+                He'll assess the scope and determine if he can take on the engagement. 
+                Response within 24 hours.
+              </p>
             </div>
-            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8">
-              <div className="text-sm text-zinc-500 mb-2">ENTERPRISE</div>
-              <div className="text-4xl font-bold mb-4">Custom</div>
-              <ul className="space-y-3 text-sm text-zinc-400 mb-8">
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Everything in Professional</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Unlimited wallets</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Multi-entity consolidation</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Dedicated instance</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Custom integrations</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> SLA guarantee</li>
-                <li className="flex gap-2"><span className="text-green-400">✓</span> Priority support</li>
-              </ul>
-              <a href="#contact" className="block w-full text-center py-3 border border-white/20 text-white rounded-lg hover:bg-white/5 transition">
-                Contact Sales
-              </a>
+            <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 text-center">
+              <div className="text-4xl mb-4">3️⃣</div>
+              <h3 className="text-xl font-semibold mb-2">Onboarding Call</h3>
+              <p className="text-sm text-zinc-400">
+                If accepted, we'll set up wallet access, exchange APIs, and reporting preferences. 
+                Live within 48 hours.
+              </p>
             </div>
           </div>
-          <p className="text-center text-sm text-zinc-500 mt-6">
-            All plans include 14-day free trial. No credit card required.
-          </p>
+
+          <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8">
+            <h3 className="text-xl font-semibold mb-6 text-center">Typical Engagement Ranges</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center">
+                <div className="text-sm text-zinc-500 mb-2">LIGHT</div>
+                <div className="text-2xl font-bold text-blue-400 mb-2">$500-1K<span className="text-sm text-zinc-500">/mo</span></div>
+                <ul className="text-xs text-zinc-500 space-y-1">
+                  <li>• 1-10 wallets</li>
+                  <li>• Basic reconciliation</li>
+                  <li>• Weekly reports</li>
+                </ul>
+              </div>
+              <div className="text-center border-x border-zinc-800 px-6">
+                <div className="text-sm text-blue-400 mb-2">STANDARD</div>
+                <div className="text-2xl font-bold text-blue-400 mb-2">$1-3K<span className="text-sm text-zinc-500">/mo</span></div>
+                <ul className="text-xs text-zinc-500 space-y-1">
+                  <li>• 10-50 wallets</li>
+                  <li>• DeFi + exchanges</li>
+                  <li>• Daily monitoring</li>
+                </ul>
+              </div>
+              <div className="text-center">
+                <div className="text-sm text-zinc-500 mb-2">COMPLEX</div>
+                <div className="text-2xl font-bold text-blue-400 mb-2">$3-10K<span className="text-sm text-zinc-500">/mo</span></div>
+                <ul className="text-xs text-zinc-500 space-y-1">
+                  <li>• 50+ wallets</li>
+                  <li>• Multi-entity</li>
+                  <li>• Audit support</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-center text-xs text-zinc-600 mt-6">
+              Final pricing depends on scope, complexity, and current availability.
+            </p>
+          </div>
         </div>
 
         {/* CTA Section */}
-        <div id="contact" className="mb-16">
-          <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-2xl p-8 text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to hire Michael?</h2>
-            <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
-              Start your 14-day free trial today. Real reconciliation from day one. 
-              No credit card required.
+        <div id="offer" className="mb-16">
+          <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-2xl p-8">
+            <h2 className="text-3xl font-bold mb-4 text-center">Submit Your Offer</h2>
+            <p className="text-zinc-400 mb-8 max-w-xl mx-auto text-center">
+              Michael is currently engaged but reviewing new opportunities. 
+              Tell us about your operation and he'll respond within 24 hours.
             </p>
-            <form action="https://formsubmit.co/dev@agentmafia.one" method="POST" className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input type="hidden" name="_subject" value="FinBot (Michael) Inquiry" />
+            <form action="https://formsubmit.co/dev@agentmafia.one" method="POST" className="max-w-lg mx-auto space-y-4">
+              <input type="hidden" name="_subject" value="🤖 Michael Offer — New Inquiry" />
               <input type="hidden" name="_captcha" value="false" />
-              <input 
-                type="email" 
-                name="email" 
-                placeholder="you@company.com" 
-                required
-                className="flex-1 px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder:text-zinc-600"
-              />
-              <button type="submit" className="px-8 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg font-semibold transition-all hover:-translate-y-0.5">
-                Get Started
+              <input type="hidden" name="_template" value="table" />
+              
+              <div>
+                <label className="block text-sm text-zinc-400 mb-1">Your Email</label>
+                <input 
+                  type="email" 
+                  name="email" 
+                  placeholder="you@company.com" 
+                  required
+                  className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder:text-zinc-600"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm text-zinc-400 mb-1">Company/Fund Name</label>
+                <input 
+                  type="text" 
+                  name="company" 
+                  placeholder="Acme Capital" 
+                  required
+                  className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder:text-zinc-600"
+                />
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm text-zinc-400 mb-1">Number of Wallets</label>
+                  <select 
+                    name="wallets" 
+                    required
+                    className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white"
+                  >
+                    <option value="" className="bg-zinc-900">Select...</option>
+                    <option value="1-10" className="bg-zinc-900">1-10</option>
+                    <option value="10-50" className="bg-zinc-900">10-50</option>
+                    <option value="50-100" className="bg-zinc-900">50-100</option>
+                    <option value="100+" className="bg-zinc-900">100+</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm text-zinc-400 mb-1">Monthly Budget</label>
+                  <select 
+                    name="budget" 
+                    required
+                    className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white"
+                  >
+                    <option value="" className="bg-zinc-900">Select...</option>
+                    <option value="$500-1000" className="bg-zinc-900">$500-1,000</option>
+                    <option value="$1000-3000" className="bg-zinc-900">$1,000-3,000</option>
+                    <option value="$3000-5000" className="bg-zinc-900">$3,000-5,000</option>
+                    <option value="$5000-10000" className="bg-zinc-900">$5,000-10,000</option>
+                    <option value="$10000+" className="bg-zinc-900">$10,000+</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div>
+                <label className="block text-sm text-zinc-400 mb-1">Tell us about your operation</label>
+                <textarea 
+                  name="details" 
+                  rows={4}
+                  placeholder="What chains do you use? DeFi protocols? Exchange accounts? Current pain points?"
+                  required
+                  className="w-full px-4 py-3 bg-white/5 border border-white/15 rounded-lg text-white placeholder:text-zinc-600 resize-none"
+                />
+              </div>
+              
+              <button type="submit" className="w-full py-4 bg-blue-500 hover:bg-blue-600 rounded-lg font-semibold text-lg transition-all hover:-translate-y-0.5">
+                Submit Offer →
               </button>
+              
+              <p className="text-xs text-zinc-500 text-center">
+                Michael reviews all offers personally. Expect a response within 24 hours.
+              </p>
             </form>
           </div>
         </div>
