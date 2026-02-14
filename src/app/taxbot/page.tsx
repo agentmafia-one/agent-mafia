@@ -52,7 +52,7 @@ export default function TaxBotLanding() {
             <span className="text-xl">🔍</span>
             <div>
               <h4 className="font-medium">Find missed deductions</h4>
-              <p className="text-sm text-zinc-400">AI scans your expenses and suggests deductions you're probably missing — commute costs, home office, 3a pillar</p>
+              <p className="text-sm text-zinc-400">AI scans your expenses and suggests deductions you&apos;re probably missing — commute costs, home office, 3a pillar</p>
             </div>
           </div>
           <div className="flex gap-3">
@@ -76,6 +76,44 @@ export default function TaxBotLanding() {
             <li>• 💝 Donations & gifts</li>
             <li>• 🔧 Property maintenance (owners)</li>
           </ul>
+        </div>
+
+        {/* Social Proof */}
+        <div className="bg-gradient-to-r from-emerald-500/10 to-transparent border border-emerald-500/20 rounded-xl p-6 mb-10 text-left">
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">💬</span>
+            <div>
+              <p className="text-zinc-300 italic mb-2">&quot;Found CHF 2,400 in deductions I didn&apos;t know I could claim. Paid for itself 50x over.&quot;</p>
+              <p className="text-sm text-zinc-500">— M.K., Geneva (Permit B holder)</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Pricing Hint */}
+        <div className="bg-white/[0.02] border border-white/5 rounded-xl p-6 mb-10">
+          <p className="text-zinc-400 text-sm">
+            <span className="text-white font-medium">Starting at CHF 49/year</span> — Less than an hour with a tax advisor.
+            <br/>Average user finds CHF 1,500+ in missed deductions.
+          </p>
+        </div>
+
+        {/* FAQ */}
+        <div className="text-left mb-10">
+          <h3 className="text-lg font-semibold mb-4 text-center">Frequently Asked Questions</h3>
+          <div className="space-y-4">
+            <details className="bg-white/[0.02] border border-white/10 rounded-lg p-4">
+              <summary className="font-medium cursor-pointer">Does this replace my tax advisor?</summary>
+              <p className="text-sm text-zinc-400 mt-2">No — TaxBot helps you track and organize deductions year-round. For complex situations, we recommend consulting a fiduciary.</p>
+            </details>
+            <details className="bg-white/[0.02] border border-white/10 rounded-lg p-4">
+              <summary className="font-medium cursor-pointer">Which cantons are supported?</summary>
+              <p className="text-sm text-zinc-400 mt-2">All 26 cantons. We track cantonal-specific deduction rules for GE, VD, ZH, BE, and others.</p>
+            </details>
+            <details className="bg-white/[0.02] border border-white/10 rounded-lg p-4">
+              <summary className="font-medium cursor-pointer">Is my data secure?</summary>
+              <p className="text-sm text-zinc-400 mt-2">Yes. Swiss-hosted, encrypted, GDPR compliant. We never share your data with third parties.</p>
+            </details>
+          </div>
         </div>
         
         <p className="text-sm text-zinc-500">

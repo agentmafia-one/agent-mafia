@@ -1,8 +1,8 @@
 # WatchBot — Build Handoff
 
-**Last Updated:** 2026-02-09 11:00 UTC
-**Phase:** Pilot Outreach
-**Status:** ✅ MVP COMPLETE + OUTREACH SENT + TELEGRAM FIX DEPLOYED
+**Last Updated:** 2026-02-13 11:00 UTC
+**Phase:** Pilot Outreach + Active Monitoring
+**Status:** ✅ MVP RUNNING + PERPLEXITY ENHANCED
 
 ---
 
@@ -32,9 +32,17 @@
 
 ## Stats
 
-- **Total mentions found:** 161
+- **Total mentions found:** 261 (+100 since Feb 9)
 - **Keywords monitored:** 4
 - **Cron frequency:** Every 30 min + daily digest at 8 UTC
+- **Perplexity search:** Added for real-time news
+
+## Latest News (Feb 13 via Perplexity)
+
+SwissChain Holding SA press coverage Feb 12, 2026:
+- Tokenization of participation certificates under DLT Act
+- Coverage on Reuters, AP News, Business Insider, Benzinga
+- Matches Humblytics traffic spike (387→644 PV on Feb 11-12)
 
 ## Cron Jobs Active
 
