@@ -21,6 +21,7 @@ const cities = [
       aiReadiness: 8,
       personalFreedom: 8,
       airQuality: 8,
+      calmWeather: 7,
     },
     notes:
       "The PIONEER of digital government. e-Residency program lets anyone start EU company remotely. 99% of government services online. Skype, Wise, Bolt all born here. Cold winters but incredible digital infrastructure. Five Flag Theory: THE digital flag — e-Residency without physical presence.",
@@ -43,6 +44,7 @@ const cities = [
       aiReadiness: 9,
       personalFreedom: 5,
       airQuality: 6,
+      calmWeather: 6,
     },
     notes:
       "Zero income tax, free zones for businesses, digital nomad visa. Brutally hot summers but world-class infrastructure. Crypto-friendly banking. AI investment pouring in. Five Flag Theory: excellent business + banking + digital flags. Personal freedom limited but improving.",
@@ -65,6 +67,7 @@ const cities = [
       aiReadiness: 5,
       personalFreedom: 8,
       airQuality: 8,
+      calmWeather: 7,
     },
     notes:
       "365-day visa-free for most nationalities, 1% tax on foreign income, ultra-cheap living. Growing digital nomad hub. Territorial tax = foreign income not taxed. Wine country, incredible food. Five Flag Theory: excellent residency flag for digital nomads.",
@@ -87,6 +90,7 @@ const cities = [
       aiReadiness: 10,
       personalFreedom: 3,
       airQuality: 6,
+      calmWeather: 6,
     },
     notes:
       "The undisputed AI/robotics powerhouse of Asia. S$25B RIE2025 plan for AI, robotics & deep tech. Google, TCS, Schaeffler, Hyundai all building AI R&D hubs here. S$23B in investment commitments in 2025 alone. Boston Dynamics partnerships, robotaxi pilots, humanoid robotics labs at NTU. The government IS the AI strategy — Smart Nation initiative is arguably the most coherent national AI policy globally. Downsides: brutal cost of living, equatorial heat (consistently 25–31°C but humid, not 'spring-like'), and tiny land area. Per Roemmele's framework, Singapore is the ultimate 'builder' city — positioned to create the AI future, not just survive it. The talent gap (2,800 ICT grads vs 60,000 demand) actually creates opportunity for skilled immigrants.",
@@ -109,6 +113,7 @@ const cities = [
       aiReadiness: 9,
       personalFreedom: 4,
       airQuality: 5,
+      calmWeather: 5,
     },
     notes:
       "Major biotech/defense/tech hub. Qualcomm HQ, huge military-industrial R&D. BUT: California = heavy regulations, ideological conformity pressure, emerging smart city surveillance infrastructure. 'Woke' culture limits free expression. High taxes, housing crisis, homelessness. Great for building AI, questionable for living freely.",
@@ -131,6 +136,7 @@ const cities = [
       aiReadiness: 8,
       personalFreedom: 7,
       airQuality: 7,
+      calmWeather: 7,
     },
     notes:
       "Florida = no state income tax, crypto-friendly, Latin American gateway. Growing tech scene post-COVID migration from SF/NYC. Hurricane risk. More freedom-oriented than California. Strong for Web3/crypto businesses. Five Flag Theory: great for US business presence without CA baggage.",
@@ -153,6 +159,7 @@ const cities = [
       aiReadiness: 7,
       personalFreedom: 8,
       airQuality: 8,
+      calmWeather: 7,
     },
     notes:
       "Texas = no state income tax, business-friendly, energy capital. Extremely affordable for US. Hot humid summers but mild winters. Space industry (NASA), medical center, energy tech. Less 'woke' than coastal cities. Five Flag Theory: excellent for US business/banking without CA overreach.",
@@ -175,6 +182,7 @@ const cities = [
       aiReadiness: 3,
       personalFreedom: 8,
       airQuality: 8,
+      calmWeather: 7,
     },
     notes:
       "THE residency flag. Permanent residency in 3-6 months, minimal requirements, path to citizenship in 3 years. Territorial tax = 0% on foreign income. Banking friendly to foreigners. Not a playground, not tech hub — purely a FLAG destination. Five Flag Theory: possibly the best pure residency flag globally. You don't live here, you have residency here.",
@@ -197,6 +205,7 @@ const cities = [
       aiReadiness: 5,
       personalFreedom: 9,
       airQuality: 9,
+      calmWeather: 8,
     },
     notes:
       "The 'Switzerland of South America'. Most stable democracy in SA, strong property rights, no extradition treaties with most countries. Territorial tax system = foreign income not taxed. Growing tech scene. Five Flag Theory: excellent for residency/banking, maximum personal freedom in SA.",
@@ -219,6 +228,7 @@ const cities = [
       aiReadiness: 5,
       personalFreedom: 7,
       airQuality: 7,
+      calmWeather: 7,
     },
     notes:
       "European feel in SA, incredible culture, ultra-cheap due to currency crisis. Strong tech talent pool. BUT: economic instability, inflation, capital controls. Milei government shifting toward more freedom. Five Flag Theory: great 'playground' flag, questionable for business/banking.",
@@ -241,6 +251,7 @@ const cities = [
       aiReadiness: 6,
       personalFreedom: 7,
       airQuality: 7,
+      calmWeather: 7,
     },
     notes:
       "Most developed economy in SA, strong institutions historically. Recent political shifts toward left. Good infrastructure, growing startup scene. Mountains + wine country nearby. More seasonal than coastal cities. Five Flag Theory: decent all-rounder for SA presence.",
@@ -263,6 +274,7 @@ const cities = [
       aiReadiness: 8,
       personalFreedom: 8,
       airQuality: 8,
+      calmWeather: 7,
     },
     notes:
       "Emerging as Spain's tech hub. Google, Vodafone R&D centers. Strong positioning for AI transition at fraction of San Diego cost. Summers get hot (30°C+). In Roemmele's terms: a city transitioning from service economy to builder economy.",
@@ -273,7 +285,7 @@ const cities = [
     region: "Europe/Africa",
     avgTemp: "21–26°C",
     coastal: true,
-    flags: { residency: 8, business: 6, banking: 6, citizenship: 5, playground: 9, digital: 6 },
+    flags: { residency: 8, business: 6, banking: 6, citizenship: 5, playground: 7, digital: 6 },
     scores: {
       climate: 9,
       laborResilience: 7,
@@ -285,9 +297,10 @@ const cities = [
       aiReadiness: 6,
       personalFreedom: 8,
       airQuality: 8,
+      calmWeather: 4,
     },
     notes:
-      "Strong digital nomad hub, EU regulatory framework, growing tech scene. Tourism-dependent economy is a risk but diversifying rapidly. EU social safety nets buffer labor displacement. Near-perfect climate consistency.",
+      "Strong digital nomad hub, EU regulatory framework, growing tech scene. ⚠️ WINDY: Trade winds are constant — great for kitesurfing, less great for beach days. Near-perfect temperature but breezy.",
   },
   {
     city: "Valletta",
@@ -307,6 +320,7 @@ const cities = [
       aiReadiness: 6,
       personalFreedom: 7,
       airQuality: 7,
+      calmWeather: 7,
     },
     notes:
       "EU island nation, English-speaking, iGaming/crypto hub. Digital Nomad Residence Permit. Favorable tax schemes for non-doms. Mediterranean climate. Five Flag Theory: solid digital + citizenship (by investment) flags.",
@@ -329,6 +343,7 @@ const cities = [
       aiReadiness: 7,
       personalFreedom: 9,
       airQuality: 9,
+      calmWeather: 8,
     },
     notes:
       "Web Summit city, booming startup scene, NHR tax regime. More seasonal variation than ideal but mild year-round. Strong EU positioning for digital economy. Increasingly expensive.",
@@ -351,6 +366,7 @@ const cities = [
       aiReadiness: 7,
       personalFreedom: 7,
       airQuality: 7,
+      calmWeather: 7,
     },
     notes:
       "EU member, major fintech/crypto hub, favorable tax regime. Wider seasonal temperature swing than ideal. Strong positioning for digital economy transition. Relevant for blockchain/Web3 positioning.",
@@ -373,6 +389,7 @@ const cities = [
       aiReadiness: 6,
       personalFreedom: 4,
       airQuality: 5,
+      calmWeather: 5,
     },
     notes:
       "Fast-growing tech hub, Samsung/Intel nearby. Ultra-low cost. Manufacturing base will face AI/robotics disruption but tech sector growing rapidly. Vietnam is the 'next factory' but per Roemmele, factories will be robotic — the question is whether Da Nang pivots to managing robots or being replaced by them.",
@@ -395,6 +412,7 @@ const cities = [
       aiReadiness: 6,
       personalFreedom: 8,
       airQuality: 8,
+      calmWeather: 7,
     },
     notes:
       "Perfect climate, US legal/financial system. Extremely expensive. Tourism/military dependent economy. Remote location limits economic diversification. Beautiful but economically fragile.",
@@ -417,6 +435,7 @@ const cities = [
       aiReadiness: 5,
       personalFreedom: 9,
       airQuality: 9,
+      calmWeather: 8,
     },
     notes:
       "Digital Nomad Village initiative, very affordable EU base. Small economy heavily reliant on tourism — vulnerable in Roemmele's framework as AI replaces travel agents, booking systems, and eventually service roles. Great quality of life for remote workers.",
@@ -427,7 +446,7 @@ const cities = [
     region: "Europe/Africa",
     avgTemp: "20–26°C",
     coastal: true,
-    flags: { residency: 8, business: 5, banking: 6, citizenship: 5, playground: 9, digital: 6 },
+    flags: { residency: 8, business: 5, banking: 6, citizenship: 5, playground: 7, digital: 6 },
     scores: {
       climate: 9,
       laborResilience: 6,
@@ -439,9 +458,10 @@ const cities = [
       aiReadiness: 5,
       personalFreedom: 8,
       airQuality: 8,
+      calmWeather: 4,
     },
     notes:
-      "Same perfect climate as Las Palmas. Growing remote worker community. Tourism-heavy economy is the main vulnerability. Ideal if you're building remotely but consuming locally.",
+      "Same climate as Las Palmas. ⚠️ WINDY: Trade winds constant, especially north coast. South (Costa Adeje) is calmer but still breezy. Great for remote work, windy for beach.",
   },
   {
     city: "Cartagena",
@@ -461,6 +481,7 @@ const cities = [
       aiReadiness: 4,
       personalFreedom: 6,
       airQuality: 7,
+      calmWeather: 7,
     },
     notes:
       "UNESCO World Heritage colonial city. Growing digital nomad scene, better infrastructure than Santa Marta. Tourism-heavy but more economically diverse. Warm and humid year-round. Strong expat community, good coworking options. Per Roemmele: tourist economy vulnerable but remote work positioning improving.",
@@ -483,6 +504,7 @@ const cities = [
       aiReadiness: 3,
       personalFreedom: 6,
       airQuality: 7,
+      calmWeather: 7,
     },
     notes:
       "Beautiful Caribbean coast, extremely affordable. Economy largely informal/tourism-based — the most vulnerable category in any AI disruption scenario. Limited infrastructure but maximum runway due to ultra-low cost.",
@@ -505,6 +527,7 @@ const cities = [
       aiReadiness: 4,
       personalFreedom: 6,
       airQuality: 7,
+      calmWeather: 7,
     },
     notes:
       "Major port city with industrial base. More economic diversity than Santa Marta but heavily labor-dependent industries. Hotter than ideal. Port operations will be among the first to see robotic automation.",
@@ -527,6 +550,7 @@ const cities = [
       aiReadiness: 4,
       personalFreedom: 5,
       airQuality: 6,
+      calmWeather: 6,
     },
     notes:
       "Major port city, warm year-round. Kenya's tech scene (Nairobi) is Africa's strongest but Mombasa lags. M-Pesa shows leapfrog innovation capacity. High labor-dependency makes it vulnerable but also means potential for dramatic robotic productivity gains.",
@@ -549,6 +573,7 @@ const cities = [
       aiReadiness: 3,
       personalFreedom: 7,
       airQuality: 7,
+      calmWeather: 7,
     },
     notes:
       "Stunning Pacific climate, French territory benefits. Nickel mining dependent — one of the first industries to see full robotic automation. Very expensive, limited economic diversity. Political uncertainty around independence.",
@@ -571,6 +596,7 @@ const cities = [
       aiReadiness: 5,
       personalFreedom: 6,
       airQuality: 7,
+      calmWeather: 7,
     },
     notes:
       "REFERENCE (not coastal). Gold standard for eternal spring climate. Growing tech/startup scene (Ruta N innovation district). Very affordable. Per Roemmele's framework: maximum personal runway, decent builder ecosystem, but institutional/political risk limits upside.",
@@ -588,6 +614,7 @@ const factorDescriptions: Record<string, string> = {
   aiReadiness: "Positioned to BUILD with AI — per Roemmele: 'moonshot-era zeal'",
   personalFreedom: "Privacy, low surveillance, ideological diversity, personal autonomy — no woke conformity or dystopian smart city",
   airQuality: "Clean air, low pollution, healthy environment for long-term living",
+  calmWeather: "Low wind, calm conditions — not a windy place (🍯 Honey-approved)",
 };
 
 const factorLabels: Record<string, string> = {
@@ -601,6 +628,7 @@ const factorLabels: Record<string, string> = {
   aiReadiness: "AI Readiness",
   personalFreedom: "Freedom",
   airQuality: "Air Quality",
+  calmWeather: "🍯 Calm",
 };
 
 const weightProfiles: Record<string, Record<string, number>> = {
@@ -615,6 +643,7 @@ const weightProfiles: Record<string, Record<string, number>> = {
     aiReadiness: 1.3,
     personalFreedom: 1,
     airQuality: 1,
+    calmWeather: 0.8,
   },
   survivalMode: {
     climate: 0.8,
@@ -627,6 +656,7 @@ const weightProfiles: Record<string, Record<string, number>> = {
     aiReadiness: 1,
     personalFreedom: 1.2,
     airQuality: 1.2,
+    calmWeather: 1,
   },
   roemmeleBuilder: {
     climate: 0.6,
@@ -639,6 +669,7 @@ const weightProfiles: Record<string, Record<string, number>> = {
     aiReadiness: 1.8,
     personalFreedom: 0.5,
     airQuality: 0.5,
+    calmWeather: 0.3,
   },
   freedomBuilder: {
     climate: 1,
@@ -651,6 +682,7 @@ const weightProfiles: Record<string, Record<string, number>> = {
     aiReadiness: 1.4,
     personalFreedom: 1.8,
     airQuality: 1.3,
+    calmWeather: 1.2,
   },
 };
 
