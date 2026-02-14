@@ -2,7 +2,7 @@
 
 ## Status Tracking
 - **Total planned:** 20+
-- **Built:** 10 (BookBot through InvoiceBot)
+- **Built:** 18 (BookBot through BillagBot)
 - **In queue:** 10+
 - **Languages:** English + French (all pages)
 
@@ -41,6 +41,7 @@ Each landing page should have:
 | 15 | FinBot (Michael) | /finbot + /finbot/fr | 2026-02-11 | 0 |
 | 16 | ReBot (Sofia) | /rebot + /rebot/fr | 2026-02-11 | 0 |
 | 17 | ResearchBot | /researchbot + /researchbot/fr | 2026-02-14 | 0 |
+| 18 | BillagBot | /billagbot + /billagbot/fr | 2026-02-14 | 0 |
 
 ---
 
