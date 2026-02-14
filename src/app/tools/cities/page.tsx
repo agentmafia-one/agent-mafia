@@ -34,14 +34,14 @@ const cities = [
       laborResilience: 8,
       techEcosystem: 9,
       costOfLiving: 3,
-      politicalStability: 8,
+      politicalStability: 6,
       remoteInfra: 9,
       economicDiversity: 9,
       aiReadiness: 9,
-      personalFreedom: 7,
+      personalFreedom: 4,
     },
     notes:
-      "Major biotech/defense/tech hub. Qualcomm HQ, huge military-industrial R&D. Extremely well-positioned for AI economy but very expensive. Mild but cooler winters. One of the best tech ecosystems globally.",
+      "Major biotech/defense/tech hub. Qualcomm HQ, huge military-industrial R&D. BUT: California = heavy regulations, ideological conformity pressure, emerging smart city surveillance infrastructure. 'Woke' culture limits free expression. High taxes, housing crisis, homelessness. Great for building AI, questionable for living freely.",
   },
   {
     city: "Málaga",
@@ -334,7 +334,7 @@ const factorDescriptions: Record<string, string> = {
   remoteInfra: "Internet speed, coworking, digital banking, global connectivity",
   economicDiversity: "Not dependent on single industry vulnerable to disruption",
   aiReadiness: "Positioned to BUILD with AI — per Roemmele: 'moonshot-era zeal'",
-  personalFreedom: "Privacy, low surveillance, personal autonomy, no dystopian smart city vibes",
+  personalFreedom: "Privacy, low surveillance, ideological diversity, personal autonomy — no woke conformity or dystopian smart city",
 };
 
 const factorLabels: Record<string, string> = {
