@@ -18,6 +18,7 @@ const cities = [
       remoteInfra: 10,
       economicDiversity: 9,
       aiReadiness: 10,
+      personalFreedom: 3,
     },
     notes:
       "The undisputed AI/robotics powerhouse of Asia. S$25B RIE2025 plan for AI, robotics & deep tech. Google, TCS, Schaeffler, Hyundai all building AI R&D hubs here. S$23B in investment commitments in 2025 alone. Boston Dynamics partnerships, robotaxi pilots, humanoid robotics labs at NTU. The government IS the AI strategy — Smart Nation initiative is arguably the most coherent national AI policy globally. Downsides: brutal cost of living, equatorial heat (consistently 25–31°C but humid, not 'spring-like'), and tiny land area. Per Roemmele's framework, Singapore is the ultimate 'builder' city — positioned to create the AI future, not just survive it. The talent gap (2,800 ICT grads vs 60,000 demand) actually creates opportunity for skilled immigrants.",
@@ -37,6 +38,7 @@ const cities = [
       remoteInfra: 9,
       economicDiversity: 9,
       aiReadiness: 9,
+      personalFreedom: 7,
     },
     notes:
       "Major biotech/defense/tech hub. Qualcomm HQ, huge military-industrial R&D. Extremely well-positioned for AI economy but very expensive. Mild but cooler winters. One of the best tech ecosystems globally.",
@@ -56,6 +58,7 @@ const cities = [
       remoteInfra: 9,
       economicDiversity: 7,
       aiReadiness: 8,
+      personalFreedom: 8,
     },
     notes:
       "Emerging as Spain's tech hub. Google, Vodafone R&D centers. Strong positioning for AI transition at fraction of San Diego cost. Summers get hot (30°C+). In Roemmele's terms: a city transitioning from service economy to builder economy.",
@@ -75,6 +78,7 @@ const cities = [
       remoteInfra: 8,
       economicDiversity: 7,
       aiReadiness: 6,
+      personalFreedom: 8,
     },
     notes:
       "Strong digital nomad hub, EU regulatory framework, growing tech scene. Tourism-dependent economy is a risk but diversifying rapidly. EU social safety nets buffer labor displacement. Near-perfect climate consistency.",
@@ -94,6 +98,7 @@ const cities = [
       remoteInfra: 9,
       economicDiversity: 7,
       aiReadiness: 7,
+      personalFreedom: 9,
     },
     notes:
       "Web Summit city, booming startup scene, NHR tax regime. More seasonal variation than ideal but mild year-round. Strong EU positioning for digital economy. Increasingly expensive.",
@@ -113,6 +118,7 @@ const cities = [
       remoteInfra: 8,
       economicDiversity: 7,
       aiReadiness: 7,
+      personalFreedom: 7,
     },
     notes:
       "EU member, major fintech/crypto hub, favorable tax regime. Wider seasonal temperature swing than ideal. Strong positioning for digital economy transition. Relevant for blockchain/Web3 positioning.",
@@ -132,6 +138,7 @@ const cities = [
       remoteInfra: 7,
       economicDiversity: 7,
       aiReadiness: 6,
+      personalFreedom: 4,
     },
     notes:
       "Fast-growing tech hub, Samsung/Intel nearby. Ultra-low cost. Manufacturing base will face AI/robotics disruption but tech sector growing rapidly. Vietnam is the 'next factory' but per Roemmele, factories will be robotic — the question is whether Da Nang pivots to managing robots or being replaced by them.",
@@ -151,6 +158,7 @@ const cities = [
       remoteInfra: 8,
       economicDiversity: 5,
       aiReadiness: 6,
+      personalFreedom: 8,
     },
     notes:
       "Perfect climate, US legal/financial system. Extremely expensive. Tourism/military dependent economy. Remote location limits economic diversification. Beautiful but economically fragile.",
@@ -170,6 +178,7 @@ const cities = [
       remoteInfra: 7,
       economicDiversity: 5,
       aiReadiness: 5,
+      personalFreedom: 9,
     },
     notes:
       "Digital Nomad Village initiative, very affordable EU base. Small economy heavily reliant on tourism — vulnerable in Roemmele's framework as AI replaces travel agents, booking systems, and eventually service roles. Great quality of life for remote workers.",
@@ -189,6 +198,7 @@ const cities = [
       remoteInfra: 7,
       economicDiversity: 5,
       aiReadiness: 5,
+      personalFreedom: 8,
     },
     notes:
       "Same perfect climate as Las Palmas. Growing remote worker community. Tourism-heavy economy is the main vulnerability. Ideal if you're building remotely but consuming locally.",
@@ -208,6 +218,7 @@ const cities = [
       remoteInfra: 5,
       economicDiversity: 4,
       aiReadiness: 3,
+      personalFreedom: 6,
     },
     notes:
       "Beautiful Caribbean coast, extremely affordable. Economy largely informal/tourism-based — the most vulnerable category in any AI disruption scenario. Limited infrastructure but maximum runway due to ultra-low cost.",
@@ -227,6 +238,7 @@ const cities = [
       remoteInfra: 6,
       economicDiversity: 6,
       aiReadiness: 4,
+      personalFreedom: 6,
     },
     notes:
       "Major port city with industrial base. More economic diversity than Santa Marta but heavily labor-dependent industries. Hotter than ideal. Port operations will be among the first to see robotic automation.",
@@ -246,6 +258,7 @@ const cities = [
       remoteInfra: 5,
       economicDiversity: 5,
       aiReadiness: 4,
+      personalFreedom: 5,
     },
     notes:
       "Major port city, warm year-round. Kenya's tech scene (Nairobi) is Africa's strongest but Mombasa lags. M-Pesa shows leapfrog innovation capacity. High labor-dependency makes it vulnerable but also means potential for dramatic robotic productivity gains.",
@@ -265,6 +278,7 @@ const cities = [
       remoteInfra: 5,
       economicDiversity: 3,
       aiReadiness: 3,
+      personalFreedom: 7,
     },
     notes:
       "Stunning Pacific climate, French territory benefits. Nickel mining dependent — one of the first industries to see full robotic automation. Very expensive, limited economic diversity. Political uncertainty around independence.",
@@ -284,6 +298,7 @@ const cities = [
       remoteInfra: 7,
       economicDiversity: 6,
       aiReadiness: 5,
+      personalFreedom: 6,
     },
     notes:
       "REFERENCE (not coastal). Gold standard for eternal spring climate. Growing tech/startup scene (Ruta N innovation district). Very affordable. Per Roemmele's framework: maximum personal runway, decent builder ecosystem, but institutional/political risk limits upside.",
@@ -299,6 +314,7 @@ const factorDescriptions: Record<string, string> = {
   remoteInfra: "Internet speed, coworking, digital banking, global connectivity",
   economicDiversity: "Not dependent on single industry vulnerable to disruption",
   aiReadiness: "Positioned to BUILD with AI — per Roemmele: 'moonshot-era zeal'",
+  personalFreedom: "Privacy, low surveillance, personal autonomy, no dystopian smart city vibes",
 };
 
 const factorLabels: Record<string, string> = {
@@ -310,6 +326,7 @@ const factorLabels: Record<string, string> = {
   remoteInfra: "Remote Infra",
   economicDiversity: "Econ. Diversity",
   aiReadiness: "AI Readiness",
+  personalFreedom: "Freedom",
 };
 
 const weightProfiles: Record<string, Record<string, number>> = {
@@ -322,6 +339,7 @@ const weightProfiles: Record<string, Record<string, number>> = {
     remoteInfra: 1,
     economicDiversity: 1.1,
     aiReadiness: 1.3,
+    personalFreedom: 1,
   },
   survivalMode: {
     climate: 0.8,
@@ -332,6 +350,7 @@ const weightProfiles: Record<string, Record<string, number>> = {
     remoteInfra: 0.8,
     economicDiversity: 1.3,
     aiReadiness: 1,
+    personalFreedom: 1.2,
   },
   roemmeleBuilder: {
     climate: 0.6,
@@ -342,6 +361,18 @@ const weightProfiles: Record<string, Record<string, number>> = {
     remoteInfra: 1.3,
     economicDiversity: 1,
     aiReadiness: 1.8,
+    personalFreedom: 0.5,
+  },
+  freedomBuilder: {
+    climate: 1,
+    laborResilience: 1,
+    techEcosystem: 1.3,
+    costOfLiving: 1,
+    politicalStability: 1,
+    remoteInfra: 1.2,
+    economicDiversity: 0.8,
+    aiReadiness: 1.4,
+    personalFreedom: 1.8,
   },
 };
 
@@ -502,6 +533,8 @@ export default function EternalSpringDashboard() {
                     ? "Balanced"
                     : p === "survivalMode"
                     ? "Survival"
+                    : p === "freedomBuilder"
+                    ? "Freedom Builder"
                     : "Roemmele Builder"}
                 </button>
               ))}
