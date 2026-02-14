@@ -151,6 +151,27 @@ const cities = [
       "Texas = no state income tax, business-friendly, energy capital. Extremely affordable for US. Hot humid summers but mild winters. Space industry (NASA), medical center, energy tech. Less 'woke' than coastal cities. Five Flag Theory: excellent for US business/banking without CA overreach.",
   },
   {
+    city: "Asunción",
+    country: "Paraguay",
+    region: "South America",
+    avgTemp: "18–35°C",
+    coastal: false,
+    flags: { residency: 10, business: 7, banking: 8, citizenship: 8, playground: 4, digital: 5 },
+    scores: {
+      climate: 5,
+      laborResilience: 5,
+      techEcosystem: 3,
+      costOfLiving: 9,
+      politicalStability: 6,
+      remoteInfra: 5,
+      economicDiversity: 5,
+      aiReadiness: 3,
+      personalFreedom: 8,
+    },
+    notes:
+      "THE residency flag. Permanent residency in 3-6 months, minimal requirements, path to citizenship in 3 years. Territorial tax = 0% on foreign income. Banking friendly to foreigners. Not a playground, not tech hub — purely a FLAG destination. Five Flag Theory: possibly the best pure residency flag globally. You don't live here, you have residency here.",
+  },
+  {
     city: "Montevideo",
     country: "Uruguay",
     region: "South America",
@@ -676,8 +697,11 @@ export default function EternalSpringDashboard() {
           Eternal Spring × AI Resilience Index
         </h1>
         <p className="text-gray-400 mb-2 text-sm">
-          Coastal cities with year-round mild climate, scored on resilience to
-          AI/robotics economic disruption
+          Global cities for the sovereign individual — scored on AI resilience, 
+          personal freedom, and Six Flag optimization
+        </p>
+        <p className="text-xs text-gray-600 mb-2 italic">
+          "Eternal Spring is a mindset" — not just climate, but freedom to build, live, and thrive
         </p>
         <p className="text-gray-600 mb-6 text-xs italic">
           Framework inspired by Brian Roemmele&apos;s thesis: AI creates a renaissance
