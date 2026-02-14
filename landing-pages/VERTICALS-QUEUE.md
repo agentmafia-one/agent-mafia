@@ -40,6 +40,7 @@ Each landing page should have:
 | 14 | CalBot | /calbot + /calbot/fr | 2026-02-11 | 0 |
 | 15 | FinBot (Michael) | /finbot + /finbot/fr | 2026-02-11 | 0 |
 | 16 | ReBot (Sofia) | /rebot + /rebot/fr | 2026-02-11 | 0 |
+| 17 | ResearchBot | /researchbot + /researchbot/fr | 2026-02-14 | 0 |
 
 ---
 
