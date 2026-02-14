@@ -9,6 +9,7 @@ const cities = [
     region: "Asia",
     avgTemp: "25–31°C",
     coastal: true,
+    flags: { residency: 5, business: 10, banking: 9, citizenship: 3, playground: 6 },
     scores: {
       climate: 6,
       laborResilience: 8,
@@ -29,6 +30,7 @@ const cities = [
     region: "North America",
     avgTemp: "15–25°C",
     coastal: true,
+    flags: { residency: 4, business: 8, banking: 7, citizenship: 6, playground: 7 },
     scores: {
       climate: 8,
       laborResilience: 8,
@@ -49,6 +51,7 @@ const cities = [
     region: "North America",
     avgTemp: "20–32°C",
     coastal: true,
+    flags: { residency: 6, business: 8, banking: 8, citizenship: 6, playground: 8 },
     scores: {
       climate: 7,
       laborResilience: 7,
@@ -69,6 +72,7 @@ const cities = [
     region: "North America",
     avgTemp: "15–34°C",
     coastal: true,
+    flags: { residency: 7, business: 8, banking: 8, citizenship: 6, playground: 5 },
     scores: {
       climate: 5,
       laborResilience: 8,
@@ -89,6 +93,7 @@ const cities = [
     region: "South America",
     avgTemp: "12–28°C",
     coastal: true,
+    flags: { residency: 9, business: 7, banking: 9, citizenship: 7, playground: 6 },
     scores: {
       climate: 7,
       laborResilience: 6,
@@ -109,6 +114,7 @@ const cities = [
     region: "South America",
     avgTemp: "12–30°C",
     coastal: false,
+    flags: { residency: 6, business: 4, banking: 3, citizenship: 5, playground: 9 },
     scores: {
       climate: 7,
       laborResilience: 5,
@@ -129,6 +135,7 @@ const cities = [
     region: "South America",
     avgTemp: "8–30°C",
     coastal: false,
+    flags: { residency: 6, business: 7, banking: 7, citizenship: 6, playground: 6 },
     scores: {
       climate: 6,
       laborResilience: 6,
@@ -149,6 +156,7 @@ const cities = [
     region: "Europe",
     avgTemp: "18–30°C",
     coastal: true,
+    flags: { residency: 8, business: 7, banking: 6, citizenship: 5, playground: 8 },
     scores: {
       climate: 7,
       laborResilience: 7,
@@ -169,6 +177,7 @@ const cities = [
     region: "Europe/Africa",
     avgTemp: "21–26°C",
     coastal: true,
+    flags: { residency: 8, business: 6, banking: 6, citizenship: 5, playground: 9 },
     scores: {
       climate: 9,
       laborResilience: 7,
@@ -189,6 +198,7 @@ const cities = [
     region: "Europe",
     avgTemp: "15–28°C",
     coastal: true,
+    flags: { residency: 8, business: 7, banking: 7, citizenship: 7, playground: 8 },
     scores: {
       climate: 7,
       laborResilience: 7,
@@ -209,6 +219,7 @@ const cities = [
     region: "Europe",
     avgTemp: "17–32°C",
     coastal: true,
+    flags: { residency: 7, business: 8, banking: 8, citizenship: 6, playground: 7 },
     scores: {
       climate: 7,
       laborResilience: 7,
@@ -229,6 +240,7 @@ const cities = [
     region: "Asia",
     avgTemp: "23–33°C",
     coastal: true,
+    flags: { residency: 6, business: 5, banking: 4, citizenship: 2, playground: 7 },
     scores: {
       climate: 7,
       laborResilience: 6,
@@ -249,6 +261,7 @@ const cities = [
     region: "Oceania",
     avgTemp: "24–30°C",
     coastal: true,
+    flags: { residency: 5, business: 5, banking: 7, citizenship: 6, playground: 9 },
     scores: {
       climate: 9,
       laborResilience: 7,
@@ -269,6 +282,7 @@ const cities = [
     region: "Europe",
     avgTemp: "18–25°C",
     coastal: true,
+    flags: { residency: 8, business: 6, banking: 7, citizenship: 7, playground: 8 },
     scores: {
       climate: 8,
       laborResilience: 6,
@@ -289,6 +303,7 @@ const cities = [
     region: "Europe/Africa",
     avgTemp: "20–26°C",
     coastal: true,
+    flags: { residency: 8, business: 5, banking: 6, citizenship: 5, playground: 9 },
     scores: {
       climate: 9,
       laborResilience: 6,
@@ -309,6 +324,7 @@ const cities = [
     region: "South America",
     avgTemp: "25–32°C",
     coastal: true,
+    flags: { residency: 6, business: 5, banking: 5, citizenship: 5, playground: 9 },
     scores: {
       climate: 7,
       laborResilience: 5,
@@ -329,6 +345,7 @@ const cities = [
     region: "South America",
     avgTemp: "24–32°C",
     coastal: true,
+    flags: { residency: 5, business: 3, banking: 4, citizenship: 5, playground: 8 },
     scores: {
       climate: 7,
       laborResilience: 5,
@@ -349,6 +366,7 @@ const cities = [
     region: "South America",
     avgTemp: "26–33°C",
     coastal: true,
+    flags: { residency: 5, business: 4, banking: 4, citizenship: 5, playground: 6 },
     scores: {
       climate: 6,
       laborResilience: 5,
@@ -369,6 +387,7 @@ const cities = [
     region: "Africa",
     avgTemp: "24–31°C",
     coastal: true,
+    flags: { residency: 5, business: 4, banking: 5, citizenship: 4, playground: 7 },
     scores: {
       climate: 7,
       laborResilience: 4,
@@ -389,6 +408,7 @@ const cities = [
     region: "Oceania",
     avgTemp: "22–28°C",
     coastal: true,
+    flags: { residency: 6, business: 4, banking: 5, citizenship: 4, playground: 8 },
     scores: {
       climate: 9,
       laborResilience: 5,
@@ -409,6 +429,7 @@ const cities = [
     region: "South America",
     avgTemp: "22–28°C",
     coastal: false,
+    flags: { residency: 7, business: 5, banking: 5, citizenship: 5, playground: 9 },
     scores: {
       climate: 10,
       laborResilience: 5,
@@ -530,16 +551,29 @@ export default function EternalSpringDashboard() {
   const [coastalOnly, setCoastalOnly] = useState(true);
   const [expandedCity, setExpandedCity] = useState<string | null>(null);
   const [highlightSingapore, setHighlightSingapore] = useState(false);
+  const [flagFilter, setFlagFilter] = useState<string | null>(null);
+
+  const flagLabels: Record<string, string> = {
+    residency: "🏠 Residency",
+    business: "💼 Business",
+    banking: "🏦 Banking",
+    citizenship: "🛂 Citizenship",
+    playground: "🎡 Playground",
+  };
 
   const weights = weightProfiles[selectedProfile];
 
   const filteredCities = cities
     .filter((c) => !coastalOnly || c.coastal)
+    .filter((c) => !flagFilter || (c.flags && c.flags[flagFilter as keyof typeof c.flags] >= 7))
     .map((c) => ({
       ...c,
       totalScore: parseFloat(getWeightedScore(c.scores, weights)),
     }))
     .sort((a, b) => {
+      if (flagFilter && a.flags && b.flags) {
+        return b.flags[flagFilter as keyof typeof b.flags] - a.flags[flagFilter as keyof typeof a.flags];
+      }
       if (sortBy === "score") return b.totalScore - a.totalScore;
       if (sortBy === "climate") return b.scores.climate - a.scores.climate;
       if (sortBy === "aiReadiness") return b.scores.aiReadiness - a.scores.aiReadiness;
@@ -690,6 +724,38 @@ export default function EternalSpringDashboard() {
           </div>
         </div>
 
+        {/* Five Flag Filter */}
+        <div className="bg-gray-900 border border-gray-800 rounded-lg p-3 mb-6">
+          <label className="text-xs text-gray-500 uppercase tracking-wide block mb-1.5">
+            🏴 Five Flag Filter (shows cities scoring 7+ for flag)
+          </label>
+          <div className="flex gap-2 flex-wrap">
+            <button
+              onClick={() => setFlagFilter(null)}
+              className={`px-3 py-1.5 rounded text-xs font-medium transition-all ${
+                flagFilter === null
+                  ? "bg-purple-600 text-white"
+                  : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+              }`}
+            >
+              All Cities
+            </button>
+            {Object.entries(flagLabels).map(([key, label]) => (
+              <button
+                key={key}
+                onClick={() => setFlagFilter(flagFilter === key ? null : key)}
+                className={`px-3 py-1.5 rounded text-xs font-medium transition-all ${
+                  flagFilter === key
+                    ? "bg-purple-600 text-white"
+                    : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* City Cards */}
         <div className="space-y-3">
           {filteredCities.map((city, idx) => {
@@ -769,6 +835,25 @@ export default function EternalSpringDashboard() {
 
                 {expandedCity === city.city && (
                   <div className="border-t border-gray-800 p-4">
+                    {/* Five Flags */}
+                    {city.flags && (
+                      <div className="flex gap-2 flex-wrap mb-4">
+                        {Object.entries(city.flags).map(([key, value]) => (
+                          <div
+                            key={key}
+                            className={`px-2 py-1 rounded text-xs ${
+                              value >= 8
+                                ? "bg-emerald-900/50 text-emerald-400"
+                                : value >= 6
+                                ? "bg-yellow-900/50 text-yellow-400"
+                                : "bg-gray-800 text-gray-500"
+                            }`}
+                          >
+                            {flagLabels[key]}: {value}/10
+                          </div>
+                        ))}
+                      </div>
+                    )}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
                       {Object.keys(city.scores).map((key) => (
                         <div key={key} className="bg-gray-800/50 rounded p-2">
