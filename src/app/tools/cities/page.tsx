@@ -164,8 +164,8 @@ const cities = [
       "Perfect climate, US legal/financial system. Extremely expensive. Tourism/military dependent economy. Remote location limits economic diversification. Beautiful but economically fragile.",
   },
   {
-    city: "Funchal",
-    country: "Madeira, Portugal",
+    city: "Madeira (Funchal)",
+    country: "Portugal",
     region: "Europe",
     avgTemp: "18–25°C",
     coastal: true,
@@ -202,6 +202,26 @@ const cities = [
     },
     notes:
       "Same perfect climate as Las Palmas. Growing remote worker community. Tourism-heavy economy is the main vulnerability. Ideal if you're building remotely but consuming locally.",
+  },
+  {
+    city: "Cartagena",
+    country: "Colombia",
+    region: "South America",
+    avgTemp: "25–32°C",
+    coastal: true,
+    scores: {
+      climate: 7,
+      laborResilience: 5,
+      techEcosystem: 4,
+      costOfLiving: 8,
+      politicalStability: 5,
+      remoteInfra: 6,
+      economicDiversity: 6,
+      aiReadiness: 4,
+      personalFreedom: 6,
+    },
+    notes:
+      "UNESCO World Heritage colonial city. Growing digital nomad scene, better infrastructure than Santa Marta. Tourism-heavy but more economically diverse. Warm and humid year-round. Strong expat community, good coworking options. Per Roemmele: tourist economy vulnerable but remote work positioning improving.",
   },
   {
     city: "Santa Marta",
