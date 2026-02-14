@@ -4,12 +4,75 @@ import { useState } from "react";
 
 const cities = [
   {
+    city: "Tallinn",
+    country: "Estonia",
+    region: "Europe",
+    avgTemp: "-5–22°C",
+    coastal: true,
+    flags: { residency: 7, business: 9, banking: 8, citizenship: 5, playground: 5, digital: 10 },
+    scores: {
+      climate: 3,
+      laborResilience: 7,
+      techEcosystem: 8,
+      costOfLiving: 6,
+      politicalStability: 8,
+      remoteInfra: 9,
+      economicDiversity: 6,
+      aiReadiness: 8,
+      personalFreedom: 8,
+    },
+    notes:
+      "The PIONEER of digital government. e-Residency program lets anyone start EU company remotely. 99% of government services online. Skype, Wise, Bolt all born here. Cold winters but incredible digital infrastructure. Five Flag Theory: THE digital flag — e-Residency without physical presence.",
+  },
+  {
+    city: "Dubai",
+    country: "UAE",
+    region: "Middle East",
+    avgTemp: "20–42°C",
+    coastal: true,
+    flags: { residency: 8, business: 9, banking: 9, citizenship: 4, playground: 8, digital: 9 },
+    scores: {
+      climate: 4,
+      laborResilience: 7,
+      techEcosystem: 8,
+      costOfLiving: 4,
+      politicalStability: 8,
+      remoteInfra: 10,
+      economicDiversity: 8,
+      aiReadiness: 9,
+      personalFreedom: 5,
+    },
+    notes:
+      "Zero income tax, free zones for businesses, digital nomad visa. Brutally hot summers but world-class infrastructure. Crypto-friendly banking. AI investment pouring in. Five Flag Theory: excellent business + banking + digital flags. Personal freedom limited but improving.",
+  },
+  {
+    city: "Tbilisi",
+    country: "Georgia",
+    region: "Europe/Asia",
+    avgTemp: "2–31°C",
+    coastal: false,
+    flags: { residency: 9, business: 8, banking: 7, citizenship: 6, playground: 7, digital: 8 },
+    scores: {
+      climate: 6,
+      laborResilience: 5,
+      techEcosystem: 5,
+      costOfLiving: 9,
+      politicalStability: 6,
+      remoteInfra: 7,
+      economicDiversity: 5,
+      aiReadiness: 5,
+      personalFreedom: 8,
+    },
+    notes:
+      "365-day visa-free for most nationalities, 1% tax on foreign income, ultra-cheap living. Growing digital nomad hub. Territorial tax = foreign income not taxed. Wine country, incredible food. Five Flag Theory: excellent residency flag for digital nomads.",
+  },
+  {
     city: "Singapore",
     country: "Singapore",
     region: "Asia",
     avgTemp: "25–31°C",
     coastal: true,
-    flags: { residency: 5, business: 10, banking: 9, citizenship: 3, playground: 6 },
+    flags: { residency: 5, business: 10, banking: 9, citizenship: 3, playground: 6, digital: 9 },
     scores: {
       climate: 6,
       laborResilience: 8,
@@ -30,7 +93,7 @@ const cities = [
     region: "North America",
     avgTemp: "15–25°C",
     coastal: true,
-    flags: { residency: 4, business: 8, banking: 7, citizenship: 6, playground: 7 },
+    flags: { residency: 4, business: 8, banking: 7, citizenship: 6, playground: 7, digital: 7 },
     scores: {
       climate: 8,
       laborResilience: 8,
@@ -51,7 +114,7 @@ const cities = [
     region: "North America",
     avgTemp: "20–32°C",
     coastal: true,
-    flags: { residency: 6, business: 8, banking: 8, citizenship: 6, playground: 8 },
+    flags: { residency: 6, business: 8, banking: 8, citizenship: 6, playground: 8, digital: 8 },
     scores: {
       climate: 7,
       laborResilience: 7,
@@ -72,7 +135,7 @@ const cities = [
     region: "North America",
     avgTemp: "15–34°C",
     coastal: true,
-    flags: { residency: 7, business: 8, banking: 8, citizenship: 6, playground: 5 },
+    flags: { residency: 7, business: 8, banking: 8, citizenship: 6, playground: 5, digital: 7 },
     scores: {
       climate: 5,
       laborResilience: 8,
@@ -93,7 +156,7 @@ const cities = [
     region: "South America",
     avgTemp: "12–28°C",
     coastal: true,
-    flags: { residency: 9, business: 7, banking: 9, citizenship: 7, playground: 6 },
+    flags: { residency: 9, business: 7, banking: 9, citizenship: 7, playground: 6, digital: 5 },
     scores: {
       climate: 7,
       laborResilience: 6,
@@ -114,7 +177,7 @@ const cities = [
     region: "South America",
     avgTemp: "12–30°C",
     coastal: false,
-    flags: { residency: 6, business: 4, banking: 3, citizenship: 5, playground: 9 },
+    flags: { residency: 6, business: 4, banking: 3, citizenship: 5, playground: 9, digital: 6 },
     scores: {
       climate: 7,
       laborResilience: 5,
@@ -135,7 +198,7 @@ const cities = [
     region: "South America",
     avgTemp: "8–30°C",
     coastal: false,
-    flags: { residency: 6, business: 7, banking: 7, citizenship: 6, playground: 6 },
+    flags: { residency: 6, business: 7, banking: 7, citizenship: 6, playground: 6, digital: 5 },
     scores: {
       climate: 6,
       laborResilience: 6,
@@ -156,7 +219,7 @@ const cities = [
     region: "Europe",
     avgTemp: "18–30°C",
     coastal: true,
-    flags: { residency: 8, business: 7, banking: 6, citizenship: 5, playground: 8 },
+    flags: { residency: 8, business: 7, banking: 6, citizenship: 5, playground: 8, digital: 8 },
     scores: {
       climate: 7,
       laborResilience: 7,
@@ -177,7 +240,7 @@ const cities = [
     region: "Europe/Africa",
     avgTemp: "21–26°C",
     coastal: true,
-    flags: { residency: 8, business: 6, banking: 6, citizenship: 5, playground: 9 },
+    flags: { residency: 8, business: 6, banking: 6, citizenship: 5, playground: 9, digital: 6 },
     scores: {
       climate: 9,
       laborResilience: 7,
@@ -193,12 +256,33 @@ const cities = [
       "Strong digital nomad hub, EU regulatory framework, growing tech scene. Tourism-dependent economy is a risk but diversifying rapidly. EU social safety nets buffer labor displacement. Near-perfect climate consistency.",
   },
   {
+    city: "Valletta",
+    country: "Malta",
+    region: "Europe",
+    avgTemp: "14–31°C",
+    coastal: true,
+    flags: { residency: 7, business: 8, banking: 8, citizenship: 7, playground: 7, digital: 8 },
+    scores: {
+      climate: 8,
+      laborResilience: 6,
+      techEcosystem: 6,
+      costOfLiving: 5,
+      politicalStability: 7,
+      remoteInfra: 8,
+      economicDiversity: 5,
+      aiReadiness: 6,
+      personalFreedom: 7,
+    },
+    notes:
+      "EU island nation, English-speaking, iGaming/crypto hub. Digital Nomad Residence Permit. Favorable tax schemes for non-doms. Mediterranean climate. Five Flag Theory: solid digital + citizenship (by investment) flags.",
+  },
+  {
     city: "Lisbon",
     country: "Portugal",
     region: "Europe",
     avgTemp: "15–28°C",
     coastal: true,
-    flags: { residency: 8, business: 7, banking: 7, citizenship: 7, playground: 8 },
+    flags: { residency: 8, business: 7, banking: 7, citizenship: 7, playground: 8, digital: 8 },
     scores: {
       climate: 7,
       laborResilience: 7,
@@ -219,7 +303,7 @@ const cities = [
     region: "Europe",
     avgTemp: "17–32°C",
     coastal: true,
-    flags: { residency: 7, business: 8, banking: 8, citizenship: 6, playground: 7 },
+    flags: { residency: 7, business: 8, banking: 8, citizenship: 6, playground: 7, digital: 7 },
     scores: {
       climate: 7,
       laborResilience: 7,
@@ -240,7 +324,7 @@ const cities = [
     region: "Asia",
     avgTemp: "23–33°C",
     coastal: true,
-    flags: { residency: 6, business: 5, banking: 4, citizenship: 2, playground: 7 },
+    flags: { residency: 6, business: 5, banking: 4, citizenship: 2, playground: 7, digital: 7 },
     scores: {
       climate: 7,
       laborResilience: 6,
@@ -261,7 +345,7 @@ const cities = [
     region: "Oceania",
     avgTemp: "24–30°C",
     coastal: true,
-    flags: { residency: 5, business: 5, banking: 7, citizenship: 6, playground: 9 },
+    flags: { residency: 5, business: 5, banking: 7, citizenship: 6, playground: 9, digital: 6 },
     scores: {
       climate: 9,
       laborResilience: 7,
@@ -282,7 +366,7 @@ const cities = [
     region: "Europe",
     avgTemp: "18–25°C",
     coastal: true,
-    flags: { residency: 8, business: 6, banking: 7, citizenship: 7, playground: 8 },
+    flags: { residency: 8, business: 6, banking: 7, citizenship: 7, playground: 8, digital: 8 },
     scores: {
       climate: 8,
       laborResilience: 6,
@@ -303,7 +387,7 @@ const cities = [
     region: "Europe/Africa",
     avgTemp: "20–26°C",
     coastal: true,
-    flags: { residency: 8, business: 5, banking: 6, citizenship: 5, playground: 9 },
+    flags: { residency: 8, business: 5, banking: 6, citizenship: 5, playground: 9, digital: 6 },
     scores: {
       climate: 9,
       laborResilience: 6,
@@ -324,7 +408,7 @@ const cities = [
     region: "South America",
     avgTemp: "25–32°C",
     coastal: true,
-    flags: { residency: 6, business: 5, banking: 5, citizenship: 5, playground: 9 },
+    flags: { residency: 6, business: 5, banking: 5, citizenship: 5, playground: 9, digital: 6 },
     scores: {
       climate: 7,
       laborResilience: 5,
@@ -345,7 +429,7 @@ const cities = [
     region: "South America",
     avgTemp: "24–32°C",
     coastal: true,
-    flags: { residency: 5, business: 3, banking: 4, citizenship: 5, playground: 8 },
+    flags: { residency: 5, business: 3, banking: 4, citizenship: 5, playground: 8, digital: 8 },
     scores: {
       climate: 7,
       laborResilience: 5,
@@ -366,7 +450,7 @@ const cities = [
     region: "South America",
     avgTemp: "26–33°C",
     coastal: true,
-    flags: { residency: 5, business: 4, banking: 4, citizenship: 5, playground: 6 },
+    flags: { residency: 5, business: 4, banking: 4, citizenship: 5, playground: 6, digital: 5 },
     scores: {
       climate: 6,
       laborResilience: 5,
@@ -387,7 +471,7 @@ const cities = [
     region: "Africa",
     avgTemp: "24–31°C",
     coastal: true,
-    flags: { residency: 5, business: 4, banking: 5, citizenship: 4, playground: 7 },
+    flags: { residency: 5, business: 4, banking: 5, citizenship: 4, playground: 7, digital: 7 },
     scores: {
       climate: 7,
       laborResilience: 4,
@@ -408,7 +492,7 @@ const cities = [
     region: "Oceania",
     avgTemp: "22–28°C",
     coastal: true,
-    flags: { residency: 6, business: 4, banking: 5, citizenship: 4, playground: 8 },
+    flags: { residency: 6, business: 4, banking: 5, citizenship: 4, playground: 8, digital: 8 },
     scores: {
       climate: 9,
       laborResilience: 5,
@@ -429,7 +513,7 @@ const cities = [
     region: "South America",
     avgTemp: "22–28°C",
     coastal: false,
-    flags: { residency: 7, business: 5, banking: 5, citizenship: 5, playground: 9 },
+    flags: { residency: 7, business: 5, banking: 5, citizenship: 5, playground: 9, digital: 6 },
     scores: {
       climate: 10,
       laborResilience: 5,
@@ -559,6 +643,7 @@ export default function EternalSpringDashboard() {
     banking: "🏦 Banking",
     citizenship: "🛂 Citizenship",
     playground: "🎡 Playground",
+    digital: "☁️ Digital",
   };
 
   const weights = weightProfiles[selectedProfile];
