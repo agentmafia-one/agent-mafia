@@ -42,7 +42,8 @@ Each landing page should have:
 | 15 | FinBot (Michael) | /finbot + /finbot/fr | 2026-02-11 | 0 |
 | 16 | ReBot (Sofia) | /rebot + /rebot/fr | 2026-02-11 | 0 |
 | 17 | ResearchBot | /researchbot + /researchbot/fr | 2026-02-14 | 0 |
-| 18 | BillagBot | /billagbot + /billagbot/fr | 2026-02-14 | 0 |
+| 18 | BillagBot |
+| 19 | PropertyBot | /propertybot + /propertybot/fr | 2026-02-15 | 0 | /billagbot + /billagbot/fr | 2026-02-14 | 0 |
 
 ---
 
