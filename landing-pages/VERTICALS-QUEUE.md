@@ -1,9 +1,9 @@
 # Agent Mafia — Vertical Landing Pages Queue
 
 ## Status Tracking
-- **Total planned:** 20+
-- **Built:** 18 (BookBot through BillagBot)
-- **In queue:** 10+
+- **Total planned:** 30+
+- **Built:** 22 (BookBot through PermisBot)
+- **In queue:** 15+ (Priority 5-7)
 - **Languages:** English + French (all pages)
 
 ## 🌐 LANGUAGE STRUCTURE
@@ -17,7 +17,10 @@ Each landing page should have:
 ## 📊 Signup Tracking
 | Date | Signups | Source | Notes |
 |------|---------|--------|-------|
-| 2026-02-15 | 0 | - | Quality check 01:00 UTC - all pages OK |
+| 2026-02-19 | 0 | - | Built PermisBot (EN+FR) |
+| 2026-02-17 | 0 | - | 01:00 UTC check - all pages OK |
+| 2026-02-16 | 0 | - | Built AVSBot (EN+FR) |
+| 2026-02-15 | 0 | - | Built PropertyBot + SocialBot |
 | 2026-02-14 | 0 | - | Built ResearchBot + BillagBot + Cities tool |
 | 2026-02-13 | 0 | - | No signups |
 
@@ -43,7 +46,10 @@ Each landing page should have:
 | 16 | ReBot (Sofia) | /rebot + /rebot/fr | 2026-02-11 | 0 |
 | 17 | ResearchBot | /researchbot + /researchbot/fr | 2026-02-14 | 0 |
 | 18 | BillagBot |
-| 19 | PropertyBot | /propertybot + /propertybot/fr | 2026-02-15 | 0 | /billagbot + /billagbot/fr | 2026-02-14 | 0 |
+| 19 | PropertyBot |
+| 20 | SocialBot | /socialbot + /socialbot/fr | 2026-02-15 | 0 |
+| 21 | AVSBot | /avsbot + /avsbot/fr | 2026-02-16 | 0 |
+| 22 | PermisBot | /permisbot + /permisbot/fr | 2026-02-19 | 0 |
 
 ---
 
@@ -182,3 +188,93 @@ After WatchBot MVP ships:
 1. **BillagBot** — Everyone hates Serafe, low-hanging fruit
 2. **FrontalierBot** — Large underserved market (350K+)
 3. **RAVBot** — High pain, frequent need
+
+### Priority 7: New Ideas (2026-02-16 Evening)
+| # | Agent | Slug | Target | Pain Point |
+|---|-------|------|--------|------------|
+| 31 | **SwissPostBot** | /swisspostbot | Swiss residents | Track packages, file complaints, customs issues |
+| 32 | **MigrosCumulus** | /cumulusbot | Migros shoppers | Points optimization, offer tracking, missed rewards |
+| 33 | **SBBBot** | /sbbbot | Commuters | Delay compensation claims, GA/Halbtax optimization |
+| 34 | **KitaBot** | /kitabot | Parents | Daycare waitlist tracking, subsidy applications |
+| 35 | **WohnungBot** | /wohnungbot | Apartment hunters | Auto-apply to listings, dossier management |
+| 36 | **SteuernBot** | /steuernbot | Expats | Canton tax comparison, deduction maximizer |
+| 37 | **KKBot** | /kkbot | Insured | Krankenkasse claims, reimbursement tracking |
+
+### Priority 8: New Ideas (2026-02-18 Evening)
+| # | Agent | Slug | Target | Pain Point |
+|---|-------|------|--------|------------|
+| 38 | **ZahnarztBot** | /zahnarztbot | Swiss residents | Dental cost estimates, find affordable dentists abroad |
+| 39 | **GarageBot** | /garagebot | Car owners | MFK prep, service reminders, price comparison |
+| 40 | **RéclameBot** | /reclamebot | Consumers | Product complaints, warranty claims, refund requests |
+| 41 | **SubventionBot** | /subventionbot | Homeowners | Find energy/solar subsidies by canton |
+| 42 | **ImportBot** | /importbot | Online shoppers | Customs duty calculator, VAT optimization |
+| 43 | **VignettBot** | /vignettbot | Drivers | Highway vignette reminders, e-vignette management |
+| 44 | **EWZBot** | /ewzbot | Zurich residents | Electricity tariff optimization, smart meter tracking |
+
+---
+
+## 💡 Research Notes (Feb 18 Evening)
+
+### New Swiss Pain Points Identified:
+
+**1. Dental Costs**
+- Swiss dental is insanely expensive
+- Many go to Germany/France/Hungary
+- Price comparison is manual
+- Insurance rarely covers
+
+**2. MFK (Vehicle Inspection)**
+- Stressful annual requirement  
+- Garages overcharge for "pre-checks"
+- Timing reminders needed
+- Canton-specific rules
+
+**3. Online Shopping Customs**
+- Surprise customs fees
+- VAT threshold confusion (CHF 65 limit)
+- Returns across borders painful
+- Could automate declarations
+
+**4. Canton Energy Subsidies**
+- Each canton different
+- Solar/heat pump incentives
+- Application process complex
+- Most people miss free money
+
+**5. Highway Vignette**
+- E-vignette now available
+- Still many forget to renew
+- CHF 200 fine vs CHF 40 sticker
+
+---
+
+## 💡 Research Notes (Feb 16 Evening)
+
+### High-Pain Swiss Topics Identified:
+
+**1. Swiss Post / La Poste**
+- Package tracking nightmares
+- Customs fees surprises
+- Missed delivery disputes
+- Return process confusion
+
+**2. SBB/CFF Delays**
+- Compensation claims are tedious
+- Most people don't bother
+- Could automate claim filing
+
+**3. Apartment Hunting (Crisis Level)**
+- 100+ applications per listing
+- Dossier fatigue
+- Auto-apply would be huge
+
+**4. Krankenkasse (Health Insurance)**
+- Claims rejected without explanation
+- Reimbursement tracking is manual
+- Franchise optimization confusing
+
+**5. Kita/Daycare**
+- 2-3 year waitlists in cities
+- Subsidy applications complex
+- Parents desperate
+
