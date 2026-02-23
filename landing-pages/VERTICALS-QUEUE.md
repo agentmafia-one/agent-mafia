@@ -17,6 +17,7 @@ Each landing page should have:
 ## 📊 Signup Tracking
 | Date | Signups | Source | Notes |
 |------|---------|--------|-------|
+| 2026-02-23 | 0 | - | Morning check - all pages OK |
 | 2026-02-19 | 0 | - | Built PermisBot (EN+FR) |
 | 2026-02-17 | 0 | - | 01:00 UTC check - all pages OK |
 | 2026-02-16 | 0 | - | Built AVSBot (EN+FR) |
@@ -50,6 +51,7 @@ Each landing page should have:
 | 20 | SocialBot | /socialbot + /socialbot/fr | 2026-02-15 | 0 |
 | 21 | AVSBot | /avsbot + /avsbot/fr | 2026-02-16 | 0 |
 | 22 | PermisBot | /permisbot + /permisbot/fr | 2026-02-19 | 0 |
+| 23 | AssuranceBot | /assurancebot + /assurancebot/fr | 2026-02-20 | 0 |
 
 ---
 
@@ -278,3 +280,9 @@ After WatchBot MVP ships:
 - Subsidy applications complex
 - Parents desperate
 
+
+## 2026-02-20 01:00 UTC — Morning Check
+- **Signups:** 0 (unchanged)
+- **Pages:** All healthy (307 redirects = normal)
+- **FormSubmit:** Working
+- **Outreach:** Social content ready for 10:00 CET

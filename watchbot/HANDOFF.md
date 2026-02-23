@@ -1,6 +1,6 @@
 # WatchBot — Build Handoff
 
-**Last Updated:** 2026-02-13 11:00 UTC
+**Last Updated:** 2026-02-23 11:00 UTC
 **Phase:** Pilot Outreach + Active Monitoring
 **Status:** ✅ MVP RUNNING + PERPLEXITY ENHANCED
 
@@ -104,3 +104,52 @@ Répondez pour activer votre pilote, ou visitez agentmafia.one/watchbot
 
 Cordialement,
 L'équipe Agent Mafia
+
+## Monitoring Log
+
+### 2026-02-17 11:00 UTC
+- **Search:** SwissChain Holding SA mentions (Perplexity)
+- **Result:** No new mentions since Feb 12
+- **Last coverage:** Tokenization announcement (Feb 12)
+  - Reuters, AP News, Business Insider, Benzinga
+- **Status:** Quiet period, monitoring continues
+
+### 2026-02-18 11:00 UTC
+- **Search:** SwissChain Holding SA mentions (Perplexity)
+- **Result:** No new mentions since Feb 12
+- **Press coverage:** Same Feb 12 tokenization articles (Reuters, AP)
+- **Community:** No discussions on Reddit/X/crypto forums yet
+- **Status:** Brand is clean, no negative sentiment detected
+
+### 2026-02-19 11:00 UTC
+- **Search:** SwissChain Holding SA mentions (Perplexity)
+- **Sources found:**
+  - MarketerMedia (Feb 12) — tokenized participation certificates
+  - Business Insider (Feb 12) — same announcement
+  - **NEW: JDSupra Weekly Blockchain Blog** — February 2026 legal coverage
+  - MEXC news aggregator — syndicated mention
+- **New legal coverage:** BakerHostetler law firm featured SwissChain in weekly blockchain blog
+- **Status:** Positive sentiment, legal sector taking notice
+- **Action:** Monitor JDSupra for full article content
+
+### 2026-02-20 11:00 UTC
+- **Search:** SwissChain Holding SA mentions (Perplexity)
+- **Result:** No new mentions since Feb 12-18 coverage
+- **Sources checked:** News, social, crypto forums
+- **TheStreet (Feb 18):** Indirect reference to SwissChain model in tokenized equity article
+- **Community:** Still no independent discussions or social buzz
+- **Status:** Coverage plateau post-announcement, brand remains clean
+- **Sentiment:** Neutral-positive (PR only, no organic discussion yet)
+
+### 2026-02-23 11:00 UTC
+- **Search:** SwissChain Holding SA mentions (Perplexity)
+- **NEW COVERAGE (Feb 20):** Tokenized participation certificates announcement
+  - Detailed coverage of DLT Act implementation
+  - Digital Assets Treasury (DAT) mentioned — BTC/ETH reserves <50%
+  - Secondary-market pathway in preparation
+- **Scam/Blacklist Check:** ✅ CLEAN
+  - Not on CryptoLegal.uk, CyberClaims.net, AFM, ASIC lists
+  - No negative mentions found
+- **Social/Reddit/Forums:** No organic discussions yet
+- **Status:** Brand clean, positive coverage continuing
+- **Sentiment:** Positive (institutional, regulatory-compliant messaging)

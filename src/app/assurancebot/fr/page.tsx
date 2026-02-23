@@ -143,6 +143,33 @@ export default function AssuranceBotFRPage() {
         <p className="text-sm text-gray-500 mt-4">Comparaison gratuite • Payez uniquement si vous changez</p>
       </section>
 
+      {/* FAQ */}
+      <section className="container mx-auto px-6 py-16">
+        <h2 className="text-3xl font-bold text-center mb-12">Questions Fréquentes</h2>
+        <div className="max-w-3xl mx-auto space-y-6">
+          <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+            <h3 className="text-lg font-semibold mb-2">Quand est la date limite pour changer ?</h3>
+            <p className="text-gray-400">Vous devez notifier votre assureur actuel avant le 30 novembre pour changer au 1er janvier. AssuranceBot envoie des rappels dès octobre pour ne jamais manquer cette échéance.</p>
+          </div>
+          <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+            <h3 className="text-lg font-semibold mb-2">La couverture de base (LAMal) est-elle la même partout ?</h3>
+            <p className="text-gray-400">Oui ! La loi suisse impose une couverture de base identique chez tous les assureurs. Seuls le prix des primes, le service client et les options complémentaires diffèrent. Changer d'assureur n'affecte pas vos soins médicaux.</p>
+          </div>
+          <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+            <h3 className="text-lg font-semibold mb-2">Et mes assurances complémentaires ?</h3>
+            <p className="text-gray-400">Les assurances complémentaires (ambulatoire, hospitalisation, dentaire) ont des règles différentes. Nous vous aidons à comprendre ce qu'il faut garder et ce qu'il faut changer. Les nouvelles polices peuvent nécessiter un questionnaire de santé.</p>
+          </div>
+          <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+            <h3 className="text-lg font-semibold mb-2">Comment fonctionnent les modèles HMO et Telmed ?</h3>
+            <p className="text-gray-400">Ces modèles offrent 10-20% de réduction sur les primes. HMO exige de consulter d'abord un médecin spécifique. Telmed exige d'appeler une hotline avant les visites. AssuranceBot recommande le bon modèle selon vos habitudes.</p>
+          </div>
+          <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+            <h3 className="text-lg font-semibold mb-2">Que fait concrètement AssuranceBot ?</h3>
+            <p className="text-gray-400">Nous comparons tous les assureurs pour votre canton, âge et situation. Nous calculons la franchise optimale. Nous générons votre lettre de résiliation et nouvelle demande. Vous signez et envoyez, c'est tout.</p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section id="signup" className="container mx-auto px-6 py-20">
         <div className="max-w-xl mx-auto bg-gradient-to-r from-green-900 to-gray-900 p-8 rounded-2xl border border-green-500/30 text-center">

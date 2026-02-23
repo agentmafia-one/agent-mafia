@@ -143,6 +143,33 @@ export default function AssuranceBotPage() {
         <p className="text-sm text-gray-500 mt-4">Free comparison • Pay only if you switch</p>
       </section>
 
+      {/* FAQ */}
+      <section className="container mx-auto px-6 py-16">
+        <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+        <div className="max-w-3xl mx-auto space-y-6">
+          <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+            <h3 className="text-lg font-semibold mb-2">When is the switching deadline?</h3>
+            <p className="text-gray-400">You must notify your current insurer by November 30th to switch for January 1st. AssuranceBot sends reminders starting in October so you never miss it.</p>
+          </div>
+          <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+            <h3 className="text-lg font-semibold mb-2">Is the basic coverage (LAMal) the same everywhere?</h3>
+            <p className="text-gray-400">Yes! Swiss law mandates identical basic coverage across all insurers. The only differences are premium price, customer service, and supplementary options. Switching insurers doesn't affect your medical care.</p>
+          </div>
+          <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+            <h3 className="text-lg font-semibold mb-2">What about my supplementary insurance?</h3>
+            <p className="text-gray-400">Supplementary insurance (ambulatory, hospital, dental) has different rules. We help you understand what to keep and what to switch. New supplementary policies may require health checks.</p>
+          </div>
+          <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+            <h3 className="text-lg font-semibold mb-2">How do HMO and Telmed models work?</h3>
+            <p className="text-gray-400">These models offer 10-20% lower premiums. HMO requires using a specific doctor first. Telmed requires calling a hotline before visits. AssuranceBot recommends the right model based on your habits.</p>
+          </div>
+          <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+            <h3 className="text-lg font-semibold mb-2">What does AssuranceBot actually do?</h3>
+            <p className="text-gray-400">We compare all insurers for your canton, age, and situation. We calculate the optimal franchise. We generate your cancellation letter and new application. You just sign and send.</p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section id="signup" className="container mx-auto px-6 py-20">
         <div className="max-w-xl mx-auto bg-gradient-to-r from-green-900 to-gray-900 p-8 rounded-2xl border border-green-500/30 text-center">
