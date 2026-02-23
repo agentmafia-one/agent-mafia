@@ -52,6 +52,7 @@ Each landing page should have:
 | 21 | AVSBot | /avsbot + /avsbot/fr | 2026-02-16 | 0 |
 | 22 | PermisBot | /permisbot + /permisbot/fr | 2026-02-19 | 0 |
 | 23 | AssuranceBot | /assurancebot + /assurancebot/fr | 2026-02-20 | 0 |
+| 24 | SchoolBot | /schoolbot + /schoolbot/fr | 2026-02-23 | 0 |
 
 ---
 
