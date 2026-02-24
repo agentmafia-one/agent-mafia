@@ -2,7 +2,7 @@
 
 ## Status Tracking
 - **Total planned:** 30+
-- **Built:** 22 (BookBot through PermisBot)
+- **Built:** 25 (BookBot through PermisBot)
 - **In queue:** 15+ (Priority 5-7)
 - **Languages:** English + French (all pages)
 
@@ -53,6 +53,7 @@ Each landing page should have:
 | 22 | PermisBot | /permisbot + /permisbot/fr | 2026-02-19 | 0 |
 | 23 | AssuranceBot | /assurancebot + /assurancebot/fr | 2026-02-20 | 0 |
 | 24 | SchoolBot | /schoolbot + /schoolbot/fr | 2026-02-23 | 0 |
+| 25 | FrontalierBot | /frontalierbot + /frontalierbot/fr | 2026-02-23 | 0 |
 
 ---
 
@@ -287,3 +288,11 @@ After WatchBot MVP ships:
 - **Pages:** All healthy (307 redirects = normal)
 - **FormSubmit:** Working
 - **Outreach:** Social content ready for 10:00 CET
+| 2026-02-23 | 0 | - | Evening: Built FrontalierBot (EN+FR) |
+
+## 2026-02-24 01:00 UTC — Morning Check
+- **Signups:** 0 (unchanged)
+- **Pages:** All healthy (307 redirects = normal)
+- **New page:** FrontalierBot added yesterday (EN+FR)
+- **Total pages:** 25
+- **Outreach:** Skipped (2AM Geneva, audience asleep)
