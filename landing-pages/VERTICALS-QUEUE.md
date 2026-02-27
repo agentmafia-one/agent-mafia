@@ -2,7 +2,7 @@
 
 ## Status Tracking
 - **Total planned:** 30+
-- **Built:** 25 (BookBot through PermisBot)
+- **Built:** 26 (BookBot through MieterBot)
 - **In queue:** 15+ (Priority 5-7)
 - **Languages:** English + French (all pages)
 
@@ -54,6 +54,7 @@ Each landing page should have:
 | 23 | AssuranceBot | /assurancebot + /assurancebot/fr | 2026-02-20 | 0 |
 | 24 | SchoolBot | /schoolbot + /schoolbot/fr | 2026-02-23 | 0 |
 | 25 | FrontalierBot | /frontalierbot + /frontalierbot/fr | 2026-02-23 | 0 |
+| 26 | MieterBot | /mieterbot + /mieterbot/fr | 2026-02-26 | 0 |
 
 ---
 
@@ -296,3 +297,40 @@ After WatchBot MVP ships:
 - **New page:** FrontalierBot added yesterday (EN+FR)
 - **Total pages:** 25
 - **Outreach:** Skipped (2AM Geneva, audience asleep)
+
+## 2026-02-24 14:00 UTC — Afternoon Build
+- **Built:** RAVBot (EN+FR) — Unemployment/ORP navigation
+- **Signups:** 0 (new page)
+- **Total pages:** 26
+- **Deployed:** ✅ Auto-deploy to Vercel
+
+### Priority 9: New Ideas (2026-02-24 Evening)
+| # | Agent | Slug | Target | Pain Point |
+|---|-------|------|--------|------------|
+| 45 | **TicketBot** | /ticketbot | Commuters | Auto-dispute SBB/transport fines, appeal letters |
+| 46 | **MieterBot** | /mieterbot | Renters | Rent increase objections, deposit claims, tenant rights |
+| 47 | **ParkingBot** | /parkingbot | Drivers | Parking fine disputes, resident permit tracking |
+
+---
+
+## 2026-02-24 18:00 UTC — Evening Session
+- **Built today:** RAVBot (EN+FR)
+- **Total pages:** 29 agent landing pages
+- **All have FR versions:** ✅
+- **New ideas added:** TicketBot, MieterBot, ParkingBot
+- **Social content:** Drafted for tomorrow (Twitter, LinkedIn, Reddit)
+- **Signups:** 0 (unchanged)
+
+
+## 2026-02-25 01:00 UTC — Night Check
+- **Signups:** 0 (unchanged)
+- **Pages:** All healthy (307 redirects = normal)
+- **Total pages:** 29 agent landing pages
+- **Outreach:** Skipped (2AM Geneva - audience asleep)
+
+
+## 2026-02-25 14:00 UTC — Afternoon Build
+- **Built:** TicketBot (EN+FR) — Transport fine disputes
+- **Signups:** 0 (new page)
+- **Total pages:** 30
+- **Deployed:** ✅ Auto-deploy to Vercel

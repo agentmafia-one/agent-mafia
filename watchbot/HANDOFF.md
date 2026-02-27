@@ -153,3 +153,40 @@ L'équipe Agent Mafia
 - **Social/Reddit/Forums:** No organic discussions yet
 - **Status:** Brand clean, positive coverage continuing
 - **Sentiment:** Positive (institutional, regulatory-compliant messaging)
+
+### 2026-02-25 11:00 UTC
+- **Search:** SwissChain Holding SA mentions (Perplexity)
+- **Primary coverage:** Feb 20 tokenized participation certificates (Globe Newswire)
+  - DLT Act compliance
+  - Digital Assets Treasury (DAT) — BTC/ETH <50% allocation
+  - Secondary-market pathway in preparation
+- **Sources:** Globe Newswire, syndicated to major outlets
+- **Social/Forums:** No new organic discussions detected
+- **Scam/Blacklist:** Clean (no negative mentions)
+- **Status:** Positive coverage continuing, brand clean
+- **Sentiment:** Positive-neutral (PR-driven, institutional tone)
+
+### 2026-02-26 11:00 UTC
+- **Search:** SwissChain Holding SA mentions
+- **Issue:** OpenRouter credits depleted (Perplexity search unavailable)
+- **Cron status:** Monitor script not running since Feb 10 (cron may be disabled)
+- **Action needed:** 
+  1. Add OpenRouter credits OR use alternative search
+  2. Check crontab -l for watchbot entries
+- **Manual check:** No urgent alerts, brand appears clean
+- **Status:** Monitoring paused pending credits top-up
+
+### 2026-02-27 11:00 UTC
+- **Search:** SwissChain Holding SA mentions (Google News)
+- **OpenRouter:** Credits depleted (Perplexity unavailable)
+- **Fallback:** Google News scrape successful
+- **NEW COVERAGE (Feb 24):** USA Today
+  - "How Swiss Holding Companies Are Using Blockchain to Modernize Corporate Equity"
+  - SwissChain mentioned as example of DLT Act implementation
+- **Recent coverage (Feb 20):** GlobeNewswire tokenization announcement
+- **Syndication:** Business Insider, Decrypt continue to surface
+- **Scam/Blacklist:** No negative mentions
+- **Social/Forums:** No new organic discussions detected
+- **Status:** Positive coverage continuing, brand clean
+- **Sentiment:** Positive (institutional/legal sector interest)
+- **Action:** OpenRouter needs credits top-up for Perplexity monitoring
