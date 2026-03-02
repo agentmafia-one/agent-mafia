@@ -2,7 +2,7 @@
 
 ## Status Tracking
 - **Total planned:** 30+
-- **Built:** 26 (BookBot through MieterBot)
+- **Built:** 27 (BookBot through ParkingBot)
 - **In queue:** 15+ (Priority 5-7)
 - **Languages:** English + French (all pages)
 
@@ -55,6 +55,7 @@ Each landing page should have:
 | 24 | SchoolBot | /schoolbot + /schoolbot/fr | 2026-02-23 | 0 |
 | 25 | FrontalierBot | /frontalierbot + /frontalierbot/fr | 2026-02-23 | 0 |
 | 26 | MieterBot | /mieterbot + /mieterbot/fr | 2026-02-26 | 0 |
+| 27 | ParkingBot | /parkingbot + /parkingbot/fr | 2026-02-27 | 0 |
 
 ---
 
@@ -334,3 +335,23 @@ After WatchBot MVP ships:
 - **Signups:** 0 (new page)
 - **Total pages:** 30
 - **Deployed:** ✅ Auto-deploy to Vercel
+
+## 2026-02-28 14:00 UTC — Afternoon Build
+- **Built:** WohnungBot (EN+FR) — Apartment hunting automation
+- **Signups:** 0 (new page)
+- **Total pages:** 31
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/wohnungbot + /wohnungbot/fr
+
+## 2026-02-28 18:00 UTC — Evening Review
+- **Status:** 31 pages live
+- **Built today:** WohnungBot (EN+FR)
+- **Signups:** 0
+- **Session:** Light (Dify setup took afternoon)
+- **Tomorrow:** PilierBot build planned
+
+## 2026-03-01 01:00 UTC — Night Check
+- **Pages:** All healthy (307 redirects = normal)
+- **Signups:** 0 (unchanged)
+- **Outreach:** Skipped (2 AM Geneva - audience asleep)
+- **Total pages:** 31 agents

@@ -1,8 +1,19 @@
 # WatchBot — Build Handoff
 
-**Last Updated:** 2026-02-23 11:00 UTC
+**Last Updated:** 2026-03-02 11:00 UTC
 **Phase:** Pilot Outreach + Active Monitoring
-**Status:** ✅ MVP RUNNING + PERPLEXITY ENHANCED
+**Status:** ✅ MVP COMPLETE + PERPLEXITY MONITORING
+
+---
+
+## Latest Check (2026-03-02)
+
+**Perplexity Search Results:**
+- Feb 20, 2026: GlobeNewswire press release (tokenization of participation certificates)
+- Coverage on Finbold, Business Insider Markets, Phemex, EIN Presswire
+- No NEW mentions in last 24h
+
+**Note:** VPS cron not active. Running via Clawdbot cron (11:00 UTC daily)
 
 ---
 
@@ -190,3 +201,19 @@ L'équipe Agent Mafia
 - **Status:** Positive coverage continuing, brand clean
 - **Sentiment:** Positive (institutional/legal sector interest)
 - **Action:** OpenRouter needs credits top-up for Perplexity monitoring
+
+### 2026-03-01 11:00 UTC
+- **Search:** SwissChain Holding SA mentions (Perplexity)
+- **Result:** No new coverage since Feb 20
+- **Latest coverage:** Feb 20 tokenization announcement
+  - DLT Act implementation
+  - Digital Assets Treasury (DAT) — BTC/ETH <50%
+  - Secondary-market pathway in preparation
+- **Scam/Fraud Check:** ✅ CLEAN
+  - Not listed in any 2026 scam reports
+  - No fraud allegations found
+  - Not in Block Analytics LTD's 100+ verified scam cases
+- **Social/Forums:** No new organic discussions
+- **Status:** Brand clean, positive coverage continuing
+- **Sentiment:** Positive (institutional, regulatory-compliant)
+- **Note:** OpenRouter Perplexity working again
