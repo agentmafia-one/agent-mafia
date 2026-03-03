@@ -217,3 +217,17 @@ L'équipe Agent Mafia
 - **Status:** Brand clean, positive coverage continuing
 - **Sentiment:** Positive (institutional, regulatory-compliant)
 - **Note:** OpenRouter Perplexity working again
+
+### 2026-03-03 11:00 UTC
+- **Search:** SwissChain Holding SA mentions (Perplexity)
+- **Result:** No new coverage since Feb 20
+- **Latest coverage:** Feb 20 tokenized participation certificates
+  - DLT Act implementation
+  - Digital Assets Treasury (DAT) — BTC/ETH <50%
+  - Secondary-market pathway in preparation
+- **Sources:** GlobeNewswire, syndicated to major outlets
+- **Social/Forums:** No new organic discussions
+- **Scam/Blacklist:** Clean (no negative mentions)
+- **Status:** Brand clean, positive coverage continuing
+- **Sentiment:** Positive (institutional, regulatory-compliant)
+- **Note:** OpenRouter credits low — using max_tokens limit

@@ -355,3 +355,10 @@ After WatchBot MVP ships:
 - **Signups:** 0 (unchanged)
 - **Outreach:** Skipped (2 AM Geneva - audience asleep)
 - **Total pages:** 31 agents
+
+## 2026-03-02 14:00 UTC — Afternoon Build
+- **Built:** SwissPostBot (EN+FR) — Package tracking, customs, complaints
+- **Signups:** 0 (new page)
+- **Total pages:** 32
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/swisspostbot + /swisspostbot/fr
