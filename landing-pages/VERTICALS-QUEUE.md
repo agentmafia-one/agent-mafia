@@ -362,3 +362,10 @@ After WatchBot MVP ships:
 - **Total pages:** 32
 - **Deployed:** ✅ Auto-deploy to Vercel
 - **URL:** agentmafia.one/swisspostbot + /swisspostbot/fr
+
+## 2026-03-03 14:00 UTC — Afternoon Build
+- **Built:** SBBBot (EN+FR) — Train delay compensation claims
+- **Signups:** 0 (new page)
+- **Total pages:** 33
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/sbbbot + /sbbbot/fr
