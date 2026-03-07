@@ -255,3 +255,17 @@ L'équipe Agent Mafia
 - **Scam/Blacklist:** Clean (no negative mentions)
 - **Status:** Brand clean, quiet period continues
 - **Sentiment:** Neutral-positive (institutional focus)
+
+---
+
+## Latest Check (2026-03-07 11:00 UTC)
+
+**Perplexity Search Results:**
+- Feb 20, 2026: GlobeNewswire press release (tokenization of participation certificates) - STILL MAIN COVERAGE
+- Coverage continues: Finbold, Business Insider Markets, Phemex, EIN Presswire
+- **March 5, 2026:** CoinGecko analysis on DAT and tokenized model
+- No NEW mentions since March 5, 2026
+
+**Sentiment:** Positive - institutional-grade compliance, Swiss governance standards
+
+**Next check:** March 8, 2026 11:00 UTC
