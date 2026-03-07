@@ -3,90 +3,68 @@
 import Link from 'next/link'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
 
-// Agent catalog - add new agents here
+// Agent catalog - all 38 agents
 const AGENTS = [
-  {
-    slug: 'regiebot',
-    name: 'RégieBot',
-    emoji: '🏠',
-    tagline: 'Fight your property manager',
-    category: 'Swiss Legal',
-    price: 49,
-    color: '#ef4444',
-  },
-  {
-    slug: 'intrusionbot',
-    name: 'IntrusionBot',
-    emoji: '🛡️',
-    tagline: 'Dispute debt collectors',
-    category: 'Swiss Legal',
-    price: 49,
-    color: '#f97316',
-  },
-  {
-    slug: 'voisinbot',
-    name: 'VoisinBot',
-    emoji: '🔊',
-    tagline: 'Handle neighbor disputes',
-    category: 'Swiss Legal',
-    price: 39,
-    color: '#eab308',
-  },
-  {
-    slug: 'voiceweb',
-    name: 'VoiceWeb',
-    emoji: '🎙️',
-    tagline: 'Build websites by voice',
-    category: 'Productivity',
-    price: 79,
-    color: '#22c55e',
-  },
-  {
-    slug: 'voicenote',
-    name: 'VoiceNote',
-    emoji: '📝',
-    tagline: 'Voice memos to organized notes',
-    category: 'Productivity',
-    price: 29,
-    color: '#14b8a6',
-  },
-  {
-    slug: 'pentestbot',
-    name: 'PenTestBot',
-    emoji: '🔐',
-    tagline: 'Security vulnerability scanning',
-    category: 'Security',
-    price: 99,
-    color: '#6366f1',
-  },
-  {
-    slug: 'contentcheck',
-    name: 'ContentCheck',
-    emoji: '✅',
-    tagline: 'AI content detection',
-    category: 'Content',
-    price: 29,
-    color: '#8b5cf6',
-  },
-  {
-    slug: 'bookbot',
-    name: 'BookBot',
-    emoji: '📊',
-    tagline: 'Shopify bookkeeping on autopilot',
-    category: 'Business',
-    price: 49,
-    color: '#6366f1',
-  },
-  {
-    slug: 'watchbot',
-    name: 'WatchBot',
-    emoji: '👁️',
-    tagline: 'Monitor brand mentions',
-    category: 'Monitoring',
-    price: 49,
-    soon: true,
-    color: '#06b6d4',
-  },
+  // 🇨🇭 Swiss Legal
+  { slug: 'regiebot', name: 'RégieBot', emoji: '🏠', tagline: 'Fight your property manager', category: 'Swiss Legal', price: 49, color: '#ef4444' },
+  { slug: 'intrusionbot', name: 'IntrusionBot', emoji: '🛡️', tagline: 'Dispute debt collectors', category: 'Swiss Legal', price: 49, color: '#f97316' },
+  { slug: 'voisinbot', name: 'VoisinBot', emoji: '🔊', tagline: 'Handle neighbor disputes', category: 'Swiss Legal', price: 39, color: '#eab308' },
+  { slug: 'bailbot', name: 'BailBot', emoji: '📜', tagline: 'Lease issues & rent disputes', category: 'Swiss Legal', price: 49, color: '#dc2626' },
+  { slug: 'mieterbot', name: 'MieterBot', emoji: '🏢', tagline: 'Tenant rights & deposit claims', category: 'Swiss Legal', price: 39, color: '#b91c1c' },
+  { slug: 'parkingbot', name: 'ParkingBot', emoji: '🅿️', tagline: 'Parking fine disputes', category: 'Swiss Legal', price: 29, color: '#991b1b' },
+  
+  // 🇨🇭 Swiss Admin
+  { slug: 'avsbot', name: 'AVSBot', emoji: '🏛️', tagline: 'AVS/AHV contribution tracking', category: 'Swiss Admin', price: 39, color: '#0ea5e9' },
+  { slug: 'permisbot', name: 'PermisBot', emoji: '🪪', tagline: 'Permit renewals & visa tracking', category: 'Swiss Admin', price: 49, color: '#0284c7' },
+  { slug: 'billagbot', name: 'BillagBot', emoji: '📺', tagline: 'Serafe billing disputes', category: 'Swiss Admin', price: 29, color: '#0369a1' },
+  { slug: 'ravbot', name: 'RAVBot', emoji: '💼', tagline: 'Unemployment navigation', category: 'Swiss Admin', price: 39, color: '#075985' },
+  { slug: 'frontalierbot', name: 'FrontalierBot', emoji: '🚂', tagline: 'Cross-border worker help', category: 'Swiss Admin', price: 49, color: '#0c4a6e' },
+  { slug: 'pilierbot', name: 'PilierBot', emoji: '🏦', tagline: '3rd pillar optimization', category: 'Swiss Admin', price: 49, color: '#164e63' },
+  
+  // 🏥 Insurance & Health
+  { slug: 'assurancebot', name: 'AssuranceBot', emoji: '🏥', tagline: 'Health insurance comparison', category: 'Insurance', price: 39, color: '#22c55e' },
+  { slug: 'zahnarztbot', name: 'ZahnarztBot', emoji: '🦷', tagline: 'Dental cost comparison', category: 'Insurance', price: 29, color: '#16a34a' },
+  
+  // 🚗 Transport & Cars
+  { slug: 'sbbbot', name: 'SBBBot', emoji: '🚄', tagline: 'Train delay compensation', category: 'Transport', price: 29, color: '#dc2626' },
+  { slug: 'ticketbot', name: 'TicketBot', emoji: '🎫', tagline: 'Transport fine disputes', category: 'Transport', price: 29, color: '#b91c1c' },
+  { slug: 'garagebot', name: 'GarageBot', emoji: '🔧', tagline: 'MFK prep & garage prices', category: 'Transport', price: 39, color: '#78716c' },
+  
+  // 📦 Services
+  { slug: 'swisspostbot', name: 'SwissPostBot', emoji: '📦', tagline: 'Package tracking & complaints', category: 'Services', price: 29, color: '#fbbf24' },
+  { slug: 'reclamebot', name: 'RéclameBot', emoji: '📢', tagline: 'Consumer complaints & refunds', category: 'Services', price: 29, color: '#f59e0b' },
+  
+  // 👨‍👩‍👧 Family & Living
+  { slug: 'kitabot', name: 'KitaBot', emoji: '👶', tagline: 'Daycare waitlist management', category: 'Family', price: 29, color: '#f472b6' },
+  { slug: 'schoolbot', name: 'SchoolBot', emoji: '🎒', tagline: 'Swiss school navigation', category: 'Family', price: 29, color: '#ec4899' },
+  { slug: 'wohnungbot', name: 'WohnungBot', emoji: '🏠', tagline: 'Apartment hunting automation', category: 'Family', price: 49, color: '#db2777' },
+  
+  // 💼 Business
+  { slug: 'bookbot', name: 'BookBot', emoji: '📊', tagline: 'Shopify bookkeeping autopilot', category: 'Business', price: 49, color: '#6366f1' },
+  { slug: 'invoicebot', name: 'InvoiceBot', emoji: '🧾', tagline: 'Auto-invoicing & reminders', category: 'Business', price: 39, color: '#4f46e5' },
+  { slug: 'contractbot', name: 'ContractBot', emoji: '📝', tagline: 'Contract review & red flags', category: 'Business', price: 79, color: '#4338ca' },
+  { slug: 'leadbot', name: 'LeadBot', emoji: '🎯', tagline: 'Lead qualification & CRM', category: 'Business', price: 49, color: '#3730a3' },
+  { slug: 'taxbot', name: 'TaxBot', emoji: '💰', tagline: 'Tax deduction tracking', category: 'Business', price: 49, color: '#312e81' },
+  
+  // ⚡ Productivity
+  { slug: 'voiceweb', name: 'VoiceWeb', emoji: '🎙️', tagline: 'Build websites by voice', category: 'Productivity', price: 79, color: '#22c55e' },
+  { slug: 'voicenote', name: 'VoiceNote', emoji: '📝', tagline: 'Voice memos to notes', category: 'Productivity', price: 29, color: '#14b8a6' },
+  { slug: 'inboxbot', name: 'InboxBot', emoji: '📧', tagline: 'Email triage & auto-replies', category: 'Productivity', price: 39, color: '#06b6d4' },
+  { slug: 'calbot', name: 'CalBot', emoji: '📅', tagline: 'Calendar management', category: 'Productivity', price: 29, color: '#0891b2' },
+  { slug: 'researchbot', name: 'ResearchBot', emoji: '🔬', tagline: 'Deep research & reports', category: 'Productivity', price: 49, color: '#0e7490' },
+  
+  // 🏡 Real Estate
+  { slug: 'propertybot', name: 'PropertyBot', emoji: '🏡', tagline: 'Listing & buyer matching', category: 'Real Estate', price: 79, color: '#059669' },
+  { slug: 'rebot', name: 'ReBot', emoji: '🔑', tagline: 'Real estate assistant', category: 'Real Estate', price: 79, color: '#047857' },
+  { slug: 'finbot', name: 'FinBot', emoji: '📈', tagline: 'Investment analysis', category: 'Finance', price: 99, color: '#10b981' },
+  
+  // 🔒 Security & Tech
+  { slug: 'pentestbot', name: 'PenTestBot', emoji: '🔐', tagline: 'Security vulnerability scanning', category: 'Security', price: 99, color: '#6366f1' },
+  { slug: 'contentcheck', name: 'ContentCheck', emoji: '✅', tagline: 'AI content detection', category: 'Content', price: 29, color: '#8b5cf6' },
+  { slug: 'socialbot', name: 'SocialBot', emoji: '📱', tagline: 'Social media management', category: 'Marketing', price: 39, color: '#a855f7' },
+  
+  // 👁️ Monitoring
+  { slug: 'watchbot', name: 'WatchBot', emoji: '👁️', tagline: 'Brand mention monitoring', category: 'Monitoring', price: 49, color: '#06b6d4' },
 ]
 
 const CATEGORIES = Array.from(new Set(AGENTS.map(a => a.category)))

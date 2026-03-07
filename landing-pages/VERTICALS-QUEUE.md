@@ -385,3 +385,23 @@ After WatchBot MVP ships:
 - **Web search:** Unavailable (Brave API key missing)
 - **Outreach:** Skipped (2AM Geneva + search tools down)
 - **Status:** All landing pages loading correctly
+
+## 2026-03-05 14:00 UTC — Afternoon Build
+- **Built:** ZahnarztBot (EN+FR) — Dental cost comparison, abroad options
+- **Signups:** 0 (new page)
+- **Total pages:** 35
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/zahnarztbot + /zahnarztbot/fr
+
+## 2026-03-06 14:00 UTC — Afternoon Build
+- **Built:** GarageBot (EN+FR) — MFK prep, service reminders, garage price comparison
+- **Signups:** 0 (new page)
+- **Total pages:** 36
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/garagebot + /garagebot/fr
+
+## 2026-03-06 18:00 UTC — Evening Build
+- **Built:** RéclameBot (EN+FR) — Consumer complaints, warranty claims, refund requests
+- **Total pages:** 35
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/reclamebot + /reclamebot/fr

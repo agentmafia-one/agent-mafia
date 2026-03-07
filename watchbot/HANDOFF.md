@@ -244,3 +244,14 @@ L'équipe Agent Mafia
 - **Status:** Brand clean, quiet period continues
 - **Sentiment:** Neutral-positive
 - **Next:** Continue daily monitoring
+
+### 2026-03-06 11:00 UTC
+- **Search:** SwissChain Holding SA mentions (Perplexity)
+- **Result:** No new coverage since Feb 20, 2026
+- **Latest coverage:** Feb 20 tokenized participation certificates
+  - Finbold, GlobeNewswire, Business Insider, KuCoin
+  - DLT Act implementation, DAT (BTC/ETH <50%)
+- **Sources checked:** News, social, forums
+- **Scam/Blacklist:** Clean (no negative mentions)
+- **Status:** Brand clean, quiet period continues
+- **Sentiment:** Neutral-positive (institutional focus)
