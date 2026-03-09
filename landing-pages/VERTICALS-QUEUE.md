@@ -405,3 +405,17 @@ After WatchBot MVP ships:
 - **Total pages:** 35
 - **Deployed:** ✅ Auto-deploy to Vercel
 - **URL:** agentmafia.one/reclamebot + /reclamebot/fr
+
+## 2026-03-07 14:00 UTC — Afternoon Build
+- **Built:** SubventionBot (EN+FR) — Canton energy/solar subsidy finder
+- **Signups:** 0 (new page)
+- **Total pages:** 37
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/subventionbot + /subventionbot/fr
+
+## 2026-03-08 14:00 UTC — Afternoon Build
+- **Built:** ImportBot (EN+FR) — Swiss customs duty calculator, VAT optimization
+- **Signups:** 0 (new page)
+- **Total pages:** 38
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/importbot + /importbot/fr
