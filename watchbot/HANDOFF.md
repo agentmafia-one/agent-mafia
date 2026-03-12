@@ -287,3 +287,38 @@ L'équipe Agent Mafia
 
 **No new mentions found** (unable to search)
 
+
+### 2026-03-10 11:00 UTC
+- **Search:** SwissChain Holding SA mentions (Perplexity sonar-pro)
+- **Result:** No new coverage since March 6
+- **Latest coverage:**
+  - Feb 20, 2026: GlobeNewswire tokenized participation certificates
+  - March 6, 2026: CoinGecko article on DAT + Swiss institutional model
+- **Sources:** GlobeNewswire, Business Insider, Phemex, KuCoin, CoinGecko
+- **Coverage:** Tokenized participation certificates, DLT Act, DAT (BTC/ETH <50%)
+- **Scam/Blacklist:** Clean (no negative mentions)
+- **Social/Forums:** No new organic discussions
+- **Status:** Brand clean, positive institutional coverage
+- **Sentiment:** Positive (regulatory-compliant, Swiss institutional focus)
+- **OpenRouter:** Working with sonar-pro model
+
+### 2026-03-11 11:00 UTC
+- **Search:** SwissChain Holding SA mentions
+- **Status:** ⚠️ Perplexity API timeout, Brave Search not configured
+- **Fallback:** Google News scrape returned no new results
+- **Last known coverage:** March 6 CoinGecko, Feb 20 GlobeNewswire
+- **Assumption:** No new coverage (quiet period continues)
+- **Brand status:** Clean (no negative mentions in previous checks)
+- **Action:** Continue monitoring, consider Brave API setup
+
+### 2026-03-12 11:00 UTC
+- **Search:** SwissChain Holding SA mentions
+- **Status:** ⚠️ MONITORING BLOCKED
+  - OpenRouter: 402 Insufficient credits
+  - Brave Search: API key not configured
+- **Fallback:** No alternative search available
+- **Last known coverage:** 
+  - March 6: CoinGecko article on DAT
+  - Feb 20: GlobeNewswire tokenized certificates
+- **Brand status:** Assumed clean (no alerts from previous checks)
+- **Action needed:** Add OpenRouter credits OR configure Brave Search API

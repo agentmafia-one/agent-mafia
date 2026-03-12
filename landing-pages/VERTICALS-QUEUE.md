@@ -426,3 +426,17 @@ After WatchBot MVP ships:
 - **Total pages:** 39
 - **Deployed:** ✅ Auto-deploy to Vercel
 - **URL:** agentmafia.one/vignettbot + /vignettbot/fr
+
+## 2026-03-09 18:00 UTC — Evening Build
+- **Built:** EWZBot (EN+FR) — Zurich electricity optimization
+- **Signups:** 0 (new page)
+- **Total pages:** 40
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/ewzbot + /ewzbot/fr
+
+## 2026-03-10 01:00 UTC — Night Check
+- **Pages:** All healthy (307 redirects = normal)
+- **Signups:** 0 (unchanged)
+- **Outreach:** Skipped (2AM Geneva — audience asleep)
+- **Built yesterday:** VignettBot + EWZBot (EN+FR)
+- **Total pages:** 40 agents
