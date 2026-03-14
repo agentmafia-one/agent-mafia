@@ -440,3 +440,10 @@ After WatchBot MVP ships:
 - **Outreach:** Skipped (2AM Geneva — audience asleep)
 - **Built yesterday:** VignettBot + EWZBot (EN+FR)
 - **Total pages:** 40 agents
+
+## 2026-03-12 14:00 UTC — Afternoon Build
+- **Built:** NatBot (EN+FR) — Swiss naturalization/citizenship guide
+- **Signups:** 0 (new page)
+- **Total pages:** 41
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/natbot + /natbot/fr

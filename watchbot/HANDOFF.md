@@ -322,3 +322,31 @@ L'équipe Agent Mafia
   - Feb 20: GlobeNewswire tokenized certificates
 - **Brand status:** Assumed clean (no alerts from previous checks)
 - **Action needed:** Add OpenRouter credits OR configure Brave Search API
+
+### 2026-03-13 11:00 UTC
+- **Search:** SwissChain Holding SA mentions
+- **Status:** ⚠️ MONITORING BLOCKED
+  - OpenRouter: Credits depleted
+  - Brave Search: API key not configured
+  - Google News RSS: No results
+- **Fallback attempted:** Google News scrape (no results)
+- **Last known coverage:** 
+  - March 6: CoinGecko article on DAT
+  - Feb 20: GlobeNewswire tokenized certificates
+- **Brand status:** Assumed clean (no alerts from previous checks)
+- **Action needed:** 
+  1. Configure Brave Search API: `clawdbot configure --section web`
+  2. OR add OpenRouter credits
+
+### 2026-03-14 11:00 UTC
+- **Search:** SwissChain Holding SA mentions
+- **Status:** ⚠️ MONITORING BLOCKED
+  - OpenRouter: 402 Insufficient credits
+  - Brave Search: API key not configured
+- **Last known coverage:** 
+  - March 6: CoinGecko article on DAT
+  - Feb 20: GlobeNewswire tokenized certificates
+- **Brand status:** Assumed clean (no alerts from previous checks)
+- **Action needed:** 
+  1. Configure Brave Search API: `clawdbot configure --section web`
+  2. OR add OpenRouter credits
