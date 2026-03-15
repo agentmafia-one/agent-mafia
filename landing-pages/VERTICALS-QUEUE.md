@@ -475,3 +475,10 @@ After WatchBot MVP ships:
 - **Total pages:** 44
 - **Deployed:** ✅ Auto-deploy to Vercel
 - **URL:** agentmafia.one/steuernbot + /steuernbot/fr
+
+## 2026-03-15 18:00 UTC — Evening Build
+- **Built:** KKBot (EN+FR) — Krankenkasse claims tracking & disputes
+- **Signups:** 0 (new page)
+- **Total pages:** 45
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/kkbot + /kkbot/fr
