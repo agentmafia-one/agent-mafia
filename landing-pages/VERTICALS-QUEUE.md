@@ -454,3 +454,24 @@ After WatchBot MVP ships:
 - **Total pages:** 42
 - **Deployed:** ✅ Auto-deploy to Vercel
 - **URL:** agentmafia.one/caissebot + /caissebot/fr
+
+## 2026-03-14 18:00 UTC — Evening Build
+- **Built:** DéménageBot (EN+FR) — Swiss moving & canton change assistant
+- **Signups:** 0 (new page)
+- **Total pages:** 43
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/demenagebot + /demenagebot/fr
+
+## 2026-03-15 01:00 UTC — Morning Check
+- **Pages:** All healthy (307 redirects = normal Vercel)
+- **Signups:** 0 (unchanged)
+- **Total pages:** 44 agent landing pages
+- **Outreach:** Skipped (2AM Geneva - audience asleep)
+- **Yesterday built:** CaisseBot + DéménageBot
+
+## 2026-03-15 14:00 UTC — Afternoon Build
+- **Built:** SteuernBot (EN+FR) — Canton tax comparison optimizer
+- **Signups:** 0 (new page)
+- **Total pages:** 44
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/steuernbot + /steuernbot/fr
