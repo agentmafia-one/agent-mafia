@@ -482,3 +482,17 @@ After WatchBot MVP ships:
 - **Total pages:** 45
 - **Deployed:** ✅ Auto-deploy to Vercel
 - **URL:** agentmafia.one/kkbot + /kkbot/fr
+
+## 2026-03-16 14:00 UTC — Afternoon Build
+- **Built:** StagiaireBot (EN+FR) — Internship contract protection
+- **Signups:** 0 (new page)
+- **Total pages:** 46
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/stagiairebot + /stagiairebot/fr
+
+## 2026-03-18 14:00 UTC — Afternoon Build
+- **Built:** PilierBot (EN+FR) — 3rd pillar retirement optimizer
+- **Signups:** 0 (new page)
+- **Total pages:** 47
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/pilierbot + /pilierbot/fr

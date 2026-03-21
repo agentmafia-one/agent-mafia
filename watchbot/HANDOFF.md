@@ -350,3 +350,46 @@ L'équipe Agent Mafia
 - **Action needed:** 
   1. Configure Brave Search API: `clawdbot configure --section web`
   2. OR add OpenRouter credits
+
+### 2026-03-15 11:00 UTC
+- **Search:** SwissChain Holding SA mentions
+- **Status:** ⚠️ OpenRouter credits depleted (402)
+- **Fallback:** Google News RSS — SUCCESS
+- **Coverage found:**
+  - USA Today: "How Swiss Holding Companies Are Using Blockchain..."
+  - Business Insider: "SwissChain Unveils Tokenized Participation Certificates"
+  - The Manila Times: "SwissChain Holding SA Launches Tokenized Participation Certificates Under Swiss DLT Act"
+  - CoinGecko: "DAT + Tokenization - Swiss Institutional Model"
+- **New coverage:** None detected (same Feb/March articles)
+- **Brand status:** Clean (no negative mentions)
+- **Sentiment:** Positive (institutional, regulatory-compliant)
+- **Action needed:** Add OpenRouter credits for Perplexity monitoring
+
+### 2026-03-16 11:00 UTC
+- **Search:** SwissChain Holding SA mentions
+- **Status:** ⚠️ MONITORING BLOCKED
+  - OpenRouter: 402 Insufficient credits
+  - Brave Search: API key not configured
+  - Google News RSS: No results returned
+- **Last known coverage:** 
+  - March 6: CoinGecko article on DAT
+  - Feb 20: GlobeNewswire tokenized certificates
+- **Brand status:** Assumed clean (no alerts from previous checks)
+- **Note:** Jarod aware of Milan meeting outcome (scam attempt blocked)
+- **Action needed:** 
+  1. Configure Brave Search API: `clawdbot configure --section web`
+  2. OR add OpenRouter credits
+
+### 2026-03-17 11:00 UTC
+- **Search:** SwissChain Holding SA mentions
+- **Method:** Google News RSS (OpenRouter depleted, Brave not configured)
+- **Result:** No new coverage since February
+- **Coverage found (existing):**
+  - Feb 20: GlobeNewswire - Tokenized Participation Certificates (DLT Act)
+  - Feb 24: USA Today - "How Swiss Holding Companies Are Using Blockchain..."
+  - Business Insider - "SwissChain Unveils Tokenized Participation Certificates"
+- **New mentions:** None detected
+- **Scam/Fraud:** No negative mentions
+- **Brand status:** ✅ CLEAN
+- **Sentiment:** Positive (institutional, regulatory-compliant)
+- **Action:** Configure Brave Search API for better monitoring
