@@ -490,9 +490,26 @@ After WatchBot MVP ships:
 - **Deployed:** ✅ Auto-deploy to Vercel
 - **URL:** agentmafia.one/stagiairebot + /stagiairebot/fr
 
+## 2026-03-21 14:00 UTC — Afternoon Build
+- **Built:** MoveBot (EN+FR) — Swiss relocation assistant
+- **Signups:** 0 (new page)
+- **Total pages:** 48
+- **Deployed:** ✅ Auto-deploy to Vercel
+- **URL:** agentmafia.one/movebot + /movebot/fr
+
 ## 2026-03-18 14:00 UTC — Afternoon Build
 - **Built:** PilierBot (EN+FR) — 3rd pillar retirement optimizer
 - **Signups:** 0 (new page)
 - **Total pages:** 47
 - **Deployed:** ✅ Auto-deploy to Vercel
 - **URL:** agentmafia.one/pilierbot + /pilierbot/fr
+
+---
+## Status Check 2026-03-22 01:00 UTC
+
+**Signups:** 0 new (only Vercel notification)
+**Pages:**
+- Main (agentmafia.one): ✅ 200
+- Agent pages: ⚠️ 404 - need to check deployment
+
+**Note:** Late night check. Agent subpages returning 404 - may need Vercel redeploy.
