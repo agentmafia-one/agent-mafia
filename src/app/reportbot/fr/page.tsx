@@ -158,6 +158,25 @@ export default function ReportBotFrPage() {
           <p className="text-gray-400">KPIs illimités, utilisateurs illimités, sources de données illimitées.</p>
         </div>
 
+        {/* FAQ */}
+        <div className="mb-20 text-left">
+          <h2 className="text-3xl font-bold mb-10 text-center">Questions fréquentes</h2>
+          <div className="space-y-6">
+            {[
+              { q: "Quelles sources de données sont supportées ?", a: "Stripe, Google Analytics, Shopify, HubSpot, Intercom, et tout tableur. Nouvelles intégrations chaque mois." },
+              { q: "Mes données sont-elles sécurisées ?", a: "Oui. Chiffrement en transit et au repos. Nous ne stockons jamais les données brutes — uniquement les métriques agrégées. Hébergement suisse disponible." },
+              { q: "Puis-je personnaliser mes KPIs ?", a: "Absolument. Vous définissez ce qui compte. On suit tout et on vous alerte sur ce qui vous intéresse." },
+              { q: "J'ai plusieurs entreprises, ça marche ?", a: "Un compte, dashboards illimités. Chaque entreprise a ses KPIs et son planning de briefing." },
+              { q: "Puis-je résilier à tout moment ?", a: "Oui. Sans engagement. Résiliation en un clic." }
+            ].map((faq, i) => (
+              <div key={i} className="p-6 rounded-xl bg-gray-800/50 border border-gray-700">
+                <h3 className="text-lg font-semibold mb-2">{faq.q}</h3>
+                <p className="text-gray-400">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Footer */}
         <footer className="text-center text-gray-500 text-sm border-t border-gray-800 pt-8">
           <p className="mb-2">Partie de <Link href="/" className="text-blue-400 hover:underline">Agent Mafia</Link> — Des agents IA qui font vraiment le travail</p>

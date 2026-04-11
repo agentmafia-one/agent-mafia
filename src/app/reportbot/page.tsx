@@ -158,6 +158,25 @@ export default function ReportBotPage() {
           <p className="text-gray-400">Unlimited KPIs, unlimited users, unlimited data sources.</p>
         </div>
 
+        {/* FAQ */}
+        <div className="mb-20 text-left">
+          <h2 className="text-3xl font-bold mb-10 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {[
+              { q: "What data sources do you support?", a: "Stripe, Google Analytics, Shopify, HubSpot, Intercom, and any spreadsheet. More integrations added monthly." },
+              { q: "Is my data secure?", a: "Yes. All data is encrypted in transit and at rest. We never store raw data — only aggregated metrics. Swiss hosting available." },
+              { q: "Can I customize which KPIs I track?", a: "Absolutely. You define what matters. We track everything and alert you on what you care about." },
+              { q: "What if I have multiple businesses?", a: "One account, unlimited dashboards. Each business gets its own KPI set and briefing schedule." },
+              { q: "Can I cancel anytime?", a: "Yes. No contracts, no commitments. Cancel with one click." }
+            ].map((faq, i) => (
+              <div key={i} className="p-6 rounded-xl bg-gray-800/50 border border-gray-700">
+                <h3 className="text-lg font-semibold mb-2">{faq.q}</h3>
+                <p className="text-gray-400">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Footer */}
         <footer className="text-center text-gray-500 text-sm border-t border-gray-800 pt-8">
           <p className="mb-2">Part of <Link href="/" className="text-blue-400 hover:underline">Agent Mafia</Link> — AI agents that actually do the work</p>
