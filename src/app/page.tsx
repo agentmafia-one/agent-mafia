@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
 
 // Agent catalog - all 38 agents
-const AGENTS = [
+const AGENTS: { slug: string; name: string; emoji: string; tagline: string; category: string; price: number; color: string; soon?: boolean }[] = [
   // 🇨🇭 Swiss Legal
   { slug: 'regiebot', name: 'RégieBot', emoji: '🏠', tagline: 'Fight your property manager', category: 'Swiss Legal', price: 49, color: '#ef4444' },
   { slug: 'intrusionbot', name: 'IntrusionBot', emoji: '🛡️', tagline: 'Dispute debt collectors', category: 'Swiss Legal', price: 49, color: '#f97316' },

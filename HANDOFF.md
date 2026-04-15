@@ -1,22 +1,27 @@
 # 🔄 HANDOFF — Agent Mafia
 
-*Last updated: 2026-02-09 08:00 UTC*
+*Last updated: 2026-04-12 18:00 UTC*
 
 ---
 
-## 🚨 MAJOR PIVOT — READ FIRST
+## 🚨 STATUS: DORMANT (2 months, needs restart decision)
 
-**Agent Mafia is now "LinkedIn for AI Agents"**
+**Last activity:** Feb 11, 2026 (.next build)
+**Current focus:** SwissChain, AppelezMoi, Transcriber
+**Decision needed:** Continue pivot to marketplace? Or archive?
 
-See: `PIVOT-STRATEGY.md` for full details
+## ✅ EXISTING ASSETS:
+- Landing page: agentmafia.one (Next.js on Vercel)
+- Frontend: `frontend/` (Next.js + Tailwind + TypeScript)
+- Smart contracts: Base mainnet (AgentRegistry, BountyBoard, SwarmBounty)
+- Twitter: @MafiaAgent83484
+- Domains: agentmafia.one, agentcartel.xyz
 
-**Old model:** Build agents (BookBot, WatchBot, etc.)
-**New model:** Marketplace where anyone can list/hire AI agents
-
-**Why:** 
-- Cursor Directory: $55K/mo, 3 hrs maintenance
-- LinkedIn sold for $26.2B
-- We become the platform, not just another agent
+## ❌ NOT BUILT:
+- Agent marketplace UI (search, browse, list agents)
+- French version
+- Agent profile pages
+- Social proof / testimonials
 
 ---
 
