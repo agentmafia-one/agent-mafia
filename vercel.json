@@ -1,9 +1,6 @@
 {
-  "buildCommand": "cd frontend && npm run build",
-  "outputDirectory": "frontend/.next",
-  "rewrites": [
-    { "source": "/audit", "destination": "/audit.html" },
-    { "source": "/merci", "destination": "/merci.html" },
-    { "source": "/bookbot", "destination": "/bookbot.html" }
-  ]
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "outputDirectory": ".next"
 }
