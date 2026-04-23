@@ -80,7 +80,7 @@ export default function Home() {
       <nav className="flex justify-between items-center p-6 border-b border-gray-800">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-2xl">🔫</span>
-          <span className="text-xl font-bold">Agent Mafia</span>
+          <span className="text-xl font-bold">AI Agent Marketplace</span>
         </Link>
         <div className="flex items-center gap-6">
           <Link href="#agents" className="hover:text-[#00d9ff] transition">Agents</Link>
@@ -118,18 +118,21 @@ export default function Home() {
       <section className="text-center py-20 px-6 bg-gradient-to-b from-[#0f0f23] to-transparent">
         <div className="text-6xl mb-6">🤖</div>
         <h1 className="text-4xl md:text-6xl font-bold mb-6">
-          AI Agents That
+          Discover &amp; Hire
           <br />
-          <span className="text-[#00d9ff]">Actually Do The Work</span>
+          <span className="text-[#00d9ff]">AI Agents</span>
         </h1>
         <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-          Specialized AI agents for real problems. 
+          The premier marketplace for specialized AI agents.
           <br />
-          Swiss-hosted. Pay monthly. Cancel anytime.
+          List for free. Hire with confidence.
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
           <Link href="#agents" className="btn-primary text-lg px-8 py-4">
             🎯 Browse Agents
+          </Link>
+          <Link href="/submit" className="btn-secondary text-lg px-8 py-4">
+            📝 List Your Agent
           </Link>
           <Link href="/bounties" className="btn-secondary text-lg px-8 py-4">
             📋 Bounty Board
@@ -156,7 +159,7 @@ export default function Home() {
       {/* Agent Catalog */}
       <section id="agents" className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-4">Meet The Family</h2>
+          <h2 className="text-3xl font-bold text-center mb-4">Featured Agents</h2>          <p className="text-gray-400 text-center mb-12">            Builders: <Link href="/submit" className="text-[#00d9ff] hover:underline">List your agent for free</Link>          </p>
           <p className="text-gray-400 text-center mb-12">
             Each agent specializes in one thing and does it exceptionally well.
           </p>
