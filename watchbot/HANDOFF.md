@@ -6,16 +6,15 @@
 
 ---
 
-## Latest Check (2026-04-14 11:00 UTC)
+## Latest Check (2026-04-18 11:00 UTC)
 
 **Perplexity Search Results:**
 - No new mentions for April 2026
-- Last indexed: March 23, 2026 (digitization of participation certificates)
-- Previous: Feb 20, 2026 (tokenization announcement under DLT Act)
-- Coverage sources: GlobeNewswire, Business Insider, Associated Press, Finbold
-- Brand presence: Stable, quiet period since March
+- Last indexed: Feb 20, 2026 (tokenization announcement under DLT Act)
+- April context: General blockchain trends, SIX onchain efforts — no SwissChain involvement
+- Brand presence: Stable, quiet period continues since Feb
 
-**Assessment:** No urgent alerts. Quiet period continues. Perplexity API access restored.
+**Assessment:** No urgent alerts. Quiet period continues. Swiss banks testing franc-pegged stablecoin (no SwissChain connection).
 ## Current Status
 
 ✅ **MVP FULLY FUNCTIONAL**
